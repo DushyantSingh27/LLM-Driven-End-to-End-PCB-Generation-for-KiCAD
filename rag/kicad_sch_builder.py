@@ -95,6 +95,7 @@ class SchematicBuilder:
         self.title = title
         self.company = company
         self.project_name = project_name
+        self.root_uuid = gu()
 
         self.lib_symbols = {}
         self.ics = {}
@@ -144,7 +145,7 @@ class SchematicBuilder:
     (property "Value" "{value}" (at {x+2:.2f} {y:.2f} 0) (effects (font (size 1.27 1.27)) (justify left)))
     (property "Footprint" "{footprint}" (at {x:.2f} {y:.2f} 0) (effects (font (size 1.27 1.27)) hide))
     (property "Datasheet" "{datasheet}" (at {x:.2f} {y:.2f} 0) (effects (font (size 1.27 1.27)) hide))
-    (instances (project "{self.project_name}" (path "/{pu}" (reference "{ref}") (unit 1))))
+    (instances (project "{self.project_name}" (path "/{self.root_uuid}" (reference "{ref}") (unit 1))))
   )''')
 
         self.ics[ref] = {
@@ -174,7 +175,7 @@ class SchematicBuilder:
     (property "Value" "{value}" (at {x+2:.2f} {y:.2f} 0) (effects (font (size 1.27 1.27)) (justify left)))
     (property "Footprint" "{footprint}" (at {x:.2f} {y:.2f} 0) (effects (font (size 1.27 1.27)) hide))
     (property "Datasheet" "~" (at {x:.2f} {y:.2f} 0) (effects (font (size 1.27 1.27)) hide))
-    (instances (project "{self.project_name}" (path "/{pu}" (reference "{ref}") (unit 1))))
+    (instances (project "{self.project_name}" (path "/{self.root_uuid}" (reference "{ref}") (unit 1))))
   )''')
         # Pin connection nodes are 3.81mm from center (pin tip in symbol space)
         if rot == 90:
@@ -201,7 +202,7 @@ class SchematicBuilder:
     (property "Value" "{value}" (at {x+2:.2f} {y:.2f} 0) (effects (font (size 1.27 1.27)) (justify left)))
     (property "Footprint" "{footprint}" (at {x:.2f} {y:.2f} 0) (effects (font (size 1.27 1.27)) hide))
     (property "Datasheet" "~" (at {x:.2f} {y:.2f} 0) (effects (font (size 1.27 1.27)) hide))
-    (instances (project "{self.project_name}" (path "/{pu}" (reference "{ref}") (unit 1))))
+    (instances (project "{self.project_name}" (path "/{self.root_uuid}" (reference "{ref}") (unit 1))))
   )''')
         # C pin connection nodes at +/- 3.81 from center
         if rot == 90:
@@ -226,7 +227,7 @@ class SchematicBuilder:
     (in_bom yes) (on_board yes) (dnp no) (uuid {u})
     (property "Reference" "{ref}" (at {x:.2f} {y+1.27:.2f} 0) (effects (font (size 1.27 1.27)) hide))
     (property "Value" "{net_name}" (at {x:.2f} {vy:.2f} 0) (effects (font (size 1.27 1.27))))
-    (instances (project "{self.project_name}" (path "/{pu}" (reference "{ref}") (unit 1))))
+    (instances (project "{self.project_name}" (path "/{self.root_uuid}" (reference "{ref}") (unit 1))))
   )''')
 
         if net_name not in self.power_nets_used:
@@ -238,7 +239,7 @@ class SchematicBuilder:
     (in_bom yes) (on_board yes) (dnp no) (uuid {fu})
     (property "Reference" "{flag_ref}" (at {flag_x:.2f} {flag_y+2:.2f} 0) (effects (font (size 1.27 1.27)) hide))
     (property "Value" "PWR_FLAG" (at {flag_x:.2f} {flag_y-2:.2f} 0) (effects (font (size 1.27 1.27))))
-    (instances (project "{self.project_name}" (path "/{fpu}" (reference "{flag_ref}") (unit 1))))
+    (instances (project "{self.project_name}" (path "/{self.root_uuid}" (reference "{flag_ref}") (unit 1))))
   )''')
             self.wires.append(self._wire(flag_x, flag_y, x, y))
 
@@ -274,7 +275,7 @@ class SchematicBuilder:
     def build(self):
         out = []
         out.append(f'(kicad_sch (version 20230121) (generator skidl_exporter)')
-        out.append(f'  (uuid {gu()})')
+        out.append(f'  (uuid {self.root_uuid})')
         out.append('  (paper "A4")')
         out.append(f'  (title_block (title "{self.title}") (company "{self.company}"))')
         out.append('  (lib_symbols')
@@ -330,7 +331,7 @@ class SchematicBuilder:
     (property "Value" "{value}" (at {x+2:.2f} {y:.2f} 0) (effects (font (size 1.27 1.27)) (justify left)))
     (property "Footprint" "{footprint}" (at {x:.2f} {y:.2f} 0) (effects (font (size 1.27 1.27)) hide))
     (property "Datasheet" "{datasheet}" (at {x:.2f} {y:.2f} 0) (effects (font (size 1.27 1.27)) hide))
-    (instances (project "{self.project_name}" (path "/{pu}" (reference "{ref}") (unit 1))))
+    (instances (project "{self.project_name}" (path "/{self.root_uuid}" (reference "{ref}") (unit 1))))
   )''')
 
         self.ics[ref] = {
