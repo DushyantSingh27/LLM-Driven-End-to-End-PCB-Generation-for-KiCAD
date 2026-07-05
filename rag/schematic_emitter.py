@@ -27,7 +27,8 @@ def emit_schematic(components, placement, model, builder,
         x, y = placement[ref]
         if comp["kind"] == "ic":
             builder.add_ic_by_name(ref, comp["name"], x, y,
-                                   value=comp.get("value") or comp["name"])
+                                   value=comp.get("value") or comp["name"],
+                                   footprint=comp.get("footprint") or "")
             endpoints[ref] = {num: builder.pin_endpoint(ref, num)
                               for num in comp["pins"]}
         else:

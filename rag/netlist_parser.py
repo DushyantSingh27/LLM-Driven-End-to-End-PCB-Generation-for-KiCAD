@@ -43,6 +43,7 @@ def parse_circuit(circuit):
             "name": p.name,
             "library": lib,
             "value": getattr(p, "value", None),
+            "footprint": getattr(p, "footprint", None) or None,
             "pins": [str(pin.num) for pin in p.pins],
         }
 

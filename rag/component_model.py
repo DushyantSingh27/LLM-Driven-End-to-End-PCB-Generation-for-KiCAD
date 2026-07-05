@@ -55,6 +55,7 @@ def build_components(model):
         components[ref] = {
             "name": info["name"], "library": info["library"],
             "value": info["value"], "kind": _classify(info),
+            "footprint": info.get("footprint"),
             "symbol": sym, "pins": pins,
         }
 
