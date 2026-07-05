@@ -1,0 +1,31 @@
+
+WARNING: fp-lib-table file was not found. Component footprints are not available.
+WARNING: fp-lib-table file was not found. Component footprints are not available.
+WARNING: fp-lib-table file was not found. Component footprints are not available.
+WARNING: fp-lib-table file was not found. Component footprints are not available.
+ERC WARNING: Only one pin (PASSIVE pin 1/~ of R/R1) attached to net VIN.
+ERC WARNING: Only one pin (PASSIVE pin 2/~ of R/R2) attached to net GND.
+ERC INFO: 2 warnings found while running ERC.
+ERC INFO: 0 errors found while running ERC.
+
+ERC WARNING: Only one pin (PASSIVE pin 1/~ of R/R1) attached to net VIN.
+ERC WARNING: Only one pin (PASSIVE pin 2/~ of R/R2) attached to net GND.
+ERC INFO: 2 warnings found while running ERC.
+ERC INFO: 0 errors found while running ERC.
+
+WARNING: Missing tag on R instantiated at /tmp/tmpw0s4gtrm/extracted_task_1.py:52.
+WARNING: Random tag xSyUtKYwvj generated for R.
+WARNING: Missing tag on R instantiated at /tmp/tmpw0s4gtrm/extracted_task_1.py:53.
+WARNING: Random tag fRrwrI5H6H generated for R.
+WARNING: Missing tag on  instantiated at /tmp/tmpw0s4gtrm/<frozen importlib._bootstrap>:488.
+INFO: 9 warnings found while generating netlist.
+INFO: 0 errors found while generating netlist.
+
+INFO: 9 warnings found while generating SVG.
+INFO: 0 errors found while generating SVG.
+
+WARNING: Missing tag on  instantiated at /tmp/tmpw0s4gtrm/<frozen importlib._bootstrap>:488.
+./pcbnew/action_plugin.cpp(163): assert "PgmOrNull()" failed in register_action().
+INFO: 10 warnings found while creating PCB.
+INFO: 0 errors found while creating PCB.
+

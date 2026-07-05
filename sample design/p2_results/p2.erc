@@ -1,0 +1,5 @@
+ERC WARNING: Only one pin (PASSIVE pin 1/~ of R/R1) attached to net VIN.
+ERC WARNING: Only one pin (PASSIVE pin 6/OUTN of AMC1350/IC1) attached to net OUTN.
+ERC WARNING: Only one pin (PASSIVE pin 7/OUTP of AMC1350/IC1) attached to net OUTP.
+ERC INFO: 3 warnings found while running ERC.
+ERC INFO: 0 errors found while running ERC.

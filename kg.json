@@ -239,8 +239,15 @@
         }
       ],
       "isolation_boundary": true,
-      "primary_pins": [1, 2],
-      "secondary_pins": [5, 6, 7]
+      "primary_pins": [
+        1,
+        2
+      ],
+      "secondary_pins": [
+        5,
+        6,
+        7
+      ]
     },
     "UCC27511": {
       "category": "ic",
@@ -318,8 +325,18 @@
         }
       ],
       "isolation_boundary": true,
-      "primary_pins": [1, 2, 3, 4],
-      "secondary_pins": [5, 6, 7, 8]
+      "primary_pins": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "secondary_pins": [
+        5,
+        6,
+        7,
+        8
+      ]
     },
     "UCC21710": {
       "category": "ic",
@@ -362,8 +379,26 @@
         "CLAMP": "connect this pin to gate for clamping"
       },
       "isolation_boundary": true,
-      "primary_pins": [9, 10, 11, 12, 13, 14, 15, 16],
-      "secondary_pins": [1, 2, 3, 4, 5, 6, 7, 8]
+      "primary_pins": [
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "secondary_pins": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
     },
     "BSC052N08NS5": {
       "category": "MOSFET",
@@ -520,8 +555,155 @@
       },
       "generic_constraints": [],
       "isolation_boundary": true,
-      "primary_pins": [1, 2, 3, 4, 5, 6],
-      "secondary_pins": [7, 8, 9, 10, 11, 12]
+      "primary_pins": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "secondary_pins": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    "STM32F401RET6": {
+      "category": "ic",
+      "note": "STM32F401RE Cortex-M4 LQFP64. I2C1_SCL on PB6 (pin 58, AF4) or PB8 (pin 61, AF4). I2C1_SDA on PB7 (pin 59, AF4) or PB9 (pin 62, AF4). NRST needs 100nF to GND. BOOT0 low = flash boot. VCAP1 (pin 30) needs 1uF to GND for internal regulator. Each VDD pin needs 100nF decoupling.",
+      "pin_roles": {
+        "1": "supply_vdd",
+        "7": "logic_in",
+        "12": "supply_gnd",
+        "13": "supply_vdd",
+        "18": "supply_gnd",
+        "19": "supply_vdd",
+        "30": "supply_gnd",
+        "31": "supply_gnd",
+        "32": "supply_vdd",
+        "47": "supply_gnd",
+        "48": "supply_vdd",
+        "58": "i2c_scl",
+        "59": "i2c_sda",
+        "60": "logic_in",
+        "63": "supply_gnd",
+        "64": "supply_vdd"
+      },
+      "generic_constraints": [
+        {
+          "type": "supply_pair",
+          "vdd_pin": "19",
+          "gnd_pin": "18"
+        },
+        {
+          "type": "supply_pair",
+          "vdd_pin": "32",
+          "gnd_pin": "31"
+        },
+        {
+          "type": "supply_pair",
+          "vdd_pin": "48",
+          "gnd_pin": "47"
+        },
+        {
+          "type": "supply_pair",
+          "vdd_pin": "64",
+          "gnd_pin": "63"
+        },
+        {
+          "type": "must_be_connected",
+          "pins": [
+            "7",
+            "60"
+          ]
+        },
+        {
+          "type": "decoupling_required",
+          "pin": "19",
+          "cap_value": "100nF"
+        },
+        {
+          "type": "decoupling_required",
+          "pin": "32",
+          "cap_value": "100nF"
+        },
+        {
+          "type": "decoupling_required",
+          "pin": "48",
+          "cap_value": "100nF"
+        },
+        {
+          "type": "decoupling_required",
+          "pin": "64",
+          "cap_value": "100nF"
+        },
+        {
+          "type": "decoupling_required",
+          "pin": "30",
+          "cap_value": "1uF"
+        }
+      ]
+    },
+    "ISM330DHCX": {
+      "category": "ic",
+      "note": "ISM330DHCX 6-axis IMU. Pin 7 (CS) MUST be tied HIGH to VDD for I2C mode \u2014 do NOT leave floating. Pin 5 (SDO/SA0) sets I2C address: GND = 0x6A, VDD = 0x6B. Pin 3 (C1) requires 100nF capacitor to GND for internal regulator bypass. VDD (pin 1) and VDDIO (pin 11) both need 100nF decoupling to GND. GND_PAD (pin 14) must be connected to GND.",
+      "pin_roles": {
+        "1": "supply_vdd",
+        "2": "supply_gnd",
+        "3": "passive",
+        "4": "i2c_sda",
+        "5": "logic_in",
+        "6": "i2c_scl",
+        "7": "logic_in",
+        "8": "logic_out",
+        "9": "logic_out",
+        "10": "supply_gnd",
+        "11": "supply_vdd",
+        "12": "supply_gnd",
+        "13": "logic_out",
+        "14": "supply_gnd"
+      },
+      "generic_constraints": [
+        {
+          "type": "supply_pair",
+          "vdd_pin": "1",
+          "gnd_pin": "2"
+        },
+        {
+          "type": "supply_pair",
+          "vdd_pin": "11",
+          "gnd_pin": "10"
+        },
+        {
+          "type": "must_be_connected",
+          "pins": [
+            "7",
+            "14",
+            "2",
+            "10",
+            "12"
+          ]
+        },
+        {
+          "type": "decoupling_required",
+          "pin": "1",
+          "cap_value": "100nF"
+        },
+        {
+          "type": "decoupling_required",
+          "pin": "11",
+          "cap_value": "100nF"
+        },
+        {
+          "type": "decoupling_required",
+          "pin": "3",
+          "cap_value": "100nF"
+        }
+      ]
     }
   }
 }

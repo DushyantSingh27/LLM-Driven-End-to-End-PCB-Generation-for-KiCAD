@@ -1,0 +1,121 @@
+(export 
+  (version "D")
+  (design
+    (source "extracted_task_2.py")
+    (date "06/18/2026 11:34 AM")
+    (tool "SKiDL (2.2.3)")
+    (sheet
+      (number 1)
+      (name "/")
+      (tstamps "/")
+      (title_block
+        (title)
+        (company)
+        (rev)
+        (date)
+        (source "extracted_task_2.py")
+        (comment
+          (number "1")
+          (value ""))
+        (comment
+          (number "2")
+          (value ""))
+        (comment
+          (number "3")
+          (value ""))
+        (comment
+          (number "4")
+          (value ""))
+        (comment
+          (number "5")
+          (value ""))
+        (comment
+          (number "6")
+          (value ""))
+        (comment
+          (number "7")
+          (value ""))
+        (comment
+          (number "8")
+          (value ""))
+        (comment
+          (number "9")
+          (value "")))))
+  (components
+    (comp
+      (ref "R1")
+      (value "10k")
+      (description "Resistor")
+      (footprint "test:R_0805")
+      (fields
+        (field
+          (name "Description") "Resistor")
+        (field
+          (name "Footprint") "test:R_0805")
+        (field
+          (name "Datasheet") "~")
+        (field
+          (name "SKiDL Tag") "EE05vqE0KG")
+        (field
+          (name "SKiDL Line") "extracted_task_2.py:48"))
+      (libsource
+        (lib "test")
+        (part "R"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "6b65b048-472d-5580-9374-8fa6c3dc55bf"))
+    (comp
+      (ref "R2")
+      (value "10k")
+      (description "Resistor")
+      (footprint "test:R_0805")
+      (fields
+        (field
+          (name "Description") "Resistor")
+        (field
+          (name "Footprint") "test:R_0805")
+        (field
+          (name "Datasheet") "~")
+        (field
+          (name "SKiDL Tag") "jZXVWfvDWX")
+        (field
+          (name "SKiDL Line") "extracted_task_2.py:49"))
+      (libsource
+        (lib "test")
+        (part "R"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "ee20f1e5-4080-580f-bcb6-9b039b04a377")))
+  (nets
+    (net
+      (code 1)
+      (name "GND")
+      (class "Default")
+      (node
+        (ref "R2")
+        (pin "2")
+        (pintype "PASSIVE")))
+    (net
+      (code 2)
+      (name "VIN")
+      (class "Default")
+      (node
+        (ref "R1")
+        (pin "1")
+        (pintype "PASSIVE")))
+    (net
+      (code 3)
+      (name "VOUT")
+      (class "Default")
+      (node
+        (ref "R1")
+        (pin "2")
+        (pintype "PASSIVE"))
+      (node
+        (ref "R2")
+        (pin "1")
+        (pintype "PASSIVE")))))

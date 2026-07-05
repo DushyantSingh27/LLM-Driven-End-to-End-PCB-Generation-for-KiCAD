@@ -1,0 +1,241 @@
+{
+  "components": [
+    {
+      "ref": "IC1",
+      "part_id": "AMC1350",
+      "value": "AMC1350",
+      "pins": [
+        {
+          "pin_id": "1",
+          "pin_name": "VDD1",
+          "net": "VDD1"
+        },
+        {
+          "pin_id": "2",
+          "pin_name": "INP",
+          "net": "VIN_DIV"
+        },
+        {
+          "pin_id": "3",
+          "pin_name": "INN",
+          "net": "GND1"
+        },
+        {
+          "pin_id": "4",
+          "pin_name": "GND1",
+          "net": "GND1"
+        },
+        {
+          "pin_id": "8",
+          "pin_name": "VDD2",
+          "net": "VDD2"
+        },
+        {
+          "pin_id": "7",
+          "pin_name": "OUTP",
+          "net": "OUTP"
+        },
+        {
+          "pin_id": "6",
+          "pin_name": "OUTN",
+          "net": "OUTN"
+        },
+        {
+          "pin_id": "5",
+          "pin_name": "GND2",
+          "net": "GND2"
+        }
+      ]
+    },
+    {
+      "ref": "R1",
+      "part_id": "R",
+      "value": "1.21M",
+      "pins": [
+        {
+          "pin_id": "1",
+          "pin_name": "~",
+          "net": "VIN"
+        },
+        {
+          "pin_id": "2",
+          "pin_name": "~",
+          "net": "VIN_DIV"
+        }
+      ]
+    },
+    {
+      "ref": "R2",
+      "part_id": "R",
+      "value": "10.0k",
+      "pins": [
+        {
+          "pin_id": "1",
+          "pin_name": "~",
+          "net": "VIN_DIV"
+        },
+        {
+          "pin_id": "2",
+          "pin_name": "~",
+          "net": "GND1"
+        }
+      ]
+    },
+    {
+      "ref": "C1",
+      "part_id": "C",
+      "value": "100nF",
+      "pins": [
+        {
+          "pin_id": "1",
+          "pin_name": "~",
+          "net": "VDD1"
+        },
+        {
+          "pin_id": "2",
+          "pin_name": "~",
+          "net": "GND1"
+        }
+      ]
+    },
+    {
+      "ref": "C2",
+      "part_id": "C",
+      "value": "100nF",
+      "pins": [
+        {
+          "pin_id": "1",
+          "pin_name": "~",
+          "net": "VDD2"
+        },
+        {
+          "pin_id": "2",
+          "pin_name": "~",
+          "net": "GND2"
+        }
+      ]
+    }
+  ],
+  "nets": [
+    {
+      "name": "VDD1",
+      "endpoints": [
+        {
+          "ref": "IC1",
+          "pin_id": "1",
+          "pin_name": "VDD1"
+        },
+        {
+          "ref": "C1",
+          "pin_id": "1",
+          "pin_name": "~"
+        }
+      ]
+    },
+    {
+      "name": "VIN_DIV",
+      "endpoints": [
+        {
+          "ref": "IC1",
+          "pin_id": "2",
+          "pin_name": "INP"
+        },
+        {
+          "ref": "R1",
+          "pin_id": "2",
+          "pin_name": "~"
+        },
+        {
+          "ref": "R2",
+          "pin_id": "1",
+          "pin_name": "~"
+        }
+      ]
+    },
+    {
+      "name": "GND1",
+      "endpoints": [
+        {
+          "ref": "IC1",
+          "pin_id": "3",
+          "pin_name": "INN"
+        },
+        {
+          "ref": "IC1",
+          "pin_id": "4",
+          "pin_name": "GND1"
+        },
+        {
+          "ref": "R2",
+          "pin_id": "2",
+          "pin_name": "~"
+        },
+        {
+          "ref": "C1",
+          "pin_id": "2",
+          "pin_name": "~"
+        }
+      ]
+    },
+    {
+      "name": "VDD2",
+      "endpoints": [
+        {
+          "ref": "IC1",
+          "pin_id": "8",
+          "pin_name": "VDD2"
+        },
+        {
+          "ref": "C2",
+          "pin_id": "1",
+          "pin_name": "~"
+        }
+      ]
+    },
+    {
+      "name": "OUTP",
+      "endpoints": [
+        {
+          "ref": "IC1",
+          "pin_id": "7",
+          "pin_name": "OUTP"
+        }
+      ]
+    },
+    {
+      "name": "OUTN",
+      "endpoints": [
+        {
+          "ref": "IC1",
+          "pin_id": "6",
+          "pin_name": "OUTN"
+        }
+      ]
+    },
+    {
+      "name": "GND2",
+      "endpoints": [
+        {
+          "ref": "IC1",
+          "pin_id": "5",
+          "pin_name": "GND2"
+        },
+        {
+          "ref": "C2",
+          "pin_id": "2",
+          "pin_name": "~"
+        }
+      ]
+    },
+    {
+      "name": "VIN",
+      "endpoints": [
+        {
+          "ref": "R1",
+          "pin_id": "1",
+          "pin_name": "~"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,245 @@
+(export 
+  (version "D")
+  (design
+    (source "temp_p13.py")
+    (date "06/22/2026 11:05 AM")
+    (tool "SKiDL (2.2.3)")
+    (sheet
+      (number 1)
+      (name "/")
+      (tstamps "/")
+      (title_block
+        (title)
+        (company)
+        (rev)
+        (date)
+        (source "temp_p13.py")
+        (comment
+          (number "1")
+          (value ""))
+        (comment
+          (number "2")
+          (value ""))
+        (comment
+          (number "3")
+          (value ""))
+        (comment
+          (number "4")
+          (value ""))
+        (comment
+          (number "5")
+          (value ""))
+        (comment
+          (number "6")
+          (value ""))
+        (comment
+          (number "7")
+          (value ""))
+        (comment
+          (number "8")
+          (value ""))
+        (comment
+          (number "9")
+          (value "")))))
+  (components
+    (comp
+      (ref "C1")
+      (value "100nF")
+      (description "Unpolarized capacitor")
+      (footprint "test:C_0805")
+      (fields
+        (field
+          (name "Description") "Unpolarized capacitor")
+        (field
+          (name "Footprint") "test:C_0805")
+        (field
+          (name "Datasheet") "~")
+        (field
+          (name "SKiDL Tag") "G4G1uxuxgt")
+        (field
+          (name "SKiDL Line") "temp_p13.py:34"))
+      (libsource
+        (lib "test")
+        (part "C"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "5eccf618-90e8-598e-9ac2-faf861372435"))
+    (comp
+      (ref "C2")
+      (value "1uF")
+      (description "Unpolarized capacitor")
+      (footprint "test:C_0805")
+      (fields
+        (field
+          (name "Description") "Unpolarized capacitor")
+        (field
+          (name "Footprint") "test:C_0805")
+        (field
+          (name "Datasheet") "~")
+        (field
+          (name "SKiDL Tag") "iSRX4S_OAC")
+        (field
+          (name "SKiDL Line") "temp_p13.py:35"))
+      (libsource
+        (lib "test")
+        (part "C"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "6352717f-601d-569c-997e-c3f7a1030499"))
+    (comp
+      (ref "IC1")
+      (value "UCC27511")
+      (description "4A/8A Single Channel High-speed Low-side Gate Driver")
+      (footprint "test:UCC27511_SOIC6")
+      (fields
+        (field
+          (name "Description") "4A/8A Single Channel High-speed Low-side Gate Driver")
+        (field
+          (name "Footprint") "test:UCC27511_SOIC6")
+        (field
+          (name "Datasheet") "http://www.ti.com/general/docs/suppproductinfo.tsp?distId=10&gotoUrl=http%3A%2F%2Fwww.ti.com%2Flit%2Fgpn%2Fucc27511")
+        (field
+          (name "SKiDL Tag") "NfqKu8mo1k")
+        (field
+          (name "SKiDL Line") "temp_p13.py:25"))
+      (libsource
+        (lib "test")
+        (part "UCC27511"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "be350b5b-420e-5ee1-b572-3f1eb1422964"))
+    (comp
+      (ref "R1")
+      (value "4.7")
+      (description "Resistor")
+      (footprint "test:R_0805")
+      (fields
+        (field
+          (name "Description") "Resistor")
+        (field
+          (name "Footprint") "test:R_0805")
+        (field
+          (name "Datasheet") "~")
+        (field
+          (name "SKiDL Tag") "HcpYzG2jMk")
+        (field
+          (name "SKiDL Line") "temp_p13.py:39"))
+      (libsource
+        (lib "test")
+        (part "R"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "0dfcd222-0913-51bc-bea2-1f18ff98b7d1"))
+    (comp
+      (ref "R2")
+      (value "2.2")
+      (description "Resistor")
+      (footprint "test:R_0805")
+      (fields
+        (field
+          (name "Description") "Resistor")
+        (field
+          (name "Footprint") "test:R_0805")
+        (field
+          (name "Datasheet") "~")
+        (field
+          (name "SKiDL Tag") "Mjka2ln0ty")
+        (field
+          (name "SKiDL Line") "temp_p13.py:40"))
+      (libsource
+        (lib "test")
+        (part "R"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "bade6967-6c8a-587d-af92-095b121b7488")))
+  (nets
+    (net
+      (code 1)
+      (name "GATE")
+      (class "Default")
+      (node
+        (ref "R1")
+        (pin "2")
+        (pintype "PASSIVE"))
+      (node
+        (ref "R2")
+        (pin "2")
+        (pintype "PASSIVE")))
+    (net
+      (code 2)
+      (name "N$1")
+      (class "Default")
+      (node
+        (ref "IC1")
+        (pin "2")
+        (pintype "PASSIVE"))
+      (node
+        (ref "R1")
+        (pin "1")
+        (pintype "PASSIVE")))
+    (net
+      (code 3)
+      (name "N$2")
+      (class "Default")
+      (node
+        (ref "IC1")
+        (pin "3")
+        (pintype "PASSIVE"))
+      (node
+        (ref "R2")
+        (pin "1")
+        (pintype "PASSIVE")))
+    (net
+      (code 4)
+      (name "PGND")
+      (class "Default")
+      (node
+        (ref "C1")
+        (pin "2")
+        (pintype "PASSIVE"))
+      (node
+        (ref "C2")
+        (pin "2")
+        (pintype "PASSIVE"))
+      (node
+        (ref "IC1")
+        (pin "4")
+        (pintype "PASSIVE"))
+      (node
+        (ref "IC1")
+        (pin "5")
+        (pintype "PASSIVE")))
+    (net
+      (code 5)
+      (name "PWM_IN")
+      (class "Default")
+      (node
+        (ref "IC1")
+        (pin "6")
+        (pintype "PASSIVE")))
+    (net
+      (code 6)
+      (name "VCC")
+      (class "Default")
+      (node
+        (ref "C1")
+        (pin "1")
+        (pintype "PASSIVE"))
+      (node
+        (ref "C2")
+        (pin "1")
+        (pintype "PASSIVE"))
+      (node
+        (ref "IC1")
+        (pin "1")
+        (pintype "PASSIVE")))))

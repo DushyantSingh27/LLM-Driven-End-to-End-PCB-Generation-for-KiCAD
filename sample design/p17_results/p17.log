@@ -1,0 +1,23 @@
+
+WARNING: fp-lib-table file was not found. Component footprints are not available.
+WARNING: fp-lib-table file was not found. Component footprints are not available.
+WARNING: fp-lib-table file was not found. Component footprints are not available.
+WARNING: fp-lib-table file was not found. Component footprints are not available.
+
+INFO: 91 warnings found while generating netlist.
+INFO: 0 errors found while generating netlist.
+
+INFO: 91 warnings found while generating SVG.
+INFO: 0 errors found while generating SVG.
+
+./pcbnew/action_plugin.cpp(163): assert "PgmOrNull()" failed in register_action().
+Unable to find footprint MGJ2D121505SC in /teamspace/studios/this_studio/PCBSchemaGen/library/test.pretty
+Unable to find footprint D_SMA in /teamspace/studios/this_studio/PCBSchemaGen/library/test.pretty
+Unable to find footprint IMZA65R015M2H in /teamspace/studios/this_studio/PCBSchemaGen/library/test.pretty
+Unable to find footprint MGJ2D121505SC in /teamspace/studios/this_studio/PCBSchemaGen/library/test.pretty
+Unable to find footprint D_SMA in /teamspace/studios/this_studio/PCBSchemaGen/library/test.pretty
+Unable to find footprint IMZA65R015M2H in /teamspace/studios/this_studio/PCBSchemaGen/library/test.pretty
+Unable to find footprint Inductor_power in /teamspace/studios/this_studio/PCBSchemaGen/library/test.pretty
+INFO: 92 warnings found while creating PCB.
+INFO: 0 errors found while creating PCB.
+

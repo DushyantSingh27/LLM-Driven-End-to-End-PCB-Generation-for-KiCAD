@@ -1,0 +1,333 @@
+(export 
+  (version "D")
+  (design
+    (source "temp_p7.py")
+    (date "06/22/2026 11:05 AM")
+    (tool "SKiDL (2.2.3)")
+    (sheet
+      (number 1)
+      (name "/")
+      (tstamps "/")
+      (title_block
+        (title)
+        (company)
+        (rev)
+        (date)
+        (source "temp_p7.py")
+        (comment
+          (number "1")
+          (value ""))
+        (comment
+          (number "2")
+          (value ""))
+        (comment
+          (number "3")
+          (value ""))
+        (comment
+          (number "4")
+          (value ""))
+        (comment
+          (number "5")
+          (value ""))
+        (comment
+          (number "6")
+          (value ""))
+        (comment
+          (number "7")
+          (value ""))
+        (comment
+          (number "8")
+          (value ""))
+        (comment
+          (number "9")
+          (value "")))))
+  (components
+    (comp
+      (ref "C1")
+      (value "4.7uF")
+      (description "Unpolarized capacitor")
+      (footprint "test:C_0805")
+      (fields
+        (field
+          (name "Description") "Unpolarized capacitor")
+        (field
+          (name "Footprint") "test:C_0805")
+        (field
+          (name "Datasheet") "~")
+        (field
+          (name "SKiDL Tag") "aWtj7TnXEx")
+        (field
+          (name "SKiDL Line") "temp_p7.py:37"))
+      (libsource
+        (lib "test")
+        (part "C"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "8d23db2b-5f20-5002-acba-9b7e7321297c"))
+    (comp
+      (ref "C2")
+      (value "100nF")
+      (description "Unpolarized capacitor")
+      (footprint "test:C_0805")
+      (fields
+        (field
+          (name "Description") "Unpolarized capacitor")
+        (field
+          (name "Footprint") "test:C_0805")
+        (field
+          (name "Datasheet") "~")
+        (field
+          (name "SKiDL Tag") "OJ_92KYS7w")
+        (field
+          (name "SKiDL Line") "temp_p7.py:38"))
+      (libsource
+        (lib "test")
+        (part "C"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "2dce5515-ac12-51b1-aa92-8bc9c589eebc"))
+    (comp
+      (ref "C3")
+      (value "10uF")
+      (description "Unpolarized capacitor")
+      (footprint "test:C_0805")
+      (fields
+        (field
+          (name "Description") "Unpolarized capacitor")
+        (field
+          (name "Footprint") "test:C_0805")
+        (field
+          (name "Datasheet") "~")
+        (field
+          (name "SKiDL Tag") "EVExYeccUa")
+        (field
+          (name "SKiDL Line") "temp_p7.py:53"))
+      (libsource
+        (lib "test")
+        (part "C"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "b40a13c1-4843-5773-95d7-f8fa449c9de2"))
+    (comp
+      (ref "C4")
+      (value "100nF")
+      (description "Unpolarized capacitor")
+      (footprint "test:C_0805")
+      (fields
+        (field
+          (name "Description") "Unpolarized capacitor")
+        (field
+          (name "Footprint") "test:C_0805")
+        (field
+          (name "Datasheet") "~")
+        (field
+          (name "SKiDL Tag") "vYuu0kLPoe")
+        (field
+          (name "SKiDL Line") "temp_p7.py:54"))
+      (libsource
+        (lib "test")
+        (part "C"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "6b3e51fe-1481-584d-b6ce-343db523cab1"))
+    (comp
+      (ref "C5")
+      (value "10uF")
+      (description "Unpolarized capacitor")
+      (footprint "test:C_0805")
+      (fields
+        (field
+          (name "Description") "Unpolarized capacitor")
+        (field
+          (name "Footprint") "test:C_0805")
+        (field
+          (name "Datasheet") "~")
+        (field
+          (name "SKiDL Tag") "Ebi4U9In6V")
+        (field
+          (name "SKiDL Line") "temp_p7.py:59"))
+      (libsource
+        (lib "test")
+        (part "C"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "15eec203-3271-54ba-87e9-c485fa779691"))
+    (comp
+      (ref "C6")
+      (value "100nF")
+      (description "Unpolarized capacitor")
+      (footprint "test:C_0805")
+      (fields
+        (field
+          (name "Description") "Unpolarized capacitor")
+        (field
+          (name "Footprint") "test:C_0805")
+        (field
+          (name "Datasheet") "~")
+        (field
+          (name "SKiDL Tag") "endQZD96aq")
+        (field
+          (name "SKiDL Line") "temp_p7.py:60"))
+      (libsource
+        (lib "test")
+        (part "C"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "77035739-4edb-535c-8cbb-a56cb9839c2d"))
+    (comp
+      (ref "C7")
+      (value "1uF")
+      (description "Unpolarized capacitor")
+      (footprint "test:C_0805")
+      (fields
+        (field
+          (name "Description") "Unpolarized capacitor")
+        (field
+          (name "Footprint") "test:C_0805")
+        (field
+          (name "Datasheet") "~")
+        (field
+          (name "SKiDL Tag") "ORPXtoUt2c")
+        (field
+          (name "SKiDL Line") "temp_p7.py:65"))
+      (libsource
+        (lib "test")
+        (part "C"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "5392c4ed-821e-5541-a4ac-a478be5ae77c"))
+    (comp
+      (ref "PS1")
+      (value "MGJ2D121505SC")
+      (description "Murata Power Solutions MGJ2 2W Isolated DC-DC Converter Through Hole, Vin 10.8  13.2 V dc, Vout -5/15V dc")
+      (footprint "test:MGJ2D121505SC")
+      (fields
+        (field
+          (name "Description") "Murata Power Solutions MGJ2 2W Isolated DC-DC Converter Through Hole, Vin 10.8  13.2 V dc, Vout -5/15V dc")
+        (field
+          (name "Footprint") "test:MGJ2D121505SC")
+        (field
+          (name "Datasheet") "https://power.murata.com/pub/data/power/ncl/kdc_mgj2.pdf")
+        (field
+          (name "SKiDL Tag") "HkvnDJrNcr")
+        (field
+          (name "SKiDL Line") "temp_p7.py:30"))
+      (libsource
+        (lib "test")
+        (part "MGJ2D121505SC"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "ab85c584-6fe3-5181-8cc3-17ee6ed19921")))
+  (nets
+    (net
+      (code 1)
+      (name "ISO_0V")
+      (class "Default")
+      (node
+        (ref "C3")
+        (pin "2")
+        (pintype "PASSIVE"))
+      (node
+        (ref "C4")
+        (pin "2")
+        (pintype "PASSIVE"))
+      (node
+        (ref "C5")
+        (pin "1")
+        (pintype "PASSIVE"))
+      (node
+        (ref "C6")
+        (pin "1")
+        (pintype "PASSIVE"))
+      (node
+        (ref "PS1")
+        (pin "6")
+        (pintype "PASSIVE")))
+    (net
+      (code 2)
+      (name "PGND")
+      (class "Default")
+      (node
+        (ref "C1")
+        (pin "2")
+        (pintype "PASSIVE"))
+      (node
+        (ref "C2")
+        (pin "2")
+        (pintype "PASSIVE"))
+      (node
+        (ref "PS1")
+        (pin "2")
+        (pintype "PASSIVE")))
+    (net
+      (code 3)
+      (name "VIN")
+      (class "Default")
+      (node
+        (ref "C1")
+        (pin "1")
+        (pintype "PASSIVE"))
+      (node
+        (ref "C2")
+        (pin "1")
+        (pintype "PASSIVE"))
+      (node
+        (ref "PS1")
+        (pin "1")
+        (pintype "PASSIVE")))
+    (net
+      (code 4)
+      (name "VISO+")
+      (class "Default")
+      (node
+        (ref "C3")
+        (pin "1")
+        (pintype "PASSIVE"))
+      (node
+        (ref "C4")
+        (pin "1")
+        (pintype "PASSIVE"))
+      (node
+        (ref "C7")
+        (pin "1")
+        (pintype "PASSIVE"))
+      (node
+        (ref "PS1")
+        (pin "7")
+        (pintype "PASSIVE")))
+    (net
+      (code 5)
+      (name "VISO-")
+      (class "Default")
+      (node
+        (ref "C5")
+        (pin "2")
+        (pintype "PASSIVE"))
+      (node
+        (ref "C6")
+        (pin "2")
+        (pintype "PASSIVE"))
+      (node
+        (ref "C7")
+        (pin "2")
+        (pintype "PASSIVE"))
+      (node
+        (ref "PS1")
+        (pin "5")
+        (pintype "PASSIVE")))))

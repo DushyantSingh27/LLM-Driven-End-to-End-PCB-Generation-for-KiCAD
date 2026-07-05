@@ -1,0 +1,16 @@
+
+WARNING: fp-lib-table file was not found. Component footprints are not available.
+WARNING: fp-lib-table file was not found. Component footprints are not available.
+WARNING: fp-lib-table file was not found. Component footprints are not available.
+WARNING: fp-lib-table file was not found. Component footprints are not available.
+
+INFO: 27 warnings found while generating netlist.
+INFO: 0 errors found while generating netlist.
+
+INFO: 27 warnings found while generating SVG.
+INFO: 0 errors found while generating SVG.
+
+./pcbnew/action_plugin.cpp(163): assert "PgmOrNull()" failed in register_action().
+INFO: 28 warnings found while creating PCB.
+INFO: 0 errors found while creating PCB.
+

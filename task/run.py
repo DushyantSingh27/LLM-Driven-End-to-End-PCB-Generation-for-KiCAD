@@ -110,10 +110,38 @@ def get_response(messages, model=model_id, temperature=args.temperature):
     """Wrapper to call OpenRouter API."""
     try:
         print(f"Sending request to {model}...")
+        system_msg = {
+            "role": "system",
+            "content": (
+                "You are a SKiDL Python code generator. "
+                "You MUST follow this exact syntax. Here is a correct example:\n\n"
+                "from skidl import *\n"
+                "vin = Net(\"VIN\")\n"
+                "gnd = Net(\"GND\")\n"
+                "vout = Net(\"VOUT\")\n"
+                "r1 = Part(\"test\", \"R\", value=\"10k\", footprint=\"test:R_0805\")\n"
+                "r2 = Part(\"test\", \"R\", value=\"10k\", footprint=\"test:R_0805\")\n"
+                "vin += r1[1]\n"
+                "r1[2] += r2[1]\n"
+                "r2[2] += gnd\n"
+                "vout += r1[2]\n"
+                "ERC()\n\n"
+                "RULES:\n"
+                "1. ONLY use Part(\"test\", \"PartName\", value=\"...\" footprint=\"test:..\") to create components\n"
+                "2. ONLY use Net(\"NAME\") to create nets\n"
+                "3. ONLY use += to connect nets to pins\n"
+                "4. ALWAYS end with ERC()\n"
+                "5. NEVER use R(), C(), D(), M(), Resistor(), Capacitor(), erc(), or .connect()\n"
+                "6. Pin connections MUST use pin numbers: part[1], part[2], etc"
+            )
+        }
+        all_messages = [system_msg] + messages
         completion = client.chat.completions.create(
             model=model,
-            messages=messages,
+            messages=all_messages,
             temperature=temperature,
+            max_tokens=2048,
+            timeout=300,
         )
         return completion.choices[0].message.content, completion.usage
     except Exception as e:

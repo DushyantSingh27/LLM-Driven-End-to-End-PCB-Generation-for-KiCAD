@@ -1,0 +1,45 @@
+{
+  "modules": {
+    "": {
+      "cells": {
+        "R1": {
+          "attributes": {
+            "value": "10k"
+          },
+          "connections": {
+            "1": [
+              4
+            ],
+            "2": [
+              2
+            ]
+          },
+          "port_directions": {
+            "1": "input",
+            "2": "input"
+          },
+          "type": "R_1_"
+        },
+        "R2": {
+          "attributes": {
+            "value": "1k"
+          },
+          "connections": {
+            "1": [
+              2
+            ],
+            "2": [
+              1
+            ]
+          },
+          "port_directions": {
+            "1": "input",
+            "2": "input"
+          },
+          "type": "R_1_"
+        }
+      },
+      "ports": {}
+    }
+  }
+}

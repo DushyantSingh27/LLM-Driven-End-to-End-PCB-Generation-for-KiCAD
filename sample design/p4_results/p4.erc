@@ -1,0 +1,6 @@
+ERC WARNING: Only one pin (PASSIVE pin 7/VOUT of ACS37010/IC1) attached to net ISNS_ISO.
+ERC WARNING: Only one pin (PASSIVE pin 1/IP+ of ACS37010/IC1) attached to net LINE_IN.
+ERC WARNING: Only one pin (PASSIVE pin 4/IP- of ACS37010/IC1) attached to net LINE_OUT.
+ERC WARNING: Only one pin (PASSIVE pin 6/VREF of ACS37010/IC1) attached to net VREF.
+ERC INFO: 4 warnings found while running ERC.
+ERC INFO: 0 errors found while running ERC.

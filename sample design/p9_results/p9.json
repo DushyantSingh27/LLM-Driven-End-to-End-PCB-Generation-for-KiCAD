@@ -1,0 +1,205 @@
+{
+  "modules": {
+    "": {
+      "cells": {
+        "C1": {
+          "attributes": {
+            "value": "100nF"
+          },
+          "connections": {
+            "1": [
+              4
+            ],
+            "2": [
+              6
+            ]
+          },
+          "port_directions": {
+            "1": "input",
+            "2": "input"
+          },
+          "type": "C_1_"
+        },
+        "C2": {
+          "attributes": {
+            "value": "100nF"
+          },
+          "connections": {
+            "1": [
+              4
+            ],
+            "2": [
+              6
+            ]
+          },
+          "port_directions": {
+            "1": "input",
+            "2": "input"
+          },
+          "type": "C_1_"
+        },
+        "C3": {
+          "attributes": {
+            "value": "100nF"
+          },
+          "connections": {
+            "1": [
+              4
+            ],
+            "2": [
+              6
+            ]
+          },
+          "port_directions": {
+            "1": "input",
+            "2": "input"
+          },
+          "type": "C_1_"
+        },
+        "C4": {
+          "attributes": {
+            "value": "100nF"
+          },
+          "connections": {
+            "1": [
+              4
+            ],
+            "2": [
+              6
+            ]
+          },
+          "port_directions": {
+            "1": "input",
+            "2": "input"
+          },
+          "type": "C_1_"
+        },
+        "C5": {
+          "attributes": {
+            "value": "100nF"
+          },
+          "connections": {
+            "1": [
+              4
+            ],
+            "2": [
+              6
+            ]
+          },
+          "port_directions": {
+            "1": "input",
+            "2": "input"
+          },
+          "type": "C_1_"
+        },
+        "C6": {
+          "attributes": {
+            "value": "100nF"
+          },
+          "connections": {
+            "1": [
+              4
+            ],
+            "2": [
+              6
+            ]
+          },
+          "port_directions": {
+            "1": "input",
+            "2": "input"
+          },
+          "type": "C_1_"
+        },
+        "C7": {
+          "attributes": {
+            "value": "100nF"
+          },
+          "connections": {
+            "1": [
+              4
+            ],
+            "2": [
+              6
+            ]
+          },
+          "port_directions": {
+            "1": "input",
+            "2": "input"
+          },
+          "type": "C_1_"
+        },
+        "C8": {
+          "attributes": {
+            "value": "100nF"
+          },
+          "connections": {
+            "1": [
+              4
+            ],
+            "2": [
+              6
+            ]
+          },
+          "port_directions": {
+            "1": "input",
+            "2": "input"
+          },
+          "type": "C_1_"
+        },
+        "Q1": {
+          "attributes": {
+            "value": "IMZA65R015M2H"
+          },
+          "connections": {
+            "1": [
+              4
+            ],
+            "2": [
+              1
+            ],
+            "3": [
+              5
+            ],
+            "4": [
+              3
+            ]
+          },
+          "port_directions": {
+            "1": "input",
+            "2": "input",
+            "3": "input",
+            "4": "input"
+          },
+          "type": "IMZA65R015M2H_1_"
+        },
+        "Q2": {
+          "attributes": {
+            "value": "IMZA65R015M2H"
+          },
+          "connections": {
+            "1": [
+              1
+            ],
+            "2": [
+              6
+            ],
+            "3": [
+              7
+            ],
+            "4": [
+              2
+            ]
+          },
+          "port_directions": {
+            "1": "input",
+            "2": "input",
+            "3": "input",
+            "4": "input"
+          },
+          "type": "IMZA65R015M2H_1_"
+        }
+      },
+      "ports": {}
+    }
+  }
+}

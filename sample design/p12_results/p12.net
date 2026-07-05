@@ -1,0 +1,441 @@
+(export 
+  (version "D")
+  (design
+    (source "temp_p12.py")
+    (date "06/22/2026 11:05 AM")
+    (tool "SKiDL (2.2.3)")
+    (sheet
+      (number 1)
+      (name "/")
+      (tstamps "/")
+      (title_block
+        (title)
+        (company)
+        (rev)
+        (date)
+        (source "temp_p12.py")
+        (comment
+          (number "1")
+          (value ""))
+        (comment
+          (number "2")
+          (value ""))
+        (comment
+          (number "3")
+          (value ""))
+        (comment
+          (number "4")
+          (value ""))
+        (comment
+          (number "5")
+          (value ""))
+        (comment
+          (number "6")
+          (value ""))
+        (comment
+          (number "7")
+          (value ""))
+        (comment
+          (number "8")
+          (value ""))
+        (comment
+          (number "9")
+          (value "")))))
+  (components
+    (comp
+      (ref "C1")
+      (value "100nF")
+      (description "Unpolarized capacitor")
+      (footprint "test:C_0805")
+      (fields
+        (field
+          (name "Description") "Unpolarized capacitor")
+        (field
+          (name "Footprint") "test:C_0805")
+        (field
+          (name "Datasheet") "~")
+        (field
+          (name "SKiDL Tag") "PMlsey0YB3")
+        (field
+          (name "SKiDL Line") "temp_p12.py:31"))
+      (libsource
+        (lib "test")
+        (part "C"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "36a7fde6-1680-5b4c-9b62-a0df64ae2c8c"))
+    (comp
+      (ref "C2")
+      (value "100nF")
+      (description "Unpolarized capacitor")
+      (footprint "test:C_0805")
+      (fields
+        (field
+          (name "Description") "Unpolarized capacitor")
+        (field
+          (name "Footprint") "test:C_0805")
+        (field
+          (name "Datasheet") "~")
+        (field
+          (name "SKiDL Tag") "m6ZeK5GCFt")
+        (field
+          (name "SKiDL Line") "temp_p12.py:31"))
+      (libsource
+        (lib "test")
+        (part "C"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "aae8b265-158f-53a0-a707-66d7dddc5ad4"))
+    (comp
+      (ref "C3")
+      (value "100nF")
+      (description "Unpolarized capacitor")
+      (footprint "test:C_0805")
+      (fields
+        (field
+          (name "Description") "Unpolarized capacitor")
+        (field
+          (name "Footprint") "test:C_0805")
+        (field
+          (name "Datasheet") "~")
+        (field
+          (name "SKiDL Tag") "kElXaeQtzT")
+        (field
+          (name "SKiDL Line") "temp_p12.py:31"))
+      (libsource
+        (lib "test")
+        (part "C"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "710a2f7b-a8b8-511f-8253-b28eae8e516b"))
+    (comp
+      (ref "C4")
+      (value "100nF")
+      (description "Unpolarized capacitor")
+      (footprint "test:C_0805")
+      (fields
+        (field
+          (name "Description") "Unpolarized capacitor")
+        (field
+          (name "Footprint") "test:C_0805")
+        (field
+          (name "Datasheet") "~")
+        (field
+          (name "SKiDL Tag") "bg3ssS2mix")
+        (field
+          (name "SKiDL Line") "temp_p12.py:31"))
+      (libsource
+        (lib "test")
+        (part "C"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "331046d0-c0c6-53a8-b830-c5714dd70f84"))
+    (comp
+      (ref "C5")
+      (value "100nF")
+      (description "Unpolarized capacitor")
+      (footprint "test:C_0805")
+      (fields
+        (field
+          (name "Description") "Unpolarized capacitor")
+        (field
+          (name "Footprint") "test:C_0805")
+        (field
+          (name "Datasheet") "~")
+        (field
+          (name "SKiDL Tag") "dnGj9J_XXX")
+        (field
+          (name "SKiDL Line") "temp_p12.py:31"))
+      (libsource
+        (lib "test")
+        (part "C"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "50a773c1-b47e-59e5-be2f-8081a584feaf"))
+    (comp
+      (ref "C6")
+      (value "100nF")
+      (description "Unpolarized capacitor")
+      (footprint "test:C_0805")
+      (fields
+        (field
+          (name "Description") "Unpolarized capacitor")
+        (field
+          (name "Footprint") "test:C_0805")
+        (field
+          (name "Datasheet") "~")
+        (field
+          (name "SKiDL Tag") "1RuEEhKn61")
+        (field
+          (name "SKiDL Line") "temp_p12.py:31"))
+      (libsource
+        (lib "test")
+        (part "C"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "3640829b-eaca-55a2-b241-827dbb640e94"))
+    (comp
+      (ref "C7")
+      (value "100nF")
+      (description "Unpolarized capacitor")
+      (footprint "test:C_0805")
+      (fields
+        (field
+          (name "Description") "Unpolarized capacitor")
+        (field
+          (name "Footprint") "test:C_0805")
+        (field
+          (name "Datasheet") "~")
+        (field
+          (name "SKiDL Tag") "gqr5v3xscN")
+        (field
+          (name "SKiDL Line") "temp_p12.py:31"))
+      (libsource
+        (lib "test")
+        (part "C"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "939e36f6-8b76-5de7-840a-d958d1e271b2"))
+    (comp
+      (ref "C8")
+      (value "100nF")
+      (description "Unpolarized capacitor")
+      (footprint "test:C_0805")
+      (fields
+        (field
+          (name "Description") "Unpolarized capacitor")
+        (field
+          (name "Footprint") "test:C_0805")
+        (field
+          (name "Datasheet") "~")
+        (field
+          (name "SKiDL Tag") "ACZHxkumCA")
+        (field
+          (name "SKiDL Line") "temp_p12.py:31"))
+      (libsource
+        (lib "test")
+        (part "C"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "15f4cb5f-e257-5e1e-8762-9c55ecba7a63"))
+    (comp
+      (ref "Q1")
+      (value "BSC052N08NS5")
+      (description "MOSFET N-Ch 80V 95A TDSON-8")
+      (footprint "test:BSC052N08NS5")
+      (fields
+        (field
+          (name "Description") "MOSFET N-Ch 80V 95A TDSON-8")
+        (field
+          (name "Footprint") "test:BSC052N08NS5")
+        (field
+          (name "Datasheet") "https://www.infineon.com/dgdl/Infineon-BSC052N08NS5-DS-v02_00-EN.pdf?fileId=5546d4624ad04ef9014ae38fc94f2b40")
+        (field
+          (name "SKiDL Tag") "2noR__3Y6p")
+        (field
+          (name "SKiDL Line") "temp_p12.py:37"))
+      (libsource
+        (lib "test")
+        (part "BSC052N08NS5"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "6bfb0769-18fd-579d-b273-28b7efeda93a"))
+    (comp
+      (ref "Q2")
+      (value "BSC052N08NS5")
+      (description "MOSFET N-Ch 80V 95A TDSON-8")
+      (footprint "test:BSC052N08NS5")
+      (fields
+        (field
+          (name "Description") "MOSFET N-Ch 80V 95A TDSON-8")
+        (field
+          (name "Footprint") "test:BSC052N08NS5")
+        (field
+          (name "Datasheet") "https://www.infineon.com/dgdl/Infineon-BSC052N08NS5-DS-v02_00-EN.pdf?fileId=5546d4624ad04ef9014ae38fc94f2b40")
+        (field
+          (name "SKiDL Tag") "dRweFITrql")
+        (field
+          (name "SKiDL Line") "temp_p12.py:38"))
+      (libsource
+        (lib "test")
+        (part "BSC052N08NS5"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "851f64b7-ff30-5cf6-8020-72ee84c99db7")))
+  (nets
+    (net
+      (code 1)
+      (name "PGND")
+      (class "Default")
+      (node
+        (ref "C1")
+        (pin "2")
+        (pintype "PASSIVE"))
+      (node
+        (ref "C2")
+        (pin "2")
+        (pintype "PASSIVE"))
+      (node
+        (ref "C3")
+        (pin "2")
+        (pintype "PASSIVE"))
+      (node
+        (ref "C4")
+        (pin "2")
+        (pintype "PASSIVE"))
+      (node
+        (ref "C5")
+        (pin "2")
+        (pintype "PASSIVE"))
+      (node
+        (ref "C6")
+        (pin "2")
+        (pintype "PASSIVE"))
+      (node
+        (ref "C7")
+        (pin "2")
+        (pintype "PASSIVE"))
+      (node
+        (ref "C8")
+        (pin "2")
+        (pintype "PASSIVE"))
+      (node
+        (ref "Q2")
+        (pin "1")
+        (pintype "PASSIVE"))
+      (node
+        (ref "Q2")
+        (pin "2")
+        (pintype "PASSIVE"))
+      (node
+        (ref "Q2")
+        (pin "3")
+        (pintype "PASSIVE")))
+    (net
+      (code 2)
+      (name "PWM_H")
+      (class "Default")
+      (node
+        (ref "Q1")
+        (pin "4")
+        (pintype "PASSIVE")))
+    (net
+      (code 3)
+      (name "PWM_L")
+      (class "Default")
+      (node
+        (ref "Q2")
+        (pin "4")
+        (pintype "PASSIVE")))
+    (net
+      (code 4)
+      (name "VBUS+")
+      (class "Default")
+      (node
+        (ref "C1")
+        (pin "1")
+        (pintype "PASSIVE"))
+      (node
+        (ref "C2")
+        (pin "1")
+        (pintype "PASSIVE"))
+      (node
+        (ref "C3")
+        (pin "1")
+        (pintype "PASSIVE"))
+      (node
+        (ref "C4")
+        (pin "1")
+        (pintype "PASSIVE"))
+      (node
+        (ref "C5")
+        (pin "1")
+        (pintype "PASSIVE"))
+      (node
+        (ref "C6")
+        (pin "1")
+        (pintype "PASSIVE"))
+      (node
+        (ref "C7")
+        (pin "1")
+        (pintype "PASSIVE"))
+      (node
+        (ref "C8")
+        (pin "1")
+        (pintype "PASSIVE"))
+      (node
+        (ref "Q1")
+        (pin "5")
+        (pintype "PASSIVE"))
+      (node
+        (ref "Q1")
+        (pin "6")
+        (pintype "PASSIVE"))
+      (node
+        (ref "Q1")
+        (pin "7")
+        (pintype "PASSIVE"))
+      (node
+        (ref "Q1")
+        (pin "8")
+        (pintype "PASSIVE"))
+      (node
+        (ref "Q1")
+        (pin "9")
+        (pintype "PASSIVE")))
+    (net
+      (code 5)
+      (name "VSW")
+      (class "Default")
+      (node
+        (ref "Q1")
+        (pin "1")
+        (pintype "PASSIVE"))
+      (node
+        (ref "Q1")
+        (pin "2")
+        (pintype "PASSIVE"))
+      (node
+        (ref "Q1")
+        (pin "3")
+        (pintype "PASSIVE"))
+      (node
+        (ref "Q2")
+        (pin "5")
+        (pintype "PASSIVE"))
+      (node
+        (ref "Q2")
+        (pin "6")
+        (pintype "PASSIVE"))
+      (node
+        (ref "Q2")
+        (pin "7")
+        (pintype "PASSIVE"))
+      (node
+        (ref "Q2")
+        (pin "8")
+        (pintype "PASSIVE"))
+      (node
+        (ref "Q2")
+        (pin "9")
+        (pintype "PASSIVE")))))

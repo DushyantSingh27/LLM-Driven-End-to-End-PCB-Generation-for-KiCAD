@@ -1,0 +1,10 @@
+WARNING: KICAD9_SYMBOL_DIR environment variable is missing, so the default KiCad symbol libraries won't be searched. @ [/teamspace/studios/this_studio/PCBSchemaGen/rag/<frozen importlib._bootstrap_external>:999=>/teamspace/studios/this_studio/PCBSchemaGen/rag/<frozen importlib._bootstrap>:488]
+WARNING: KICAD8_SYMBOL_DIR environment variable is missing, so the default KiCad symbol libraries won't be searched. @ [/teamspace/studios/this_studio/PCBSchemaGen/rag/<frozen importlib._bootstrap_external>:999=>/teamspace/studios/this_studio/PCBSchemaGen/rag/<frozen importlib._bootstrap>:488]
+WARNING: KICAD6_SYMBOL_DIR environment variable is missing, so the default KiCad symbol libraries won't be searched. @ [/teamspace/studios/this_studio/PCBSchemaGen/rag/<frozen importlib._bootstrap_external>:999=>/teamspace/studios/this_studio/PCBSchemaGen/rag/<frozen importlib._bootstrap>:488]
+WARNING: fp-lib-table file was not found. Component footprints are not available.
+WARNING: fp-lib-table file was not found. Component footprints are not available.
+WARNING: fp-lib-table file was not found. Component footprints are not available.
+WARNING: fp-lib-table file was not found. Component footprints are not available.
+ERROR: Can't open file: test.
+ @ [/teamspace/studios/this_studio/PCBSchemaGen/rag/stm32_mvc.py:10]
+WARNING: Could not load KiCad schematic library "test", falling back to backup library. @ [/teamspace/studios/this_studio/PCBSchemaGen/rag/stm32_mvc.py:10]

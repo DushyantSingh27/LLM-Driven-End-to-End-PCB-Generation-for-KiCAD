@@ -1,0 +1,62 @@
+[
+  {
+    "rule_type": "C_DIRECT",
+    "endpoint_a": {
+      "part_id": "AMC1350",
+      "category": "ic",
+      "pin_role": "primary_gnd",
+      "pin_id": "4",
+      "pin_name": "GND1"
+    },
+    "endpoint_b": {
+      "part_id": "AMC1350",
+      "category": "ic",
+      "pin_role": "primary_vdd",
+      "pin_id": "1",
+      "pin_name": "VDD1"
+    },
+    "allow_series": false,
+    "min_count": 1,
+    "fail_on_short": true
+  },
+  {
+    "rule_type": "C_DIRECT",
+    "endpoint_a": {
+      "part_id": "AMC1350",
+      "category": "ic",
+      "pin_role": "secondary_gnd",
+      "pin_id": "5",
+      "pin_name": "GND2"
+    },
+    "endpoint_b": {
+      "part_id": "AMC1350",
+      "category": "ic",
+      "pin_role": "secondary_vdd",
+      "pin_id": "8",
+      "pin_name": "VDD2"
+    },
+    "allow_series": false,
+    "min_count": 1,
+    "fail_on_short": true
+  },
+  {
+    "rule_type": "R_PATH",
+    "endpoint_a": {
+      "part_id": "AMC1350",
+      "category": "ic",
+      "pin_role": "primary_gnd",
+      "pin_id": "4",
+      "pin_name": "GND1"
+    },
+    "endpoint_b": {
+      "part_id": "AMC1350",
+      "category": "ic",
+      "pin_role": "sense_plus",
+      "pin_id": "2",
+      "pin_name": "INP"
+    },
+    "allow_series": true,
+    "min_count": 1,
+    "fail_on_short": true
+  }
+]

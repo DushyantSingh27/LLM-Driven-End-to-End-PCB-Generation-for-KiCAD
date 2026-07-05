@@ -1,0 +1,20 @@
+{
+    "task_id": 2,
+    "model": "qwen3:8b",
+    "timestamp": "2026-06-18T11:34:03",
+    "total_duration_seconds": 2006.57,
+    "attempts": 3,
+    "total_prompt_tokens": 297,
+    "total_completion_tokens": 549,
+    "estimated_cost_usd": 0.0,
+    "status": "FAIL",
+    "failure_reason": "No Python code block found in response.",
+    "t_llm_request": 2000.7912,
+    "t_parse_extract": 0.0003,
+    "t_syntax_check": 0.0006,
+    "t_erc_runtime": 0.8648,
+    "t_topology_verify": 0.9568,
+    "t_svg_generate": 2.1576,
+    "t_artifacts_generate": 1.7886,
+    "t_write_outputs": 0.0078
+}

@@ -1,0 +1,50 @@
+WARNING: KICAD9_SYMBOL_DIR environment variable is missing, so the default KiCad symbol libraries won't be searched. @ [/teamspace/studios/this_studio/PCBSchemaGen/rag/<frozen importlib._bootstrap_external>:999=>/teamspace/studios/this_studio/PCBSchemaGen/rag/<frozen importlib._bootstrap>:488]
+WARNING: KICAD7_SYMBOL_DIR environment variable is missing, so the default KiCad symbol libraries won't be searched. @ [/teamspace/studios/this_studio/PCBSchemaGen/rag/<frozen importlib._bootstrap_external>:999=>/teamspace/studios/this_studio/PCBSchemaGen/rag/<frozen importlib._bootstrap>:488]
+WARNING: KICAD8_SYMBOL_DIR environment variable is missing, so the default KiCad symbol libraries won't be searched. @ [/teamspace/studios/this_studio/PCBSchemaGen/rag/<frozen importlib._bootstrap_external>:999=>/teamspace/studios/this_studio/PCBSchemaGen/rag/<frozen importlib._bootstrap>:488]
+WARNING: KICAD_SYMBOL_DIR environment variable is missing, so the default KiCad symbol libraries won't be searched. @ [/teamspace/studios/this_studio/PCBSchemaGen/rag/<frozen importlib._bootstrap_external>:999=>/teamspace/studios/this_studio/PCBSchemaGen/rag/<frozen importlib._bootstrap>:488]
+WARNING: KICAD6_SYMBOL_DIR environment variable is missing, so the default KiCad symbol libraries won't be searched. @ [/teamspace/studios/this_studio/PCBSchemaGen/rag/<frozen importlib._bootstrap_external>:999=>/teamspace/studios/this_studio/PCBSchemaGen/rag/<frozen importlib._bootstrap>:488]
+WARNING: fp-lib-table file was not found. Component footprints are not available.
+WARNING: fp-lib-table file was not found. Component footprints are not available.
+WARNING: fp-lib-table file was not found. Component footprints are not available.
+WARNING: fp-lib-table file was not found. Component footprints are not available.
+INFO: 4 warnings found while generating SVG.
+INFO: 0 errors found while generating SVG.
+
+WARNING: Missing tag on STM32F401RET6 instantiated at /teamspace/studios/this_studio/PCBSchemaGen/rag/<string>:10.
+WARNING: Random tag ZyFsUFsbMl generated for STM32F401RET6.
+WARNING: Missing tag on ISM330DHCX instantiated at /teamspace/studios/this_studio/PCBSchemaGen/rag/<string>:13.
+WARNING: Random tag JQaHSkIxZH generated for ISM330DHCX.
+WARNING: Missing tag on R instantiated at /teamspace/studios/this_studio/PCBSchemaGen/rag/<string>:16.
+WARNING: Random tag KJDsHolveR generated for R.
+WARNING: Missing tag on R instantiated at /teamspace/studios/this_studio/PCBSchemaGen/rag/<string>:17.
+WARNING: Random tag PvKabOkaYt generated for R.
+WARNING: Missing tag on R instantiated at /teamspace/studios/this_studio/PCBSchemaGen/rag/<string>:20.
+WARNING: Random tag YA4hrtOnOx generated for R.
+WARNING: Missing tag on R instantiated at /teamspace/studios/this_studio/PCBSchemaGen/rag/<string>:21.
+WARNING: Random tag pIbkPenwIo generated for R.
+WARNING: Missing tag on R instantiated at /teamspace/studios/this_studio/PCBSchemaGen/rag/<string>:22.
+WARNING: Random tag eWRfbkBUl3 generated for R.
+WARNING: Missing tag on C instantiated at /teamspace/studios/this_studio/PCBSchemaGen/rag/<string>:25.
+WARNING: Random tag PAE8HowfOG generated for C.
+WARNING: Missing tag on C instantiated at /teamspace/studios/this_studio/PCBSchemaGen/rag/<string>:26.
+WARNING: Random tag pMlcpmrkJw generated for C.
+WARNING: Missing tag on C instantiated at /teamspace/studios/this_studio/PCBSchemaGen/rag/<string>:27.
+WARNING: Random tag 0ly8Mbs5rO generated for C.
+WARNING: Missing tag on C instantiated at /teamspace/studios/this_studio/PCBSchemaGen/rag/<string>:28.
+WARNING: Random tag LDYyUSxicc generated for C.
+WARNING: Missing tag on C instantiated at /teamspace/studios/this_studio/PCBSchemaGen/rag/<string>:29.
+WARNING: Random tag K_lYxtaNpE generated for C.
+WARNING: Missing tag on C instantiated at /teamspace/studios/this_studio/PCBSchemaGen/rag/<string>:32.
+WARNING: Random tag XC3SBe3rfZ generated for C.
+WARNING: Missing tag on C instantiated at /teamspace/studios/this_studio/PCBSchemaGen/rag/<string>:35.
+WARNING: Random tag MEfk7kLhYa generated for C.
+WARNING: Missing tag on C instantiated at /teamspace/studios/this_studio/PCBSchemaGen/rag/<string>:38.
+WARNING: Random tag sidr4IFDlV generated for C.
+WARNING: Missing tag on C instantiated at /teamspace/studios/this_studio/PCBSchemaGen/rag/<string>:39.
+WARNING: Random tag j0PL9cBTrW generated for C.
+WARNING: Missing tag on C instantiated at /teamspace/studios/this_studio/PCBSchemaGen/rag/<string>:40.
+WARNING: Random tag _LrOGbfvsN generated for C.
+WARNING: Missing tag on  instantiated at /teamspace/studios/this_studio/PCBSchemaGen/rag/<frozen importlib._bootstrap>:488.
+INFO: 39 warnings found while generating netlist.
+INFO: 0 errors found while generating netlist.
+

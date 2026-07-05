@@ -1,0 +1,63 @@
+{
+  "modules": {
+    "": {
+      "cells": {
+        "C1": {
+          "attributes": {
+            "value": "10nF"
+          },
+          "connections": {
+            "1": [
+              2
+            ],
+            "2": [
+              3
+            ]
+          },
+          "port_directions": {
+            "1": "input",
+            "2": "input"
+          },
+          "type": "C_1_"
+        },
+        "R1": {
+          "attributes": {
+            "value": "953k"
+          },
+          "connections": {
+            "1": [
+              1
+            ],
+            "2": [
+              2
+            ]
+          },
+          "port_directions": {
+            "1": "input",
+            "2": "input"
+          },
+          "type": "R_1_"
+        },
+        "R2": {
+          "attributes": {
+            "value": "56.0k"
+          },
+          "connections": {
+            "1": [
+              2
+            ],
+            "2": [
+              3
+            ]
+          },
+          "port_directions": {
+            "1": "input",
+            "2": "input"
+          },
+          "type": "R_1_"
+        }
+      },
+      "ports": {}
+    }
+  }
+}

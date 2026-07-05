@@ -1,0 +1,129 @@
+{
+  "modules": {
+    "": {
+      "cells": {
+        "C1": {
+          "attributes": {
+            "value": "100nF"
+          },
+          "connections": {
+            "1": [
+              7
+            ],
+            "2": [
+              4
+            ]
+          },
+          "port_directions": {
+            "1": "input",
+            "2": "input"
+          },
+          "type": "C_1_"
+        },
+        "IC1": {
+          "attributes": {
+            "value": "OPA328"
+          },
+          "connections": {
+            "1": [
+              8
+            ],
+            "2": [
+              4
+            ],
+            "3": [
+              2
+            ],
+            "4": [
+              3
+            ],
+            "5": [
+              7
+            ]
+          },
+          "port_directions": {
+            "1": "input",
+            "2": "input",
+            "3": "input",
+            "4": "input",
+            "5": "input"
+          },
+          "type": "OPA328_1_"
+        },
+        "R1": {
+          "attributes": {
+            "value": "100k"
+          },
+          "connections": {
+            "1": [
+              5
+            ],
+            "2": [
+              3
+            ]
+          },
+          "port_directions": {
+            "1": "input",
+            "2": "input"
+          },
+          "type": "R_1_"
+        },
+        "R2": {
+          "attributes": {
+            "value": "62k"
+          },
+          "connections": {
+            "1": [
+              8
+            ],
+            "2": [
+              3
+            ]
+          },
+          "port_directions": {
+            "1": "input",
+            "2": "input"
+          },
+          "type": "R_1_"
+        },
+        "R3": {
+          "attributes": {
+            "value": "100k"
+          },
+          "connections": {
+            "1": [
+              1
+            ],
+            "2": [
+              2
+            ]
+          },
+          "port_directions": {
+            "1": "input",
+            "2": "input"
+          },
+          "type": "R_1_"
+        },
+        "R4": {
+          "attributes": {
+            "value": "62k"
+          },
+          "connections": {
+            "1": [
+              6
+            ],
+            "2": [
+              2
+            ]
+          },
+          "port_directions": {
+            "1": "input",
+            "2": "input"
+          },
+          "type": "R_1_"
+        }
+      },
+      "ports": {}
+    }
+  }
+}

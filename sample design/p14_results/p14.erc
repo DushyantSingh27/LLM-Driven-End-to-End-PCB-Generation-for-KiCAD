@@ -1,0 +1,6 @@
+ERC WARNING: Only one pin (PASSIVE pin 1/~ of R/R1) attached to net PWM_H.
+ERC WARNING: Only one pin (PASSIVE pin 2/~ of R/R3) attached to net HO.
+ERC WARNING: Only one pin (PASSIVE pin 2/~ of R/R4) attached to net LO.
+ERC WARNING: Only one pin (PASSIVE pin 1/~ of R/R2) attached to net PWM_L.
+ERC INFO: 4 warnings found while running ERC.
+ERC INFO: 0 errors found while running ERC.

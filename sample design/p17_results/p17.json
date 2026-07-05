@@ -1,0 +1,911 @@
+{
+  "modules": {
+    "": {
+      "cells": {
+        "C1": {
+          "attributes": {
+            "value": "100nF"
+          },
+          "connections": {
+            "1": [
+              15
+            ],
+            "2": [
+              19
+            ]
+          },
+          "port_directions": {
+            "1": "input",
+            "2": "input"
+          },
+          "type": "C_1_"
+        },
+        "C10": {
+          "attributes": {
+            "value": "100nF"
+          },
+          "connections": {
+            "1": [
+              16
+            ],
+            "2": [
+              20
+            ]
+          },
+          "port_directions": {
+            "1": "input",
+            "2": "input"
+          },
+          "type": "C_1_"
+        },
+        "C11": {
+          "attributes": {
+            "value": "100nF"
+          },
+          "connections": {
+            "1": [
+              20
+            ],
+            "2": [
+              11
+            ]
+          },
+          "port_directions": {
+            "1": "input",
+            "2": "input"
+          },
+          "type": "C_1_"
+        },
+        "C12": {
+          "attributes": {
+            "value": "1uF"
+          },
+          "connections": {
+            "1": [
+              16
+            ],
+            "2": [
+              11
+            ]
+          },
+          "port_directions": {
+            "1": "input",
+            "2": "input"
+          },
+          "type": "C_1_"
+        },
+        "C13": {
+          "attributes": {
+            "value": "100nF"
+          },
+          "connections": {
+            "1": [
+              10
+            ],
+            "2": [
+              9
+            ]
+          },
+          "port_directions": {
+            "1": "input",
+            "2": "input"
+          },
+          "type": "C_1_"
+        },
+        "C14": {
+          "attributes": {
+            "value": "100nF"
+          },
+          "connections": {
+            "1": [
+              16
+            ],
+            "2": [
+              20
+            ]
+          },
+          "port_directions": {
+            "1": "input",
+            "2": "input"
+          },
+          "type": "C_1_"
+        },
+        "C15": {
+          "attributes": {
+            "value": "100nF"
+          },
+          "connections": {
+            "1": [
+              10
+            ],
+            "2": [
+              9
+            ]
+          },
+          "port_directions": {
+            "1": "input",
+            "2": "input"
+          },
+          "type": "C_1_"
+        },
+        "C16": {
+          "attributes": {
+            "value": "100nF"
+          },
+          "connections": {
+            "1": [
+              3
+            ],
+            "2": [
+              5
+            ]
+          },
+          "port_directions": {
+            "1": "input",
+            "2": "input"
+          },
+          "type": "C_1_"
+        },
+        "C17": {
+          "attributes": {
+            "value": "100nF"
+          },
+          "connections": {
+            "1": [
+              5
+            ],
+            "2": [
+              4
+            ]
+          },
+          "port_directions": {
+            "1": "input",
+            "2": "input"
+          },
+          "type": "C_1_"
+        },
+        "C18": {
+          "attributes": {
+            "value": "1uF"
+          },
+          "connections": {
+            "1": [
+              3
+            ],
+            "2": [
+              4
+            ]
+          },
+          "port_directions": {
+            "1": "input",
+            "2": "input"
+          },
+          "type": "C_1_"
+        },
+        "C19": {
+          "attributes": {
+            "value": "100nF"
+          },
+          "connections": {
+            "1": [
+              10
+            ],
+            "2": [
+              9
+            ]
+          },
+          "port_directions": {
+            "1": "input",
+            "2": "input"
+          },
+          "type": "C_1_"
+        },
+        "C2": {
+          "attributes": {
+            "value": "100nF"
+          },
+          "connections": {
+            "1": [
+              15
+            ],
+            "2": [
+              19
+            ]
+          },
+          "port_directions": {
+            "1": "input",
+            "2": "input"
+          },
+          "type": "C_1_"
+        },
+        "C20": {
+          "attributes": {
+            "value": "100nF"
+          },
+          "connections": {
+            "1": [
+              3
+            ],
+            "2": [
+              5
+            ]
+          },
+          "port_directions": {
+            "1": "input",
+            "2": "input"
+          },
+          "type": "C_1_"
+        },
+        "C21": {
+          "attributes": {
+            "value": "100nF"
+          },
+          "connections": {
+            "1": [
+              8
+            ],
+            "2": [
+              19
+            ]
+          },
+          "port_directions": {
+            "1": "input",
+            "2": "input"
+          },
+          "type": "C_1_"
+        },
+        "C22": {
+          "attributes": {
+            "value": "100nF"
+          },
+          "connections": {
+            "1": [
+              8
+            ],
+            "2": [
+              19
+            ]
+          },
+          "port_directions": {
+            "1": "input",
+            "2": "input"
+          },
+          "type": "C_1_"
+        },
+        "C23": {
+          "attributes": {
+            "value": "100nF"
+          },
+          "connections": {
+            "1": [
+              8
+            ],
+            "2": [
+              19
+            ]
+          },
+          "port_directions": {
+            "1": "input",
+            "2": "input"
+          },
+          "type": "C_1_"
+        },
+        "C24": {
+          "attributes": {
+            "value": "100nF"
+          },
+          "connections": {
+            "1": [
+              8
+            ],
+            "2": [
+              19
+            ]
+          },
+          "port_directions": {
+            "1": "input",
+            "2": "input"
+          },
+          "type": "C_1_"
+        },
+        "C25": {
+          "attributes": {
+            "value": "100nF"
+          },
+          "connections": {
+            "1": [
+              8
+            ],
+            "2": [
+              19
+            ]
+          },
+          "port_directions": {
+            "1": "input",
+            "2": "input"
+          },
+          "type": "C_1_"
+        },
+        "C26": {
+          "attributes": {
+            "value": "100nF"
+          },
+          "connections": {
+            "1": [
+              8
+            ],
+            "2": [
+              19
+            ]
+          },
+          "port_directions": {
+            "1": "input",
+            "2": "input"
+          },
+          "type": "C_1_"
+        },
+        "C27": {
+          "attributes": {
+            "value": "100nF"
+          },
+          "connections": {
+            "1": [
+              8
+            ],
+            "2": [
+              19
+            ]
+          },
+          "port_directions": {
+            "1": "input",
+            "2": "input"
+          },
+          "type": "C_1_"
+        },
+        "C28": {
+          "attributes": {
+            "value": "100nF"
+          },
+          "connections": {
+            "1": [
+              8
+            ],
+            "2": [
+              19
+            ]
+          },
+          "port_directions": {
+            "1": "input",
+            "2": "input"
+          },
+          "type": "C_1_"
+        },
+        "C29": {
+          "attributes": {
+            "value": "10uF"
+          },
+          "connections": {
+            "1": [
+              8
+            ],
+            "2": [
+              19
+            ]
+          },
+          "port_directions": {
+            "1": "input",
+            "2": "input"
+          },
+          "type": "C_1_"
+        },
+        "C3": {
+          "attributes": {
+            "value": "100nF"
+          },
+          "connections": {
+            "1": [
+              15
+            ],
+            "2": [
+              19
+            ]
+          },
+          "port_directions": {
+            "1": "input",
+            "2": "input"
+          },
+          "type": "C_1_"
+        },
+        "C30": {
+          "attributes": {
+            "value": "10uF"
+          },
+          "connections": {
+            "1": [
+              8
+            ],
+            "2": [
+              19
+            ]
+          },
+          "port_directions": {
+            "1": "input",
+            "2": "input"
+          },
+          "type": "C_1_"
+        },
+        "C4": {
+          "attributes": {
+            "value": "100nF"
+          },
+          "connections": {
+            "1": [
+              15
+            ],
+            "2": [
+              19
+            ]
+          },
+          "port_directions": {
+            "1": "input",
+            "2": "input"
+          },
+          "type": "C_1_"
+        },
+        "C5": {
+          "attributes": {
+            "value": "100nF"
+          },
+          "connections": {
+            "1": [
+              15
+            ],
+            "2": [
+              19
+            ]
+          },
+          "port_directions": {
+            "1": "input",
+            "2": "input"
+          },
+          "type": "C_1_"
+        },
+        "C6": {
+          "attributes": {
+            "value": "100nF"
+          },
+          "connections": {
+            "1": [
+              15
+            ],
+            "2": [
+              19
+            ]
+          },
+          "port_directions": {
+            "1": "input",
+            "2": "input"
+          },
+          "type": "C_1_"
+        },
+        "C7": {
+          "attributes": {
+            "value": "100nF"
+          },
+          "connections": {
+            "1": [
+              15
+            ],
+            "2": [
+              19
+            ]
+          },
+          "port_directions": {
+            "1": "input",
+            "2": "input"
+          },
+          "type": "C_1_"
+        },
+        "C8": {
+          "attributes": {
+            "value": "100nF"
+          },
+          "connections": {
+            "1": [
+              15
+            ],
+            "2": [
+              19
+            ]
+          },
+          "port_directions": {
+            "1": "input",
+            "2": "input"
+          },
+          "type": "C_1_"
+        },
+        "C9": {
+          "attributes": {
+            "value": "100nF"
+          },
+          "connections": {
+            "1": [
+              10
+            ],
+            "2": [
+              9
+            ]
+          },
+          "port_directions": {
+            "1": "input",
+            "2": "input"
+          },
+          "type": "C_1_"
+        },
+        "IC2": {
+          "attributes": {
+            "value": "D"
+          },
+          "connections": {
+            "1": [
+              12
+            ],
+            "2": [
+              7
+            ]
+          },
+          "port_directions": {
+            "1": "input",
+            "2": "input"
+          },
+          "type": "D_1_"
+        },
+        "IC4": {
+          "attributes": {
+            "value": "D"
+          },
+          "connections": {
+            "1": [
+              13
+            ],
+            "2": [
+              18
+            ]
+          },
+          "port_directions": {
+            "1": "input",
+            "2": "input"
+          },
+          "type": "D_1_"
+        },
+        "L1": {
+          "attributes": {
+            "value": "Inductor_power"
+          },
+          "connections": {
+            "1": [
+              17
+            ],
+            "10": [
+              8
+            ],
+            "11": [
+              8
+            ],
+            "12": [
+              8
+            ],
+            "2": [
+              17
+            ],
+            "3": [
+              17
+            ],
+            "4": [
+              17
+            ],
+            "5": [
+              17
+            ],
+            "6": [
+              17
+            ],
+            "7": [
+              8
+            ],
+            "8": [
+              8
+            ],
+            "9": [
+              8
+            ]
+          },
+          "port_directions": {
+            "1": "input",
+            "10": "input",
+            "11": "input",
+            "12": "input",
+            "2": "input",
+            "3": "input",
+            "4": "input",
+            "5": "input",
+            "6": "input",
+            "7": "input",
+            "8": "input",
+            "9": "input"
+          },
+          "type": "Inductor_power_1_"
+        },
+        "Q1": {
+          "attributes": {
+            "value": "IMZA65R015M2H"
+          },
+          "connections": {
+            "1": [
+              15
+            ],
+            "2": [
+              17
+            ],
+            "3": [
+              20
+            ],
+            "4": [
+              1
+            ]
+          },
+          "port_directions": {
+            "1": "input",
+            "2": "input",
+            "3": "input",
+            "4": "input"
+          },
+          "type": "IMZA65R015M2H_1_"
+        },
+        "Q2": {
+          "attributes": {
+            "value": "IMZA65R015M2H"
+          },
+          "connections": {
+            "1": [
+              17
+            ],
+            "2": [
+              19
+            ],
+            "3": [
+              5
+            ],
+            "4": [
+              6
+            ]
+          },
+          "port_directions": {
+            "1": "input",
+            "2": "input",
+            "3": "input",
+            "4": "input"
+          },
+          "type": "IMZA65R015M2H_1_"
+        },
+        "R1": {
+          "attributes": {
+            "value": "10"
+          },
+          "connections": {
+            "1": [
+              12
+            ],
+            "2": [
+              1
+            ]
+          },
+          "port_directions": {
+            "1": "input",
+            "2": "input"
+          },
+          "type": "R_1_"
+        },
+        "R2": {
+          "attributes": {
+            "value": "4.7"
+          },
+          "connections": {
+            "1": [
+              7
+            ],
+            "2": [
+              1
+            ]
+          },
+          "port_directions": {
+            "1": "input",
+            "2": "input"
+          },
+          "type": "R_1_"
+        },
+        "R3": {
+          "attributes": {
+            "value": "10"
+          },
+          "connections": {
+            "1": [
+              13
+            ],
+            "2": [
+              6
+            ]
+          },
+          "port_directions": {
+            "1": "input",
+            "2": "input"
+          },
+          "type": "R_1_"
+        },
+        "R4": {
+          "attributes": {
+            "value": "4.7"
+          },
+          "connections": {
+            "1": [
+              18
+            ],
+            "2": [
+              6
+            ]
+          },
+          "port_directions": {
+            "1": "input",
+            "2": "input"
+          },
+          "type": "R_1_"
+        },
+        "U_GDRV_HS": {
+          "attributes": {
+            "value": "UCC5390E"
+          },
+          "connections": {
+            "1": [
+              10
+            ],
+            "2": [
+              14
+            ],
+            "3": [
+              9
+            ],
+            "4": [
+              9
+            ],
+            "5": [
+              16
+            ],
+            "6": [
+              12
+            ],
+            "7": [
+              20
+            ],
+            "8": [
+              11
+            ]
+          },
+          "port_directions": {
+            "1": "input",
+            "2": "input",
+            "3": "input",
+            "4": "input",
+            "5": "input",
+            "6": "input",
+            "7": "input",
+            "8": "input"
+          },
+          "type": "UCC5390E_1_"
+        },
+        "U_GDRV_LS": {
+          "attributes": {
+            "value": "UCC5390E"
+          },
+          "connections": {
+            "1": [
+              10
+            ],
+            "2": [
+              2
+            ],
+            "3": [
+              9
+            ],
+            "4": [
+              9
+            ],
+            "5": [
+              3
+            ],
+            "6": [
+              13
+            ],
+            "7": [
+              5
+            ],
+            "8": [
+              4
+            ]
+          },
+          "port_directions": {
+            "1": "input",
+            "2": "input",
+            "3": "input",
+            "4": "input",
+            "5": "input",
+            "6": "input",
+            "7": "input",
+            "8": "input"
+          },
+          "type": "UCC5390E_1_"
+        },
+        "U_ISO_HS": {
+          "attributes": {
+            "value": "MGJ2D121505SC"
+          },
+          "connections": {
+            "1": [
+              10
+            ],
+            "2": [
+              9
+            ],
+            "5": [
+              11
+            ],
+            "6": [
+              20
+            ],
+            "7": [
+              16
+            ]
+          },
+          "port_directions": {
+            "1": "input",
+            "2": "input",
+            "5": "input",
+            "6": "input",
+            "7": "input"
+          },
+          "type": "MGJ2D121505SC_1_"
+        },
+        "U_ISO_LS": {
+          "attributes": {
+            "value": "MGJ2D121505SC"
+          },
+          "connections": {
+            "1": [
+              10
+            ],
+            "2": [
+              9
+            ],
+            "5": [
+              4
+            ],
+            "6": [
+              5
+            ],
+            "7": [
+              3
+            ]
+          },
+          "port_directions": {
+            "1": "input",
+            "2": "input",
+            "5": "input",
+            "6": "input",
+            "7": "input"
+          },
+          "type": "MGJ2D121505SC_1_"
+        }
+      },
+      "ports": {}
+    }
+  }
+}

@@ -1,0 +1,4 @@
+ERC WARNING: Only one pin (PASSIVE pin 1/~ of R/R1) attached to net PWM_IN.
+ERC WARNING: Only one pin (PASSIVE pin 1/K of D/IC2) attached to net DESAT_SENSE.
+ERC INFO: 2 warnings found while running ERC.
+ERC INFO: 0 errors found while running ERC.

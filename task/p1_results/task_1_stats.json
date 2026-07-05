@@ -1,0 +1,20 @@
+{
+    "task_id": 1,
+    "model": "qwen2.5-coder:7b",
+    "timestamp": "2026-06-16T07:55:20",
+    "total_duration_seconds": 367.05,
+    "attempts": 3,
+    "total_prompt_tokens": 5294,
+    "total_completion_tokens": 871,
+    "estimated_cost_usd": 0.0,
+    "status": "FAIL",
+    "failure_reason": "Topology verification failed:\n- NetworkX component count tolerance check failed.\n- Component count out of tolerance: C std=1 gen=0 (allowed 1-4)",
+    "t_llm_request": 359.3671,
+    "t_parse_extract": 0.0002,
+    "t_syntax_check": 0.0005,
+    "t_erc_runtime": 2.1096,
+    "t_topology_verify": 1.4127,
+    "t_svg_generate": 3.0346,
+    "t_artifacts_generate": 1.1181,
+    "t_write_outputs": 0.0024
+}

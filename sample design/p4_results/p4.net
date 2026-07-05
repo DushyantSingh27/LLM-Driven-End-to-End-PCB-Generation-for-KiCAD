@@ -1,0 +1,149 @@
+(export 
+  (version "D")
+  (design
+    (source "temp_p4.py")
+    (date "06/22/2026 11:05 AM")
+    (tool "SKiDL (2.2.3)")
+    (sheet
+      (number 1)
+      (name "/")
+      (tstamps "/")
+      (title_block
+        (title)
+        (company)
+        (rev)
+        (date)
+        (source "temp_p4.py")
+        (comment
+          (number "1")
+          (value ""))
+        (comment
+          (number "2")
+          (value ""))
+        (comment
+          (number "3")
+          (value ""))
+        (comment
+          (number "4")
+          (value ""))
+        (comment
+          (number "5")
+          (value ""))
+        (comment
+          (number "6")
+          (value ""))
+        (comment
+          (number "7")
+          (value ""))
+        (comment
+          (number "8")
+          (value ""))
+        (comment
+          (number "9")
+          (value "")))))
+  (components
+    (comp
+      (ref "C1")
+      (value "100nF")
+      (description "Unpolarized capacitor")
+      (footprint "test:C_0805")
+      (fields
+        (field
+          (name "Description") "Unpolarized capacitor")
+        (field
+          (name "Footprint") "test:C_0805")
+        (field
+          (name "Datasheet") "~")
+        (field
+          (name "SKiDL Tag") "jMpc_ubjEw")
+        (field
+          (name "SKiDL Line") "temp_p4.py:44"))
+      (libsource
+        (lib "test")
+        (part "C"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "3ccb6b91-a7f5-5f87-8211-f4d4e5f1016e"))
+    (comp
+      (ref "IC1")
+      (value "ACS37010")
+      (description "450 kHz, High Accuracy Current Sensor With FAULT or Reference Output in SOIC-6 Package")
+      (footprint "test:ACS37010")
+      (fields
+        (field
+          (name "Description") "450 kHz, High Accuracy Current Sensor With FAULT or Reference Output in SOIC-6 Package")
+        (field
+          (name "Footprint") "test:ACS37010")
+        (field
+          (name "Datasheet") "https://www.allegromicro.com/~/media/Files/Datasheets/ACS37010-2-Datasheet")
+        (field
+          (name "SKiDL Tag") "quBxtetWpX")
+        (field
+          (name "SKiDL Line") "temp_p4.py:33"))
+      (libsource
+        (lib "test")
+        (part "ACS37010"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "9fa3874c-753b-50b6-9c80-977924f2a3f8")))
+  (nets
+    (net
+      (code 1)
+      (name "GND")
+      (class "Default")
+      (node
+        (ref "C1")
+        (pin "2")
+        (pintype "PASSIVE"))
+      (node
+        (ref "IC1")
+        (pin "5")
+        (pintype "PASSIVE")))
+    (net
+      (code 2)
+      (name "ISNS_ISO")
+      (class "Default")
+      (node
+        (ref "IC1")
+        (pin "7")
+        (pintype "PASSIVE")))
+    (net
+      (code 3)
+      (name "LINE_IN")
+      (class "Default")
+      (node
+        (ref "IC1")
+        (pin "1")
+        (pintype "PASSIVE")))
+    (net
+      (code 4)
+      (name "LINE_OUT")
+      (class "Default")
+      (node
+        (ref "IC1")
+        (pin "4")
+        (pintype "PASSIVE")))
+    (net
+      (code 5)
+      (name "VDD")
+      (class "Default")
+      (node
+        (ref "C1")
+        (pin "1")
+        (pintype "PASSIVE"))
+      (node
+        (ref "IC1")
+        (pin "8")
+        (pintype "PASSIVE")))
+    (net
+      (code 6)
+      (name "VREF")
+      (class "Default")
+      (node
+        (ref "IC1")
+        (pin "6")
+        (pintype "PASSIVE")))))

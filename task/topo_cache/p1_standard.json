@@ -1,0 +1,102 @@
+{
+  "components": [
+    {
+      "ref": "R1",
+      "part_id": "R",
+      "value": "953k",
+      "pins": [
+        {
+          "pin_id": "1",
+          "pin_name": "~",
+          "net": "VIN"
+        },
+        {
+          "pin_id": "2",
+          "pin_name": "~",
+          "net": "VSENSE"
+        }
+      ]
+    },
+    {
+      "ref": "R2",
+      "part_id": "R",
+      "value": "56.0k",
+      "pins": [
+        {
+          "pin_id": "1",
+          "pin_name": "~",
+          "net": "VSENSE"
+        },
+        {
+          "pin_id": "2",
+          "pin_name": "~",
+          "net": "GND"
+        }
+      ]
+    },
+    {
+      "ref": "C1",
+      "part_id": "C",
+      "value": "10nF",
+      "pins": [
+        {
+          "pin_id": "1",
+          "pin_name": "~",
+          "net": "VSENSE"
+        },
+        {
+          "pin_id": "2",
+          "pin_name": "~",
+          "net": "GND"
+        }
+      ]
+    }
+  ],
+  "nets": [
+    {
+      "name": "VIN",
+      "endpoints": [
+        {
+          "ref": "R1",
+          "pin_id": "1",
+          "pin_name": "~"
+        }
+      ]
+    },
+    {
+      "name": "VSENSE",
+      "endpoints": [
+        {
+          "ref": "R1",
+          "pin_id": "2",
+          "pin_name": "~"
+        },
+        {
+          "ref": "R2",
+          "pin_id": "1",
+          "pin_name": "~"
+        },
+        {
+          "ref": "C1",
+          "pin_id": "1",
+          "pin_name": "~"
+        }
+      ]
+    },
+    {
+      "name": "GND",
+      "endpoints": [
+        {
+          "ref": "R2",
+          "pin_id": "2",
+          "pin_name": "~"
+        },
+        {
+          "ref": "C1",
+          "pin_id": "2",
+          "pin_name": "~"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,721 @@
+(export 
+  (version "D")
+  (design
+    (source "<interactive>")
+    (date "06/30/2026 06:23 AM")
+    (tool "SKiDL (2.2.3)")
+    (sheet
+      (number 1)
+      (name "/")
+      (tstamps "/")
+      (title_block
+        (title)
+        (company)
+        (rev)
+        (date)
+        (source "<interactive>")
+        (comment
+          (number "1")
+          (value ""))
+        (comment
+          (number "2")
+          (value ""))
+        (comment
+          (number "3")
+          (value ""))
+        (comment
+          (number "4")
+          (value ""))
+        (comment
+          (number "5")
+          (value ""))
+        (comment
+          (number "6")
+          (value ""))
+        (comment
+          (number "7")
+          (value ""))
+        (comment
+          (number "8")
+          (value ""))
+        (comment
+          (number "9")
+          (value "")))))
+  (components
+    (comp
+      (ref "C1")
+      (value "100nF")
+      (description "Unpolarized capacitor")
+      (footprint "test:C_0805")
+      (fields
+        (field
+          (name "Description") "Unpolarized capacitor")
+        (field
+          (name "Footprint") "test:C_0805")
+        (field
+          (name "Datasheet") "~")
+        (field
+          (name "SKiDL Tag") "PAE8HowfOG")
+        (field
+          (name "SKiDL Line") "<string>:25"))
+      (libsource
+        (lib "test")
+        (part "C"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "295d4568-5a6b-5f23-9adf-188f2b023ae1"))
+    (comp
+      (ref "C10")
+      (value "100nF")
+      (description "Unpolarized capacitor")
+      (footprint "test:C_0805")
+      (fields
+        (field
+          (name "Description") "Unpolarized capacitor")
+        (field
+          (name "Footprint") "test:C_0805")
+        (field
+          (name "Datasheet") "~")
+        (field
+          (name "SKiDL Tag") "_LrOGbfvsN")
+        (field
+          (name "SKiDL Line") "<string>:40"))
+      (libsource
+        (lib "test")
+        (part "C"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "62e165dc-52b3-53ca-9dbf-aa176940c4ca"))
+    (comp
+      (ref "C2")
+      (value "100nF")
+      (description "Unpolarized capacitor")
+      (footprint "test:C_0805")
+      (fields
+        (field
+          (name "Description") "Unpolarized capacitor")
+        (field
+          (name "Footprint") "test:C_0805")
+        (field
+          (name "Datasheet") "~")
+        (field
+          (name "SKiDL Tag") "pMlcpmrkJw")
+        (field
+          (name "SKiDL Line") "<string>:26"))
+      (libsource
+        (lib "test")
+        (part "C"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "455f2863-4851-56d9-b905-c1f2f574cf07"))
+    (comp
+      (ref "C3")
+      (value "100nF")
+      (description "Unpolarized capacitor")
+      (footprint "test:C_0805")
+      (fields
+        (field
+          (name "Description") "Unpolarized capacitor")
+        (field
+          (name "Footprint") "test:C_0805")
+        (field
+          (name "Datasheet") "~")
+        (field
+          (name "SKiDL Tag") "0ly8Mbs5rO")
+        (field
+          (name "SKiDL Line") "<string>:27"))
+      (libsource
+        (lib "test")
+        (part "C"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "a67e3ad8-197d-52eb-9067-e01fe055ba58"))
+    (comp
+      (ref "C4")
+      (value "100nF")
+      (description "Unpolarized capacitor")
+      (footprint "test:C_0805")
+      (fields
+        (field
+          (name "Description") "Unpolarized capacitor")
+        (field
+          (name "Footprint") "test:C_0805")
+        (field
+          (name "Datasheet") "~")
+        (field
+          (name "SKiDL Tag") "LDYyUSxicc")
+        (field
+          (name "SKiDL Line") "<string>:28"))
+      (libsource
+        (lib "test")
+        (part "C"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "e35f31a1-6870-560b-953f-38a8907e9f74"))
+    (comp
+      (ref "C5")
+      (value "100nF")
+      (description "Unpolarized capacitor")
+      (footprint "test:C_0805")
+      (fields
+        (field
+          (name "Description") "Unpolarized capacitor")
+        (field
+          (name "Footprint") "test:C_0805")
+        (field
+          (name "Datasheet") "~")
+        (field
+          (name "SKiDL Tag") "K_lYxtaNpE")
+        (field
+          (name "SKiDL Line") "<string>:29"))
+      (libsource
+        (lib "test")
+        (part "C"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "0c6c4021-6c96-5361-ad5c-c6799472a0d4"))
+    (comp
+      (ref "C6")
+      (value "1uF")
+      (description "Unpolarized capacitor")
+      (footprint "test:C_0805")
+      (fields
+        (field
+          (name "Description") "Unpolarized capacitor")
+        (field
+          (name "Footprint") "test:C_0805")
+        (field
+          (name "Datasheet") "~")
+        (field
+          (name "SKiDL Tag") "XC3SBe3rfZ")
+        (field
+          (name "SKiDL Line") "<string>:32"))
+      (libsource
+        (lib "test")
+        (part "C"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "bd99f22f-7087-52f0-b71a-aa4dec12ccad"))
+    (comp
+      (ref "C7")
+      (value "100nF")
+      (description "Unpolarized capacitor")
+      (footprint "test:C_0805")
+      (fields
+        (field
+          (name "Description") "Unpolarized capacitor")
+        (field
+          (name "Footprint") "test:C_0805")
+        (field
+          (name "Datasheet") "~")
+        (field
+          (name "SKiDL Tag") "MEfk7kLhYa")
+        (field
+          (name "SKiDL Line") "<string>:35"))
+      (libsource
+        (lib "test")
+        (part "C"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "3fe29921-99eb-53da-99a1-0aab1532374c"))
+    (comp
+      (ref "C8")
+      (value "100nF")
+      (description "Unpolarized capacitor")
+      (footprint "test:C_0805")
+      (fields
+        (field
+          (name "Description") "Unpolarized capacitor")
+        (field
+          (name "Footprint") "test:C_0805")
+        (field
+          (name "Datasheet") "~")
+        (field
+          (name "SKiDL Tag") "sidr4IFDlV")
+        (field
+          (name "SKiDL Line") "<string>:38"))
+      (libsource
+        (lib "test")
+        (part "C"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "27c550c8-8273-5d23-99f5-622be537fd1b"))
+    (comp
+      (ref "C9")
+      (value "100nF")
+      (description "Unpolarized capacitor")
+      (footprint "test:C_0805")
+      (fields
+        (field
+          (name "Description") "Unpolarized capacitor")
+        (field
+          (name "Footprint") "test:C_0805")
+        (field
+          (name "Datasheet") "~")
+        (field
+          (name "SKiDL Tag") "j0PL9cBTrW")
+        (field
+          (name "SKiDL Line") "<string>:39"))
+      (libsource
+        (lib "test")
+        (part "C"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "abe3b89e-1451-5dc2-8e08-fd4a74a0c0b1"))
+    (comp
+      (ref "IC1")
+      (value "STM32F401RET6")
+      (description "STM32F401RET6 ARM Cortex-M4 MCU LQFP64")
+      (footprint "test:STM32F401RET6")
+      (fields
+        (field
+          (name "Description") "STM32F401RET6 ARM Cortex-M4 MCU LQFP64")
+        (field
+          (name "Footprint") "test:STM32F401RET6")
+        (field
+          (name "Datasheet") "https://www.st.com/resource/en/datasheet/stm32f401re.pdf")
+        (field
+          (name "SKiDL Tag") "ZyFsUFsbMl")
+        (field
+          (name "SKiDL Line") "<string>:10"))
+      (libsource
+        (lib "test")
+        (part "STM32F401RET6"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "c24459b0-8be8-56cf-99a9-652b471b7e8f"))
+    (comp
+      (ref "IC2")
+      (value "ISM330DHCX")
+      (description "ISM330DHCX 6-axis IMU I2C/SPI LGA-14L")
+      (footprint "test:ISM330DHCX")
+      (fields
+        (field
+          (name "Description") "ISM330DHCX 6-axis IMU I2C/SPI LGA-14L")
+        (field
+          (name "Footprint") "test:ISM330DHCX")
+        (field
+          (name "Datasheet") "https://www.st.com/resource/en/datasheet/ism330dhcx.pdf")
+        (field
+          (name "SKiDL Tag") "JQaHSkIxZH")
+        (field
+          (name "SKiDL Line") "<string>:13"))
+      (libsource
+        (lib "test")
+        (part "ISM330DHCX"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "dc37d88d-bab4-5065-8ed6-8337d932e20f"))
+    (comp
+      (ref "R1")
+      (value "4k7")
+      (description "Resistor")
+      (footprint "test:R_0805")
+      (fields
+        (field
+          (name "Description") "Resistor")
+        (field
+          (name "Footprint") "test:R_0805")
+        (field
+          (name "Datasheet") "~")
+        (field
+          (name "SKiDL Tag") "KJDsHolveR")
+        (field
+          (name "SKiDL Line") "<string>:16"))
+      (libsource
+        (lib "test")
+        (part "R"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "bd30b29b-5051-5630-9986-20818f53ac20"))
+    (comp
+      (ref "R2")
+      (value "4k7")
+      (description "Resistor")
+      (footprint "test:R_0805")
+      (fields
+        (field
+          (name "Description") "Resistor")
+        (field
+          (name "Footprint") "test:R_0805")
+        (field
+          (name "Datasheet") "~")
+        (field
+          (name "SKiDL Tag") "PvKabOkaYt")
+        (field
+          (name "SKiDL Line") "<string>:17"))
+      (libsource
+        (lib "test")
+        (part "R"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "b23c414d-f10a-57d7-9ecd-f266b8b4ed1a"))
+    (comp
+      (ref "R3")
+      (value "10k")
+      (description "Resistor")
+      (footprint "test:R_0805")
+      (fields
+        (field
+          (name "Description") "Resistor")
+        (field
+          (name "Footprint") "test:R_0805")
+        (field
+          (name "Datasheet") "~")
+        (field
+          (name "SKiDL Tag") "YA4hrtOnOx")
+        (field
+          (name "SKiDL Line") "<string>:20"))
+      (libsource
+        (lib "test")
+        (part "R"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "c2f0cc12-aa65-54fa-af53-0f0b354b1775"))
+    (comp
+      (ref "R4")
+      (value "10k")
+      (description "Resistor")
+      (footprint "test:R_0805")
+      (fields
+        (field
+          (name "Description") "Resistor")
+        (field
+          (name "Footprint") "test:R_0805")
+        (field
+          (name "Datasheet") "~")
+        (field
+          (name "SKiDL Tag") "pIbkPenwIo")
+        (field
+          (name "SKiDL Line") "<string>:21"))
+      (libsource
+        (lib "test")
+        (part "R"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "395d6218-1830-5011-98f4-a4ab8538b30c"))
+    (comp
+      (ref "R5")
+      (value "10k")
+      (description "Resistor")
+      (footprint "test:R_0805")
+      (fields
+        (field
+          (name "Description") "Resistor")
+        (field
+          (name "Footprint") "test:R_0805")
+        (field
+          (name "Datasheet") "~")
+        (field
+          (name "SKiDL Tag") "eWRfbkBUl3")
+        (field
+          (name "SKiDL Line") "<string>:22"))
+      (libsource
+        (lib "test")
+        (part "R"))
+      (sheetpath
+        (names "/")
+        (tstamps "/"))
+      (component_classes)
+      (tstamps "5e67e439-8345-5696-8fff-d6b686b1f410")))
+  (nets
+    (net
+      (code 1)
+      (name "GND")
+      (class "Default")
+      (node
+        (ref "C1")
+        (pin "2")
+        (pintype "PASSIVE"))
+      (node
+        (ref "C10")
+        (pin "2")
+        (pintype "PASSIVE"))
+      (node
+        (ref "C2")
+        (pin "2")
+        (pintype "PASSIVE"))
+      (node
+        (ref "C3")
+        (pin "2")
+        (pintype "PASSIVE"))
+      (node
+        (ref "C4")
+        (pin "2")
+        (pintype "PASSIVE"))
+      (node
+        (ref "C5")
+        (pin "2")
+        (pintype "PASSIVE"))
+      (node
+        (ref "C6")
+        (pin "2")
+        (pintype "PASSIVE"))
+      (node
+        (ref "C7")
+        (pin "2")
+        (pintype "PASSIVE"))
+      (node
+        (ref "C8")
+        (pin "2")
+        (pintype "PASSIVE"))
+      (node
+        (ref "C9")
+        (pin "2")
+        (pintype "PASSIVE"))
+      (node
+        (ref "IC1")
+        (pin "12")
+        (pintype "POWER-IN"))
+      (node
+        (ref "IC1")
+        (pin "18")
+        (pintype "POWER-IN"))
+      (node
+        (ref "IC1")
+        (pin "31")
+        (pintype "POWER-IN"))
+      (node
+        (ref "IC1")
+        (pin "47")
+        (pintype "POWER-IN"))
+      (node
+        (ref "IC1")
+        (pin "63")
+        (pintype "POWER-IN"))
+      (node
+        (ref "IC2")
+        (pin "10")
+        (pintype "POWER-IN"))
+      (node
+        (ref "IC2")
+        (pin "12")
+        (pintype "POWER-IN"))
+      (node
+        (ref "IC2")
+        (pin "14")
+        (pintype "POWER-IN"))
+      (node
+        (ref "IC2")
+        (pin "2")
+        (pintype "POWER-IN"))
+      (node
+        (ref "R3")
+        (pin "2")
+        (pintype "PASSIVE"))
+      (node
+        (ref "R5")
+        (pin "2")
+        (pintype "PASSIVE")))
+    (net
+      (code 2)
+      (name "I2C_SCL")
+      (class "Default")
+      (node
+        (ref "IC1")
+        (pin "58")
+        (pintype "BIDIRECTIONAL"))
+      (node
+        (ref "IC2")
+        (pin "6")
+        (pintype "INPUT"))
+      (node
+        (ref "R1")
+        (pin "2")
+        (pintype "PASSIVE")))
+    (net
+      (code 3)
+      (name "I2C_SDA")
+      (class "Default")
+      (node
+        (ref "IC1")
+        (pin "59")
+        (pintype "BIDIRECTIONAL"))
+      (node
+        (ref "IC2")
+        (pin "4")
+        (pintype "BIDIRECTIONAL"))
+      (node
+        (ref "R2")
+        (pin "2")
+        (pintype "PASSIVE")))
+    (net
+      (code 4)
+      (name "N$1")
+      (class "Default")
+      (node
+        (ref "C6")
+        (pin "1")
+        (pintype "PASSIVE"))
+      (node
+        (ref "IC1")
+        (pin "30")
+        (pintype "POWER-OUT")))
+    (net
+      (code 5)
+      (name "N$2")
+      (class "Default")
+      (node
+        (ref "C7")
+        (pin "1")
+        (pintype "PASSIVE"))
+      (node
+        (ref "IC1")
+        (pin "7")
+        (pintype "INPUT")))
+    (net
+      (code 6)
+      (name "N$3")
+      (class "Default")
+      (node
+        (ref "IC1")
+        (pin "60")
+        (pintype "INPUT"))
+      (node
+        (ref "R3")
+        (pin "1")
+        (pintype "PASSIVE")))
+    (net
+      (code 7)
+      (name "N$4")
+      (class "Default")
+      (node
+        (ref "C10")
+        (pin "1")
+        (pintype "PASSIVE"))
+      (node
+        (ref "IC2")
+        (pin "3")
+        (pintype "PASSIVE")))
+    (net
+      (code 8)
+      (name "N$5")
+      (class "Default")
+      (node
+        (ref "IC2")
+        (pin "5")
+        (pintype "INPUT"))
+      (node
+        (ref "R5")
+        (pin "1")
+        (pintype "PASSIVE")))
+    (net
+      (code 9)
+      (name "N$6")
+      (class "Default")
+      (node
+        (ref "IC2")
+        (pin "7")
+        (pintype "INPUT"))
+      (node
+        (ref "R4")
+        (pin "2")
+        (pintype "PASSIVE")))
+    (net
+      (code 10)
+      (name "VDD_3V3")
+      (class "Default")
+      (node
+        (ref "C1")
+        (pin "1")
+        (pintype "PASSIVE"))
+      (node
+        (ref "C2")
+        (pin "1")
+        (pintype "PASSIVE"))
+      (node
+        (ref "C3")
+        (pin "1")
+        (pintype "PASSIVE"))
+      (node
+        (ref "C4")
+        (pin "1")
+        (pintype "PASSIVE"))
+      (node
+        (ref "C5")
+        (pin "1")
+        (pintype "PASSIVE"))
+      (node
+        (ref "C8")
+        (pin "1")
+        (pintype "PASSIVE"))
+      (node
+        (ref "C9")
+        (pin "1")
+        (pintype "PASSIVE"))
+      (node
+        (ref "IC1")
+        (pin "1")
+        (pintype "POWER-IN"))
+      (node
+        (ref "IC1")
+        (pin "13")
+        (pintype "INPUT"))
+      (node
+        (ref "IC1")
+        (pin "19")
+        (pintype "POWER-IN"))
+      (node
+        (ref "IC1")
+        (pin "32")
+        (pintype "POWER-IN"))
+      (node
+        (ref "IC1")
+        (pin "48")
+        (pintype "POWER-IN"))
+      (node
+        (ref "IC1")
+        (pin "64")
+        (pintype "POWER-IN"))
+      (node
+        (ref "IC2")
+        (pin "1")
+        (pintype "POWER-IN"))
+      (node
+        (ref "IC2")
+        (pin "11")
+        (pintype "POWER-IN"))
+      (node
+        (ref "R1")
+        (pin "1")
+        (pintype "PASSIVE"))
+      (node
+        (ref "R2")
+        (pin "1")
+        (pintype "PASSIVE"))
+      (node
+        (ref "R4")
+        (pin "1")
+        (pintype "PASSIVE")))))

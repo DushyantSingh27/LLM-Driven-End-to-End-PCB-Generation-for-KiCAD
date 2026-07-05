@@ -1,0 +1,6 @@
+ERC WARNING: Only one pin (PASSIVE pin 8/G of IMLT65R015M2H/Q1) attached to net PWM_H.
+ERC WARNING: Only one pin (PASSIVE pin 8/G of IMLT65R015M2H/Q2) attached to net PWM_L.
+ERC WARNING: Only one pin (PASSIVE pin 7/KS of IMLT65R015M2H/Q2) attached to net KS_L.
+ERC WARNING: Only one pin (PASSIVE pin 7/KS of IMLT65R015M2H/Q1) attached to net KS_H.
+ERC INFO: 4 warnings found while running ERC.
+ERC INFO: 0 errors found while running ERC.

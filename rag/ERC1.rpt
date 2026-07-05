@@ -1,0 +1,354 @@
+ERC report (2026-07-03T17:57:06+0530, Encoding UTF8)
+Report includes: Errors, Warnings
+
+***** Sheet /
+[duplicate_reference]: Duplicate items #PWR?
+
+    ; error
+    @(1964 mils, 5100 mils): Symbol #PWR0108 [PWR_FLAG]
+    @(1964 mils, 5400 mils): Symbol #PWR0109 [PWR_FLAG]
+[duplicate_reference]: Duplicate items C?
+
+    ; error
+    @(2200 mils, 5250 mils): Symbol C? [C]
+    @(2800 mils, 6050 mils): Symbol C? [C]
+[duplicate_reference]: Duplicate items #PWR?
+
+    ; error
+    @(2564 mils, 5100 mils): Symbol #PWR0105 [PWR_FLAG]
+    @(3164 mils, 5100 mils): Symbol #PWR0106 [PWR_FLAG]
+[duplicate_reference]: Duplicate items #PWR?
+
+    ; error
+    @(1964 mils, 5400 mils): Symbol #PWR0109 [PWR_FLAG]
+    @(1964 mils, 6650 mils): Symbol #PWR0102 [PWR_FLAG]
+[duplicate_reference]: Duplicate items #PWR?
+
+    ; error
+    @(2200 mils, 5400 mils): Symbol #PWR0107 [GND]
+    @(1964 mils, 5100 mils): Symbol #PWR0108 [PWR_FLAG]
+[unannotated]: Item not annotated: #PWR?
+    ; error
+    @(2200 mils, 5400 mils): Symbol #PWR0107 [GND]
+[duplicate_reference]: Duplicate items U?
+
+    ; error
+    @(5350 mils, 2500 mils): Symbol U? [LSM6DSM]
+    @(2200 mils, 2500 mils): Symbol U? [STM32L476JGYxP]
+[duplicate_reference]: Duplicate items C?
+
+    ; error
+    @(2800 mils, 5250 mils): Symbol C? [C]
+    @(3400 mils, 5250 mils): Symbol C? [C]
+[duplicate_reference]: Duplicate items #PWR?
+
+    ; error
+    @(3164 mils, 5100 mils): Symbol #PWR0106 [PWR_FLAG]
+    @(3764 mils, 5100 mils): Symbol #PWR0110 [PWR_FLAG]
+[duplicate_reference]: Duplicate items C?
+
+    ; error
+    @(3400 mils, 5250 mils): Symbol C? [C]
+    @(4600 mils, 5250 mils): Symbol C? [C]
+[duplicate_reference]: Duplicate items #PWR?
+
+    ; error
+    @(3764 mils, 5100 mils): Symbol #PWR0110 [PWR_FLAG]
+    @(4364 mils, 5100 mils): Symbol #PWR0103 [PWR_FLAG]
+[duplicate_reference]: Duplicate items C?
+
+    ; error
+    @(2200 mils, 6050 mils): Symbol C? [C]
+    @(3400 mils, 6050 mils): Symbol C? [C]
+[duplicate_reference]: Duplicate items C?
+
+    ; error
+    @(4000 mils, 5250 mils): Symbol C? [C]
+    @(4000 mils, 6050 mils): Symbol C? [C]
+[duplicate_reference]: Duplicate items C?
+
+    ; error
+    @(2800 mils, 6050 mils): Symbol C? [C]
+    @(3400 mils, 6800 mils): Symbol C? [C]
+[duplicate_reference]: Duplicate items #PWR?
+
+    ; error
+    @(4364 mils, 5100 mils): Symbol #PWR0103 [PWR_FLAG]
+    @(5514 mils, 5900 mils): Symbol #PWR0101 [PWR_FLAG]
+[duplicate_reference]: Duplicate items #PWR?
+
+    ; error
+    @(1964 mils, 6650 mils): Symbol #PWR0102 [PWR_FLAG]
+    @(2564 mils, 5100 mils): Symbol #PWR0105 [PWR_FLAG]
+[duplicate_reference]: Duplicate items C?
+
+    ; error
+    @(3400 mils, 6050 mils): Symbol C? [C]
+    @(2200 mils, 6800 mils): Symbol C? [C]
+[duplicate_reference]: Duplicate items C?
+
+    ; error
+    @(4600 mils, 5250 mils): Symbol C? [C]
+    @(5750 mils, 6050 mils): Symbol C? [C]
+[duplicate_reference]: Duplicate items C?
+
+    ; error
+    @(2200 mils, 6800 mils): Symbol C? [C]
+    @(2800 mils, 5250 mils): Symbol C? [C]
+[duplicate_reference]: Duplicate items C?
+
+    ; error
+    @(4000 mils, 6050 mils): Symbol C? [C]
+    @(4600 mils, 6050 mils): Symbol C? [C]
+[pin_not_connected]: Pin not connected
+    ; error
+    @(2200 mils, 6950 mils): Symbol C? Pin 2 [Passive, Line]
+[duplicate_reference]: Duplicate items C?
+
+    ; error
+    @(2800 mils, 6800 mils): Symbol C? [C]
+    @(5200 mils, 5250 mils): Symbol C? [C]
+[duplicate_reference]: Duplicate items C?
+
+    ; error
+    @(5200 mils, 5250 mils): Symbol C? [C]
+    @(2200 mils, 6050 mils): Symbol C? [C]
+[pin_not_connected]: Pin not connected
+    ; error
+    @(2800 mils, 6950 mils): Symbol C? Pin 2 [Passive, Line]
+[duplicate_reference]: Duplicate items C?
+
+    ; error
+    @(4600 mils, 6050 mils): Symbol C? [C]
+    @(5750 mils, 5250 mils): Symbol C? [C]
+[duplicate_reference]: Duplicate items C?
+
+    ; error
+    @(3400 mils, 6800 mils): Symbol C? [C]
+    @(4000 mils, 5250 mils): Symbol C? [C]
+[pin_not_connected]: Pin not connected
+    ; error
+    @(3400 mils, 6950 mils): Symbol C? Pin 2 [Passive, Line]
+[duplicate_reference]: Duplicate items C?
+
+    ; error
+    @(5750 mils, 5250 mils): Symbol C? [C]
+    @(6350 mils, 5250 mils): Symbol C? [C]
+[duplicate_reference]: Duplicate items R?
+
+    ; error
+    @(4000 mils, 6800 mils): Symbol R? [R]
+    @(4600 mils, 6800 mils): Symbol R? [R]
+[pin_not_connected]: Pin not connected
+    ; error
+    @(4000 mils, 6950 mils): Symbol R? Pin 2 [Passive, Line]
+[duplicate_reference]: Duplicate items #PWR?
+
+    ; error
+    @(5514 mils, 5900 mils): Symbol #PWR0101 [PWR_FLAG]
+    @(2200 mils, 5100 mils): Symbol #PWR0104 [VDD_3V3]
+[duplicate_reference]: Duplicate items R?
+
+    ; error
+    @(4600 mils, 6800 mils): Symbol R? [R]
+    @(5200 mils, 6800 mils): Symbol R? [R]
+[duplicate_reference]: Duplicate items C?
+
+    ; error
+    @(6350 mils, 5250 mils): Symbol C? [C]
+    @(6350 mils, 6050 mils): Symbol C? [C]
+[pin_not_connected]: Pin not connected
+    ; error
+    @(4600 mils, 6950 mils): Symbol R? Pin 2 [Passive, Line]
+[duplicate_reference]: Duplicate items C?
+
+    ; error
+    @(5750 mils, 6050 mils): Symbol C? [C]
+    @(5200 mils, 6050 mils): Symbol C? [C]
+[duplicate_reference]: Duplicate items R?
+
+    ; error
+    @(5200 mils, 6800 mils): Symbol R? [R]
+    @(5750 mils, 6800 mils): Symbol R? [R]
+[label_dangling]: Label not connected to anything
+    ; error
+    @(2150 mils, 8400 mils): Label 'GND'
+[pin_not_connected]: Pin not connected
+    ; error
+    @(5200 mils, 6950 mils): Symbol R? Pin 2 [Passive, Line]
+[duplicate_reference]: Duplicate items C?
+
+    ; error
+    @(6350 mils, 6050 mils): Symbol C? [C]
+    @(2800 mils, 6800 mils): Symbol C? [C]
+[pin_not_connected]: Pin not connected
+    ; error
+    @(5750 mils, 6950 mils): Symbol R? Pin 2 [Passive, Line]
+[label_dangling]: Label not connected to anything
+    ; error
+    @(3350 mils, 8400 mils): Label 'SPI_CS'
+[label_dangling]: Label not connected to anything
+    ; error
+    @(4550 mils, 8400 mils): Label 'IMU_INT1'
+[label_dangling]: Label not connected to anything
+    ; error
+    @(5100 mils, 8400 mils): Label 'IMU_INT2'
+[lib_symbol_mismatch]: Symbol 'STM32L476JGYxP' doesn't match copy in library 'MCU_ST_STM32L4'
+    ; warning
+    @(2200 mils, 2500 mils): Symbol U? [STM32L476JGYxP]
+[pin_to_pin]: Pins of type Bidirectional and Power output are connected
+    ; warning
+    @(4750 mils, 2300 mils): Symbol U? Pin 2 [SDX, Bidirectional, Line]
+    @(1964 mils, 5400 mils): Symbol #PWR0109 Pin 1 [pwr, Power output, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(1964 mils, 5100 mils): Horizontal Wire, length 236 mils
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(1964 mils, 5100 mils): Symbol #PWR0108 Pin 1 [pwr, Power output, Line]
+[lib_symbol_mismatch]: Symbol 'PWR_FLAG' doesn't match copy in library 'power'
+    ; warning
+    @(1964 mils, 5100 mils): Symbol #PWR0108 [PWR_FLAG]
+[lib_symbol_issues]: Symbol 'VDD_3V3' not found in symbol library 'power'
+    ; warning
+    @(2200 mils, 5100 mils): Symbol #PWR0104 [VDD_3V3]
+[lib_symbol_mismatch]: Symbol 'C' doesn't match copy in library 'Device'
+    ; warning
+    @(2200 mils, 5250 mils): Symbol C? [C]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(2564 mils, 5100 mils): Horizontal Wire, length 236 mils
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(2564 mils, 5100 mils): Symbol #PWR0105 Pin 1 [pwr, Power output, Line]
+[lib_symbol_mismatch]: Symbol 'PWR_FLAG' doesn't match copy in library 'power'
+    ; warning
+    @(2564 mils, 5100 mils): Symbol #PWR0105 [PWR_FLAG]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(1964 mils, 5400 mils): Horizontal Wire, length 236 mils
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(1964 mils, 5400 mils): Symbol #PWR0109 Pin 1 [pwr, Power output, Line]
+[lib_symbol_mismatch]: Symbol 'PWR_FLAG' doesn't match copy in library 'power'
+    ; warning
+    @(1964 mils, 5400 mils): Symbol #PWR0109 [PWR_FLAG]
+[lib_symbol_mismatch]: Symbol 'GND' doesn't match copy in library 'power'
+    ; warning
+    @(2200 mils, 5400 mils): Symbol #PWR0107 [GND]
+[lib_symbol_mismatch]: Symbol 'LSM6DSM' doesn't match copy in library 'Sensor_Motion'
+    ; warning
+    @(5350 mils, 2500 mils): Symbol U? [LSM6DSM]
+[lib_symbol_mismatch]: Symbol 'C' doesn't match copy in library 'Device'
+    ; warning
+    @(2800 mils, 5250 mils): Symbol C? [C]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(3164 mils, 5100 mils): Symbol #PWR0106 Pin 1 [pwr, Power output, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(3164 mils, 5100 mils): Horizontal Wire, length 236 mils
+[lib_symbol_mismatch]: Symbol 'PWR_FLAG' doesn't match copy in library 'power'
+    ; warning
+    @(3164 mils, 5100 mils): Symbol #PWR0106 [PWR_FLAG]
+[lib_symbol_mismatch]: Symbol 'C' doesn't match copy in library 'Device'
+    ; warning
+    @(3400 mils, 5250 mils): Symbol C? [C]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(3764 mils, 5100 mils): Symbol #PWR0110 Pin 1 [pwr, Power output, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(3764 mils, 5100 mils): Horizontal Wire, length 236 mils
+[lib_symbol_mismatch]: Symbol 'PWR_FLAG' doesn't match copy in library 'power'
+    ; warning
+    @(3764 mils, 5100 mils): Symbol #PWR0110 [PWR_FLAG]
+[lib_symbol_mismatch]: Symbol 'C' doesn't match copy in library 'Device'
+    ; warning
+    @(2200 mils, 6050 mils): Symbol C? [C]
+[lib_symbol_mismatch]: Symbol 'C' doesn't match copy in library 'Device'
+    ; warning
+    @(4000 mils, 5250 mils): Symbol C? [C]
+[lib_symbol_mismatch]: Symbol 'C' doesn't match copy in library 'Device'
+    ; warning
+    @(2800 mils, 6050 mils): Symbol C? [C]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(4364 mils, 5100 mils): Symbol #PWR0103 Pin 1 [pwr, Power output, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(4364 mils, 5100 mils): Horizontal Wire, length 236 mils
+[lib_symbol_mismatch]: Symbol 'PWR_FLAG' doesn't match copy in library 'power'
+    ; warning
+    @(4364 mils, 5100 mils): Symbol #PWR0103 [PWR_FLAG]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(1964 mils, 6650 mils): Symbol #PWR0102 Pin 1 [pwr, Power output, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(1964 mils, 6650 mils): Horizontal Wire, length 236 mils
+[lib_symbol_mismatch]: Symbol 'PWR_FLAG' doesn't match copy in library 'power'
+    ; warning
+    @(1964 mils, 6650 mils): Symbol #PWR0102 [PWR_FLAG]
+[lib_symbol_mismatch]: Symbol 'C' doesn't match copy in library 'Device'
+    ; warning
+    @(3400 mils, 6050 mils): Symbol C? [C]
+[lib_symbol_mismatch]: Symbol 'C' doesn't match copy in library 'Device'
+    ; warning
+    @(4600 mils, 5250 mils): Symbol C? [C]
+[lib_symbol_mismatch]: Symbol 'C' doesn't match copy in library 'Device'
+    ; warning
+    @(2200 mils, 6800 mils): Symbol C? [C]
+[lib_symbol_mismatch]: Symbol 'C' doesn't match copy in library 'Device'
+    ; warning
+    @(4000 mils, 6050 mils): Symbol C? [C]
+[lib_symbol_mismatch]: Symbol 'C' doesn't match copy in library 'Device'
+    ; warning
+    @(2800 mils, 6800 mils): Symbol C? [C]
+[lib_symbol_mismatch]: Symbol 'C' doesn't match copy in library 'Device'
+    ; warning
+    @(5200 mils, 5250 mils): Symbol C? [C]
+[lib_symbol_mismatch]: Symbol 'C' doesn't match copy in library 'Device'
+    ; warning
+    @(4600 mils, 6050 mils): Symbol C? [C]
+[lib_symbol_mismatch]: Symbol 'C' doesn't match copy in library 'Device'
+    ; warning
+    @(3400 mils, 6800 mils): Symbol C? [C]
+[lib_symbol_mismatch]: Symbol 'C' doesn't match copy in library 'Device'
+    ; warning
+    @(5750 mils, 5250 mils): Symbol C? [C]
+[lib_symbol_mismatch]: Symbol 'R' doesn't match copy in library 'Device'
+    ; warning
+    @(4000 mils, 6800 mils): Symbol R? [R]
+[lib_symbol_mismatch]: Symbol 'C' doesn't match copy in library 'Device'
+    ; warning
+    @(5200 mils, 6050 mils): Symbol C? [C]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(5514 mils, 5900 mils): Symbol #PWR0101 Pin 1 [pwr, Power output, Line]
+[endpoint_off_grid]: Symbol pin or wire end off connection grid
+    ; warning
+    @(5514 mils, 5900 mils): Horizontal Wire, length 236 mils
+[lib_symbol_mismatch]: Symbol 'PWR_FLAG' doesn't match copy in library 'power'
+    ; warning
+    @(5514 mils, 5900 mils): Symbol #PWR0101 [PWR_FLAG]
+[lib_symbol_mismatch]: Symbol 'R' doesn't match copy in library 'Device'
+    ; warning
+    @(4600 mils, 6800 mils): Symbol R? [R]
+[lib_symbol_mismatch]: Symbol 'C' doesn't match copy in library 'Device'
+    ; warning
+    @(6350 mils, 5250 mils): Symbol C? [C]
+[lib_symbol_mismatch]: Symbol 'C' doesn't match copy in library 'Device'
+    ; warning
+    @(5750 mils, 6050 mils): Symbol C? [C]
+[lib_symbol_mismatch]: Symbol 'R' doesn't match copy in library 'Device'
+    ; warning
+    @(5200 mils, 6800 mils): Symbol R? [R]
+[lib_symbol_mismatch]: Symbol 'C' doesn't match copy in library 'Device'
+    ; warning
+    @(6350 mils, 6050 mils): Symbol C? [C]
+[lib_symbol_mismatch]: Symbol 'R' doesn't match copy in library 'Device'
+    ; warning
+    @(5750 mils, 6800 mils): Symbol R? [R]
+
+ ** ERC messages: 95  Errors 43  Warnings 52

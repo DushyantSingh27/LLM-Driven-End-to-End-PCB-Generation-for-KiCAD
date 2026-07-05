@@ -1,0 +1,2226 @@
+(kicad_sch (version 20230121) (generator skidl_exporter)
+  (uuid 12500303-65ef-43b8-a4c4-00f1eeb76239)
+  (paper "A4")
+  (title_block (title "STM32F401RET6 + ISM330DHCX I2C Interface (Auto v4)") (company "SRM IST - Semiconductor Chip Design Club"))
+  (lib_symbols
+    (symbol "Device:R" (pin_numbers hide) (pin_names (offset 0)) (in_bom yes) (on_board yes)
+      (property "Reference" "R" (at 2.032 0 90) (effects (font (size 1.27 1.27))))
+      (property "Value" "R" (at 0 0 90) (effects (font (size 1.27 1.27))))
+      (property "Footprint" "" (at -1.778 0 90) (effects (font (size 1.27 1.27)) hide))
+      (property "Datasheet" "~" (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
+      (symbol "R_0_1"
+        (rectangle (start -1.016 -2.032) (end 1.016 2.032) (stroke (width 0.254) (type default)) (fill (type none)))
+      )
+      (symbol "R_1_1"
+        (pin passive line (at 0 3.81 270) (length 1.778) (name "~" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27)))))
+        (pin passive line (at 0 -3.81 90) (length 1.778) (name "~" (effects (font (size 1.27 1.27)))) (number "2" (effects (font (size 1.27 1.27)))))
+      )
+    )
+    (symbol "Device:C" (pin_numbers hide) (pin_names (offset 0.254)) (in_bom yes) (on_board yes)
+      (property "Reference" "C" (at 1.651 0 90) (effects (font (size 1.27 1.27))))
+      (property "Value" "C" (at 0 0 90) (effects (font (size 1.27 1.27))))
+      (property "Footprint" "" (at 0.9652 -2.5908 0) (effects (font (size 1.27 1.27)) hide))
+      (property "Datasheet" "~" (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
+      (symbol "C_0_1"
+        (polyline (pts (xy -2.032 -0.762) (xy 2.032 -0.762)) (stroke (width 0.508) (type default)) (fill (type none)))
+        (polyline (pts (xy -2.032 0.762) (xy 2.032 0.762)) (stroke (width 0.508) (type default)) (fill (type none)))
+      )
+      (symbol "C_1_1"
+        (pin passive line (at 0 3.81 270) (length 3.048) (name "~" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27)))))
+        (pin passive line (at 0 -3.81 90) (length 3.048) (name "~" (effects (font (size 1.27 1.27)))) (number "2" (effects (font (size 1.27 1.27)))))
+      )
+    )
+    (symbol "power:VDD_3V3" (power) (pin_numbers hide) (pin_names (offset 0) hide) (in_bom yes) (on_board yes)
+      (property "Reference" "#PWR" (at 0 -1.27 0) (effects (font (size 1.27 1.27)) hide))
+      (property "Value" "VDD_3V3" (at 0 3.81 0) (effects (font (size 1.27 1.27))))
+      (property "Footprint" "" (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
+      (property "Datasheet" "" (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
+      (symbol "VDD_3V3_0_1"
+        (polyline (pts (xy -0.762 1.27) (xy 0 2.54)) (stroke (width 0) (type default)) (fill (type none)))
+        (polyline (pts (xy 0 0) (xy 0 2.54)) (stroke (width 0) (type default)) (fill (type none)))
+        (polyline (pts (xy 0 2.54) (xy 0.762 1.27)) (stroke (width 0) (type default)) (fill (type none)))
+      )
+      (symbol "VDD_3V3_1_1"
+        (pin power_in line (at 0 0 270) (length 0) (name "~" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27)))))
+      )
+    )
+    (symbol "power:GND" (power) (pin_numbers hide) (pin_names (offset 0) hide) (in_bom yes) (on_board yes)
+      (property "Reference" "#PWR" (at 0 -1.27 0) (effects (font (size 1.27 1.27)) hide))
+      (property "Value" "GND" (at 0 -3.81 0) (effects (font (size 1.27 1.27))))
+      (property "Footprint" "" (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
+      (property "Datasheet" "" (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
+      (symbol "GND_0_1"
+        (polyline (pts (xy 0 0) (xy 0 -1.27) (xy 1.27 -1.27) (xy 0 -2.54) (xy -1.27 -1.27) (xy 0 -1.27)) (stroke (width 0) (type default)) (fill (type none)))
+      )
+      (symbol "GND_1_1"
+        (pin power_in line (at 0 0 90) (length 0) (name "~" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27)))))
+      )
+    )
+    (symbol "power:PWR_FLAG" (power) (pin_numbers hide) (pin_names (offset 0) hide) (in_bom yes) (on_board yes)
+      (property "Reference" "#FLG" (at 0 -3.81 0) (effects (font (size 1.27 1.27)) hide))
+      (property "Value" "PWR_FLAG" (at 0 3.81 0) (effects (font (size 1.27 1.27))))
+      (property "Footprint" "" (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
+      (property "Datasheet" "~" (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
+      (symbol "PWR_FLAG_0_1"
+        (pin power_out line (at 0 0 270) (length 0) (name "pwr" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27)))))
+      )
+    )
+    (symbol "MCU_ST_STM32F4:STM32F401RETx"
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(property "Reference" "U"
+			(at -15.24 46.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "STM32F401R_D-E_Tx"
+			(at 7.62 46.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Package_QFP:LQFP-64_10x10mm_P0.5mm"
+			(at -15.24 -43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.st.com/resource/en/datasheet/stm32f401rd.pdf"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "STMicroelectronics Arm Cortex-M4 MCU, 384-512KB flash, 96KB RAM, 84 MHz, 1.7-3.6V, 50 GPIO, LQFP64"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_keywords" "Arm Cortex-M4 STM32F4 STM32F401"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_fp_filters" "LQFP*10x10mm*P0.5mm*"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(symbol "STM32F401RETx_0_1"
+			(rectangle
+				(start -15.24 -43.18)
+				(end 15.24 45.72)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type background)
+				)
+			)
+		)
+		(symbol "STM32F401RETx_1_1"
+			(pin input line
+				(at -17.78 40.64 0)
+				(length 2.54)
+				(name "NRST"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "7"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin input line
+				(at -17.78 35.56 0)
+				(length 2.54)
+				(name "BOOT0"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "60"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin input line
+				(at -17.78 30.48 0)
+				(length 2.54)
+				(name "VREF+"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "13"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin bidirectional line
+				(at -17.78 25.4 0)
+				(length 2.54)
+				(name "PH0"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "5"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(alternate "RCC_OSC_IN" bidirectional line)
+			)
+			(pin bidirectional line
+				(at -17.78 22.86 0)
+				(length 2.54)
+				(name "PH1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "6"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(alternate "RCC_OSC_OUT" bidirectional line)
+			)
+			(pin bidirectional line
+				(at -17.78 17.78 0)
+				(length 2.54)
+				(name "PD2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "54"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(alternate "SDIO_CMD" bidirectional line)
+				(alternate "TIM3_ETR" bidirectional line)
+			)
+			(pin bidirectional line
+				(at -17.78 12.7 0)
+				(length 2.54)
+				(name "PC0"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "8"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(alternate "ADC1_IN10" bidirectional line)
+			)
+			(pin bidirectional line
+				(at -17.78 10.16 0)
+				(length 2.54)
+				(name "PC1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "9"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(alternate "ADC1_IN11" bidirectional line)
+			)
+			(pin bidirectional line
+				(at -17.78 7.62 0)
+				(length 2.54)
+				(name "PC2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "10"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(alternate "ADC1_IN12" bidirectional line)
+				(alternate "I2S2_ext_SD" bidirectional line)
+				(alternate "SPI2_MISO" bidirectional line)
+			)
+			(pin bidirectional line
+				(at -17.78 5.08 0)
+				(length 2.54)
+				(name "PC3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "11"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(alternate "ADC1_IN13" bidirectional line)
+				(alternate "I2S2_SD" bidirectional line)
+				(alternate "SPI2_MOSI" bidirectional line)
+			)
+			(pin bidirectional line
+				(at -17.78 2.54 0)
+				(length 2.54)
+				(name "PC4"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "24"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(alternate "ADC1_IN14" bidirectional line)
+			)
+			(pin bidirectional line
+				(at -17.78 0 0)
+				(length 2.54)
+				(name "PC5"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "25"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(alternate "ADC1_IN15" bidirectional line)
+			)
+			(pin bidirectional line
+				(at -17.78 -2.54 0)
+				(length 2.54)
+				(name "PC6"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "37"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(alternate "I2S2_MCK" bidirectional line)
+				(alternate "SDIO_D6" bidirectional line)
+				(alternate "TIM3_CH1" bidirectional line)
+				(alternate "USART6_TX" bidirectional line)
+			)
+			(pin bidirectional line
+				(at -17.78 -5.08 0)
+				(length 2.54)
+				(name "PC7"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "38"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(alternate "I2S3_MCK" bidirectional line)
+				(alternate "SDIO_D7" bidirectional line)
+				(alternate "TIM3_CH2" bidirectional line)
+				(alternate "USART6_RX" bidirectional line)
+			)
+			(pin bidirectional line
+				(at -17.78 -7.62 0)
+				(length 2.54)
+				(name "PC8"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "39"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(alternate "SDIO_D0" bidirectional line)
+				(alternate "TIM3_CH3" bidirectional line)
+				(alternate "USART6_CK" bidirectional line)
+			)
+			(pin bidirectional line
+				(at -17.78 -10.16 0)
+				(length 2.54)
+				(name "PC9"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "40"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(alternate "I2C3_SDA" bidirectional line)
+				(alternate "I2S_CKIN" bidirectional line)
+				(alternate "RCC_MCO_2" bidirectional line)
+				(alternate "SDIO_D1" bidirectional line)
+				(alternate "TIM3_CH4" bidirectional line)
+			)
+			(pin bidirectional line
+				(at -17.78 -12.7 0)
+				(length 2.54)
+				(name "PC10"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "51"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(alternate "I2S3_CK" bidirectional line)
+				(alternate "SDIO_D2" bidirectional line)
+				(alternate "SPI3_SCK" bidirectional line)
+			)
+			(pin bidirectional line
+				(at -17.78 -15.24 0)
+				(length 2.54)
+				(name "PC11"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "52"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(alternate "ADC1_EXTI11" bidirectional line)
+				(alternate "I2S3_ext_SD" bidirectional line)
+				(alternate "SDIO_D3" bidirectional line)
+				(alternate "SPI3_MISO" bidirectional line)
+			)
+			(pin bidirectional line
+				(at -17.78 -17.78 0)
+				(length 2.54)
+				(name "PC12"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "53"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(alternate "I2S3_SD" bidirectional line)
+				(alternate "SDIO_CK" bidirectional line)
+				(alternate "SPI3_MOSI" bidirectional line)
+			)
+			(pin bidirectional line
+				(at -17.78 -20.32 0)
+				(length 2.54)
+				(name "PC13"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(alternate "RTC_AF1" bidirectional line)
+			)
+			(pin bidirectional line
+				(at -17.78 -22.86 0)
+				(length 2.54)
+				(name "PC14"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(alternate "RCC_OSC32_IN" bidirectional line)
+			)
+			(pin bidirectional line
+				(at -17.78 -25.4 0)
+				(length 2.54)
+				(name "PC15"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "4"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(alternate "ADC1_EXTI15" bidirectional line)
+				(alternate "RCC_OSC32_OUT" bidirectional line)
+			)
+			(pin power_out line
+				(at -17.78 -30.48 0)
+				(length 2.54)
+				(name "VCAP1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "30"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at -5.08 48.26 270)
+				(length 2.54)
+				(name "VBAT"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at -2.54 48.26 270)
+				(length 2.54)
+				(name "VDD"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "19"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at 0 48.26 270)
+				(length 2.54)
+				(name "VDD"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "32"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at 0 -45.72 90)
+				(length 2.54)
+				(name "VSS"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "18"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 0 -45.72 90)
+				(length 2.54)
+				(hide yes)
+				(name "VSS"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "31"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 0 -45.72 90)
+				(length 2.54)
+				(hide yes)
+				(name "VSS"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "47"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 0 -45.72 90)
+				(length 2.54)
+				(hide yes)
+				(name "VSS"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "63"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at 2.54 48.26 270)
+				(length 2.54)
+				(name "VDD"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "48"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at 2.54 -45.72 90)
+				(length 2.54)
+				(name "VSSA"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "12"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at 5.08 48.26 270)
+				(length 2.54)
+				(name "VDD"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "64"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin bidirectional line
+				(at 17.78 40.64 180)
+				(length 2.54)
+				(name "PA0"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "14"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(alternate "ADC1_IN0" bidirectional line)
+				(alternate "SYS_WKUP" bidirectional line)
+				(alternate "TIM2_CH1" bidirectional line)
+				(alternate "TIM2_ETR" bidirectional line)
+				(alternate "TIM5_CH1" bidirectional line)
+				(alternate "USART2_CTS" bidirectional line)
+			)
+			(pin bidirectional line
+				(at 17.78 38.1 180)
+				(length 2.54)
+				(name "PA1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "15"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(alternate "ADC1_IN1" bidirectional line)
+				(alternate "TIM2_CH2" bidirectional line)
+				(alternate "TIM5_CH2" bidirectional line)
+				(alternate "USART2_RTS" bidirectional line)
+			)
+			(pin bidirectional line
+				(at 17.78 35.56 180)
+				(length 2.54)
+				(name "PA2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "16"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(alternate "ADC1_IN2" bidirectional line)
+				(alternate "TIM2_CH3" bidirectional line)
+				(alternate "TIM5_CH3" bidirectional line)
+				(alternate "TIM9_CH1" bidirectional line)
+				(alternate "USART2_TX" bidirectional line)
+			)
+			(pin bidirectional line
+				(at 17.78 33.02 180)
+				(length 2.54)
+				(name "PA3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "17"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(alternate "ADC1_IN3" bidirectional line)
+				(alternate "TIM2_CH4" bidirectional line)
+				(alternate "TIM5_CH4" bidirectional line)
+				(alternate "TIM9_CH2" bidirectional line)
+				(alternate "USART2_RX" bidirectional line)
+			)
+			(pin bidirectional line
+				(at 17.78 30.48 180)
+				(length 2.54)
+				(name "PA4"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "20"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(alternate "ADC1_IN4" bidirectional line)
+				(alternate "I2S3_WS" bidirectional line)
+				(alternate "SPI1_NSS" bidirectional line)
+				(alternate "SPI3_NSS" bidirectional line)
+				(alternate "USART2_CK" bidirectional line)
+			)
+			(pin bidirectional line
+				(at 17.78 27.94 180)
+				(length 2.54)
+				(name "PA5"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "21"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(alternate "ADC1_IN5" bidirectional line)
+				(alternate "SPI1_SCK" bidirectional line)
+				(alternate "TIM2_CH1" bidirectional line)
+				(alternate "TIM2_ETR" bidirectional line)
+			)
+			(pin bidirectional line
+				(at 17.78 25.4 180)
+				(length 2.54)
+				(name "PA6"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "22"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(alternate "ADC1_IN6" bidirectional line)
+				(alternate "SPI1_MISO" bidirectional line)
+				(alternate "TIM1_BKIN" bidirectional line)
+				(alternate "TIM3_CH1" bidirectional line)
+			)
+			(pin bidirectional line
+				(at 17.78 22.86 180)
+				(length 2.54)
+				(name "PA7"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "23"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(alternate "ADC1_IN7" bidirectional line)
+				(alternate "SPI1_MOSI" bidirectional line)
+				(alternate "TIM1_CH1N" bidirectional line)
+				(alternate "TIM3_CH2" bidirectional line)
+			)
+			(pin bidirectional line
+				(at 17.78 20.32 180)
+				(length 2.54)
+				(name "PA8"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "41"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(alternate "I2C3_SCL" bidirectional line)
+				(alternate "RCC_MCO_1" bidirectional line)
+				(alternate "TIM1_CH1" bidirectional line)
+				(alternate "USART1_CK" bidirectional line)
+				(alternate "USB_OTG_FS_SOF" bidirectional line)
+			)
+			(pin bidirectional line
+				(at 17.78 17.78 180)
+				(length 2.54)
+				(name "PA9"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "42"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(alternate "I2C3_SMBA" bidirectional line)
+				(alternate "TIM1_CH2" bidirectional line)
+				(alternate "USART1_TX" bidirectional line)
+				(alternate "USB_OTG_FS_VBUS" bidirectional line)
+			)
+			(pin bidirectional line
+				(at 17.78 15.24 180)
+				(length 2.54)
+				(name "PA10"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "43"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(alternate "TIM1_CH3" bidirectional line)
+				(alternate "USART1_RX" bidirectional line)
+				(alternate "USB_OTG_FS_ID" bidirectional line)
+			)
+			(pin bidirectional line
+				(at 17.78 12.7 180)
+				(length 2.54)
+				(name "PA11"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "44"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(alternate "ADC1_EXTI11" bidirectional line)
+				(alternate "TIM1_CH4" bidirectional line)
+				(alternate "USART1_CTS" bidirectional line)
+				(alternate "USART6_TX" bidirectional line)
+				(alternate "USB_OTG_FS_DM" bidirectional line)
+			)
+			(pin bidirectional line
+				(at 17.78 10.16 180)
+				(length 2.54)
+				(name "PA12"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "45"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(alternate "TIM1_ETR" bidirectional line)
+				(alternate "USART1_RTS" bidirectional line)
+				(alternate "USART6_RX" bidirectional line)
+				(alternate "USB_OTG_FS_DP" bidirectional line)
+			)
+			(pin bidirectional line
+				(at 17.78 7.62 180)
+				(length 2.54)
+				(name "PA13"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "46"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(alternate "SYS_JTMS-SWDIO" bidirectional line)
+			)
+			(pin bidirectional line
+				(at 17.78 5.08 180)
+				(length 2.54)
+				(name "PA14"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "49"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(alternate "SYS_JTCK-SWCLK" bidirectional line)
+			)
+			(pin bidirectional line
+				(at 17.78 2.54 180)
+				(length 2.54)
+				(name "PA15"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "50"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(alternate "ADC1_EXTI15" bidirectional line)
+				(alternate "I2S3_WS" bidirectional line)
+				(alternate "SPI1_NSS" bidirectional line)
+				(alternate "SPI3_NSS" bidirectional line)
+				(alternate "SYS_JTDI" bidirectional line)
+				(alternate "TIM2_CH1" bidirectional line)
+				(alternate "TIM2_ETR" bidirectional line)
+			)
+			(pin bidirectional line
+				(at 17.78 -2.54 180)
+				(length 2.54)
+				(name "PB0"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "26"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(alternate "ADC1_IN8" bidirectional line)
+				(alternate "TIM1_CH2N" bidirectional line)
+				(alternate "TIM3_CH3" bidirectional line)
+			)
+			(pin bidirectional line
+				(at 17.78 -5.08 180)
+				(length 2.54)
+				(name "PB1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "27"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(alternate "ADC1_IN9" bidirectional line)
+				(alternate "TIM1_CH3N" bidirectional line)
+				(alternate "TIM3_CH4" bidirectional line)
+			)
+			(pin bidirectional line
+				(at 17.78 -7.62 180)
+				(length 2.54)
+				(name "PB2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "28"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin bidirectional line
+				(at 17.78 -10.16 180)
+				(length 2.54)
+				(name "PB3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "55"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(alternate "I2C2_SDA" bidirectional line)
+				(alternate "I2S3_CK" bidirectional line)
+				(alternate "SPI1_SCK" bidirectional line)
+				(alternate "SPI3_SCK" bidirectional line)
+				(alternate "SYS_JTDO-SWO" bidirectional line)
+				(alternate "TIM2_CH2" bidirectional line)
+			)
+			(pin bidirectional line
+				(at 17.78 -12.7 180)
+				(length 2.54)
+				(name "PB4"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "56"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(alternate "I2C3_SDA" bidirectional line)
+				(alternate "I2S3_ext_SD" bidirectional line)
+				(alternate "SPI1_MISO" bidirectional line)
+				(alternate "SPI3_MISO" bidirectional line)
+				(alternate "SYS_JTRST" bidirectional line)
+				(alternate "TIM3_CH1" bidirectional line)
+			)
+			(pin bidirectional line
+				(at 17.78 -15.24 180)
+				(length 2.54)
+				(name "PB5"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "57"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(alternate "I2C1_SMBA" bidirectional line)
+				(alternate "I2S3_SD" bidirectional line)
+				(alternate "SPI1_MOSI" bidirectional line)
+				(alternate "SPI3_MOSI" bidirectional line)
+				(alternate "TIM3_CH2" bidirectional line)
+			)
+			(pin bidirectional line
+				(at 17.78 -17.78 180)
+				(length 2.54)
+				(name "PB6"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "58"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(alternate "I2C1_SCL" bidirectional line)
+				(alternate "TIM4_CH1" bidirectional line)
+				(alternate "USART1_TX" bidirectional line)
+			)
+			(pin bidirectional line
+				(at 17.78 -20.32 180)
+				(length 2.54)
+				(name "PB7"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "59"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(alternate "I2C1_SDA" bidirectional line)
+				(alternate "TIM4_CH2" bidirectional line)
+				(alternate "USART1_RX" bidirectional line)
+			)
+			(pin bidirectional line
+				(at 17.78 -22.86 180)
+				(length 2.54)
+				(name "PB8"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "61"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(alternate "I2C1_SCL" bidirectional line)
+				(alternate "SDIO_D4" bidirectional line)
+				(alternate "TIM10_CH1" bidirectional line)
+				(alternate "TIM4_CH3" bidirectional line)
+			)
+			(pin bidirectional line
+				(at 17.78 -25.4 180)
+				(length 2.54)
+				(name "PB9"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "62"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(alternate "I2C1_SDA" bidirectional line)
+				(alternate "I2S2_WS" bidirectional line)
+				(alternate "SDIO_D5" bidirectional line)
+				(alternate "SPI2_NSS" bidirectional line)
+				(alternate "TIM11_CH1" bidirectional line)
+				(alternate "TIM4_CH4" bidirectional line)
+			)
+			(pin bidirectional line
+				(at 17.78 -27.94 180)
+				(length 2.54)
+				(name "PB10"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "29"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(alternate "I2C2_SCL" bidirectional line)
+				(alternate "I2S2_CK" bidirectional line)
+				(alternate "SPI2_SCK" bidirectional line)
+				(alternate "TIM2_CH3" bidirectional line)
+			)
+			(pin bidirectional line
+				(at 17.78 -30.48 180)
+				(length 2.54)
+				(name "PB12"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "33"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(alternate "I2C2_SMBA" bidirectional line)
+				(alternate "I2S2_WS" bidirectional line)
+				(alternate "SPI2_NSS" bidirectional line)
+				(alternate "TIM1_BKIN" bidirectional line)
+			)
+			(pin bidirectional line
+				(at 17.78 -33.02 180)
+				(length 2.54)
+				(name "PB13"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "34"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(alternate "I2S2_CK" bidirectional line)
+				(alternate "SPI2_SCK" bidirectional line)
+				(alternate "TIM1_CH1N" bidirectional line)
+			)
+			(pin bidirectional line
+				(at 17.78 -35.56 180)
+				(length 2.54)
+				(name "PB14"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "35"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(alternate "I2S2_ext_SD" bidirectional line)
+				(alternate "SPI2_MISO" bidirectional line)
+				(alternate "TIM1_CH2N" bidirectional line)
+			)
+			(pin bidirectional line
+				(at 17.78 -38.1 180)
+				(length 2.54)
+				(name "PB15"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "36"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(alternate "ADC1_EXTI15" bidirectional line)
+				(alternate "I2S2_SD" bidirectional line)
+				(alternate "RTC_REFIN" bidirectional line)
+				(alternate "SPI2_MOSI" bidirectional line)
+				(alternate "TIM1_CH3N" bidirectional line)
+			)
+		)
+		(embedded_fonts no)
+	)
+    (symbol "Sensor_Motion:ISM330DHCX"
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(property "Reference" "U"
+			(at 5.842 -16.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "ISM330DHCX"
+			(at 5.842 -18.542 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Package_LGA:LGA-14_3x2.5mm_P0.5mm_LayoutBorder3x4y"
+			(at 0.508 -2.032 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.st.com/resource/en/datasheet/ism330dhcx.pdf"
+			(at 0.762 -1.778 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "iNEMO inertial module with embedded Machine Learning Core: always-on 3D accelerometer and 3D gyroscope with digital output for industrial applications, LGA-14"
+			(at 1.27 5.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_keywords" "ST iNEMO IMU"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_fp_filters" "*LGA*3x2.5mm*P0.5mm*LayoutBorder3x4y*"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(symbol "ISM330DHCX_0_1"
+			(rectangle
+				(start -7.62 15.24)
+				(end 7.62 -15.24)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type background)
+				)
+			)
+		)
+		(symbol "ISM330DHCX_1_1"
+			(pin bidirectional line
+				(at -10.16 7.62 0)
+				(length 2.54)
+				(name "SDA"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "14"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin output line
+				(at -10.16 5.08 0)
+				(length 2.54)
+				(name "SDO/SA0"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin input line
+				(at -10.16 2.54 0)
+				(length 2.54)
+				(name "SCL"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "13"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin input line
+				(at -10.16 0 0)
+				(length 2.54)
+				(name "CS"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "12"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin output line
+				(at -10.16 -5.08 0)
+				(length 2.54)
+				(name "INT1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "4"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin output line
+				(at -10.16 -7.62 0)
+				(length 2.54)
+				(name "INT2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "9"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at -2.54 17.78 270)
+				(length 2.54)
+				(name "VDD"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "8"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at 0 17.78 270)
+				(length 2.54)
+				(name "VDDIO"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "5"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at 0 -17.78 90)
+				(length 2.54)
+				(name "GND"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "6"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 0 -17.78 90)
+				(length 2.54)
+				(hide yes)
+				(name "GND"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "7"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin bidirectional line
+				(at 10.16 7.62 180)
+				(length 2.54)
+				(name "SDx"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin input line
+				(at 10.16 5.08 180)
+				(length 2.54)
+				(name "SCx"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 10.16 -5.08 180)
+				(length 2.54)
+				(name "OCS_AUX"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "10"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 10.16 -7.62 180)
+				(length 2.54)
+				(name "SDO_AUX"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "11"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+  )
+  (wire (pts (xy 93.92 111.74) (xy 99.92 111.74)) (stroke (width 0) (type solid)) (uuid ec1aad17-85cb-4e6a-88d5-d35d6f0c8288))
+  (wire (pts (xy 99.00 205.72) (xy 105.00 205.72)) (stroke (width 0) (type solid)) (uuid 0be7aec6-8b8d-4442-af13-60a7f800b221))
+  (wire (pts (xy 87.22 119.36) (xy 81.03 119.36)) (stroke (width 0) (type solid)) (uuid c7d09fd5-a21f-493d-b02a-20be66c6f227))
+  (wire (pts (xy 87.22 190.48) (xy 81.03 190.48)) (stroke (width 0) (type solid)) (uuid 88ec93aa-fc1f-48fe-b8e4-5f406f33d702))
+  (wire (pts (xy 87.22 124.44) (xy 81.03 124.44)) (stroke (width 0) (type solid)) (uuid 78bd09c1-f242-4931-a781-e019f9e25adf))
+  (wire (pts (xy 199.84 145.00) (xy 193.65 145.00)) (stroke (width 0) (type solid)) (uuid 4433acde-4d9b-408c-a235-ceaae6ed4d9d))
+  (wire (pts (xy 199.84 139.92) (xy 193.65 139.92)) (stroke (width 0) (type solid)) (uuid d3a3f11f-51da-4b4d-a402-e39da5052ca9))
+  (wire (pts (xy 220.16 139.92) (xy 213.97 139.92)) (stroke (width 0) (type solid)) (uuid ac27505e-cfec-4d41-858f-b91eb328a36f))
+  (no_connect (at 87.22 134.60) (uuid f34de0b6-0795-478d-8866-3bce6e13064a))
+  (no_connect (at 87.22 137.14) (uuid f2a82a8a-e863-46b5-8e34-17a999e35b90))
+  (no_connect (at 87.22 142.22) (uuid 6fca2b8c-0dd9-4dab-a541-6c8dcabf5525))
+  (no_connect (at 87.22 147.30) (uuid 97bf8af5-8f21-470b-87ae-b28debd85f97))
+  (no_connect (at 87.22 149.84) (uuid 9fa1125a-8ac0-4db4-b36f-a9e160c83a95))
+  (no_connect (at 87.22 152.38) (uuid bf6e4507-c367-4750-9349-86085f8f348c))
+  (no_connect (at 87.22 154.92) (uuid 55364cd1-54ae-4b41-aaf5-34f8123d0327))
+  (no_connect (at 87.22 157.46) (uuid f699928f-b5f5-4397-87ba-2a04bfa7bb3c))
+  (no_connect (at 87.22 160.00) (uuid bca512f8-37be-4bf2-a0ed-f5387850859d))
+  (no_connect (at 87.22 162.54) (uuid 3e43cf64-f7aa-4fbd-8e61-8c19d8772899))
+  (no_connect (at 87.22 165.08) (uuid eaad1c76-0b52-41e6-97d7-5efa8ffb1498))
+  (no_connect (at 87.22 167.62) (uuid 02c45063-7139-4b92-b6a3-08de3e112e75))
+  (no_connect (at 87.22 170.16) (uuid 612cabc6-eacf-4ea5-afe7-47457a03f952))
+  (no_connect (at 87.22 172.70) (uuid 308c5e11-3bb2-4171-9293-0e2288775ed1))
+  (no_connect (at 87.22 175.24) (uuid 3927599a-a43f-4aee-9625-3cc00e0fcc01))
+  (no_connect (at 87.22 177.78) (uuid 2bd5d072-a480-43b2-abab-94ae771108a1))
+  (no_connect (at 87.22 180.32) (uuid ffc4b459-947d-4b99-96dd-f52a765fd815))
+  (no_connect (at 87.22 182.86) (uuid d1fdbb1c-49d4-44cb-bf18-04c4c1f6d522))
+  (no_connect (at 87.22 185.40) (uuid ff42c088-a6f5-4546-82c9-a4fc48780ca4))
+  (no_connect (at 122.78 119.36) (uuid 03527f9e-5356-475e-8912-a33924677520))
+  (no_connect (at 122.78 121.90) (uuid 19433ece-eee1-419e-8641-e3f78fd2ab2d))
+  (no_connect (at 122.78 124.44) (uuid 40a60cbe-05d3-4b8b-bbf7-3126d01e2521))
+  (no_connect (at 122.78 126.98) (uuid 69460eeb-abb1-4dbf-8619-3b440c5e25a8))
+  (no_connect (at 122.78 129.52) (uuid 584e51f6-d7b2-4bd8-b566-68d9899c3c67))
+  (no_connect (at 122.78 132.06) (uuid d17e07ca-7fb7-4e37-aed3-8b3d54146d0f))
+  (no_connect (at 122.78 134.60) (uuid cc086f01-edc2-4c4b-9a6f-d8340ed542f7))
+  (no_connect (at 122.78 137.14) (uuid 8dcd2bb1-39c7-48b6-9384-f0667ffecc52))
+  (no_connect (at 122.78 139.68) (uuid ed6b7eeb-f904-44c4-af49-df29ecd08444))
+  (no_connect (at 122.78 142.22) (uuid fabcdf19-986f-4a99-a856-743bd1d2b725))
+  (no_connect (at 122.78 144.76) (uuid 9fdf7ef4-e752-4f2a-8673-1380b8ce7aff))
+  (no_connect (at 122.78 147.30) (uuid 352fde26-5970-49e0-a0c0-197dc06a4573))
+  (no_connect (at 122.78 149.84) (uuid 58cfcf81-fc47-481f-9669-99741674525a))
+  (no_connect (at 122.78 152.38) (uuid 699d5316-ea41-484d-b9db-a62eed55f6f3))
+  (no_connect (at 122.78 154.92) (uuid e9daa01a-f0e3-4682-b250-5c4e02725a6d))
+  (no_connect (at 122.78 157.46) (uuid 798910c7-db80-4e97-892c-6da36382b9e6))
+  (no_connect (at 122.78 162.54) (uuid df767541-c2e1-4d24-8a42-46ce20e9893f))
+  (no_connect (at 122.78 165.08) (uuid 8b9160c8-67e9-4b2f-a299-8ed82ec186e6))
+  (no_connect (at 122.78 167.62) (uuid b98e52fc-7ec9-49f5-a580-909033d01860))
+  (no_connect (at 122.78 170.16) (uuid b2ffa8d7-c57b-4f38-99d1-53615c2b4b33))
+  (no_connect (at 122.78 172.70) (uuid c25a6f76-e9a8-4673-b628-aac5bda833c1))
+  (no_connect (at 122.78 175.24) (uuid d9132754-a1a9-443a-8aa6-4470d740e89e))
+  (no_connect (at 122.78 182.86) (uuid 7578bc75-ceef-4872-91fd-cddcd3361635))
+  (no_connect (at 122.78 185.40) (uuid 9fedfd8d-3594-4adc-a0ce-4654c4c9db06))
+  (no_connect (at 122.78 187.94) (uuid f61dff2e-0104-4b89-95ab-ebddcc989556))
+  (no_connect (at 122.78 190.48) (uuid 261e4019-04a6-4754-bfac-92cbdba36a6e))
+  (no_connect (at 122.78 193.02) (uuid 163b256e-6428-4071-831f-fd8d7fba523d))
+  (no_connect (at 122.78 195.56) (uuid 903059fe-0c0b-403f-9044-c14611f00dd6))
+  (no_connect (at 122.78 198.10) (uuid 2944910b-7e3c-4598-be5c-5ec54fb6b3ae))
+  (no_connect (at 199.84 150.08) (uuid 9f531319-b3eb-4313-be99-759cdf1e248c))
+  (no_connect (at 199.84 152.62) (uuid 83fb5a38-f099-4895-9bd7-507c6dffbd5b))
+  (no_connect (at 220.16 137.38) (uuid 2ee20cdf-15d5-4198-a5a3-dcac3b6b019d))
+  (no_connect (at 220.16 150.08) (uuid aa1c6dec-9dac-424e-bad9-a2fa71c8da0f))
+  (no_connect (at 220.16 152.62) (uuid 787ba3e7-64e0-428f-82de-ba4f6c33c7ca))
+  (label "I2C1_SCL" (at 122.78 177.78 0) (fields_autoplaced) (effects (font (size 1.524 1.524)) (justify left bottom)) (uuid 46d7430a-2cfb-43b6-b640-7333271bc0cd))
+  (label "I2C1_SDA" (at 122.78 180.32 0) (fields_autoplaced) (effects (font (size 1.524 1.524)) (justify left bottom)) (uuid 08eefe10-6c8d-4341-b327-5566ca71e9bc))
+  (label "I2C1_SCL" (at 142.78 166.59 0) (fields_autoplaced) (effects (font (size 1.524 1.524)) (justify left bottom)) (uuid 06044b71-ffa3-41ad-a30c-6ebe169ac3a0))
+  (label "I2C1_SDA" (at 152.78 169.13 0) (fields_autoplaced) (effects (font (size 1.524 1.524)) (justify left bottom)) (uuid 15952a3b-a4cd-4644-84ac-e14e7c1abe55))
+  (label "I2C1_SDA" (at 199.84 137.38 180) (fields_autoplaced) (effects (font (size 1.524 1.524)) (justify left bottom)) (uuid 18830534-524f-4f0d-b8bf-d8f8a66addc1))
+  (label "I2C1_SCL" (at 199.84 142.46 180) (fields_autoplaced) (effects (font (size 1.524 1.524)) (justify left bottom)) (uuid a535dc17-6c5d-477f-a8f4-18e0414ca7c2))
+  (symbol (lib_id "power:VDD_3V3") (at 99.92 111.74 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (uuid a1e8e56f-5ab7-4cc3-8f49-d304aa2aaa82)
+    (property "Reference" "#PWR001" (at 99.92 113.01 0) (effects (font (size 1.27 1.27)) hide))
+    (property "Value" "VDD_3V3" (at 99.92 107.93 0) (effects (font (size 1.27 1.27))))
+    (instances (project "stm32_ism330_i2c_auto" (path "/b24b962a-3d55-421c-87f3-c23a2a88ff2a" (reference "#PWR001") (unit 1))))
+  )
+  (symbol (lib_id "power:PWR_FLAG") (at 93.92 111.74 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (uuid 3b756785-fe42-4368-a513-6cb035098940)
+    (property "Reference" "#PWR002" (at 93.92 113.74 0) (effects (font (size 1.27 1.27)) hide))
+    (property "Value" "PWR_FLAG" (at 93.92 109.74 0) (effects (font (size 1.27 1.27))))
+    (instances (project "stm32_ism330_i2c_auto" (path "/80c50ad2-12f0-4c19-a8db-7454c45232d2" (reference "#PWR002") (unit 1))))
+  )
+  (symbol (lib_id "power:VDD_3V3") (at 102.46 111.74 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (uuid 8da898b4-b56a-4f12-aa0b-5ef59addb69f)
+    (property "Reference" "#PWR003" (at 102.46 113.01 0) (effects (font (size 1.27 1.27)) hide))
+    (property "Value" "VDD_3V3" (at 102.46 107.93 0) (effects (font (size 1.27 1.27))))
+    (instances (project "stm32_ism330_i2c_auto" (path "/845ec024-f3a7-45e4-98b6-633d92e52f24" (reference "#PWR003") (unit 1))))
+  )
+  (symbol (lib_id "power:VDD_3V3") (at 105.00 111.74 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (uuid 9d273999-d0f0-40a9-9259-630bd1e19785)
+    (property "Reference" "#PWR004" (at 105.00 113.01 0) (effects (font (size 1.27 1.27)) hide))
+    (property "Value" "VDD_3V3" (at 105.00 107.93 0) (effects (font (size 1.27 1.27))))
+    (instances (project "stm32_ism330_i2c_auto" (path "/e674da3a-2f6d-4486-8a4e-13712087fbce" (reference "#PWR004") (unit 1))))
+  )
+  (symbol (lib_id "power:VDD_3V3") (at 107.54 111.74 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (uuid 7ed8aba2-ec24-40dc-8acf-08e54ff4a1e9)
+    (property "Reference" "#PWR005" (at 107.54 113.01 0) (effects (font (size 1.27 1.27)) hide))
+    (property "Value" "VDD_3V3" (at 107.54 107.93 0) (effects (font (size 1.27 1.27))))
+    (instances (project "stm32_ism330_i2c_auto" (path "/83607f28-723c-4db1-b8c2-4cddc55ad406" (reference "#PWR005") (unit 1))))
+  )
+  (symbol (lib_id "power:VDD_3V3") (at 110.08 111.74 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (uuid 8a84e784-f35d-4cb0-ad72-7e783b41e07a)
+    (property "Reference" "#PWR006" (at 110.08 113.01 0) (effects (font (size 1.27 1.27)) hide))
+    (property "Value" "VDD_3V3" (at 110.08 107.93 0) (effects (font (size 1.27 1.27))))
+    (instances (project "stm32_ism330_i2c_auto" (path "/aa679ad8-efbd-4938-a141-591537c80013" (reference "#PWR006") (unit 1))))
+  )
+  (symbol (lib_id "power:GND") (at 105.00 205.72 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (uuid 7e314374-b85c-4d2e-b7df-e638fca3b2bb)
+    (property "Reference" "#PWR007" (at 105.00 206.99 0) (effects (font (size 1.27 1.27)) hide))
+    (property "Value" "GND" (at 105.00 209.53 0) (effects (font (size 1.27 1.27))))
+    (instances (project "stm32_ism330_i2c_auto" (path "/462a22ca-05f4-4181-abd1-39f404c2240e" (reference "#PWR007") (unit 1))))
+  )
+  (symbol (lib_id "power:PWR_FLAG") (at 99.00 205.72 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (uuid 1ecb9303-54a2-4c97-94f1-d95bdda5cd7d)
+    (property "Reference" "#PWR008" (at 99.00 207.72 0) (effects (font (size 1.27 1.27)) hide))
+    (property "Value" "PWR_FLAG" (at 99.00 203.72 0) (effects (font (size 1.27 1.27))))
+    (instances (project "stm32_ism330_i2c_auto" (path "/66587883-e3ee-4548-8986-25e506695235" (reference "#PWR008") (unit 1))))
+  )
+  (symbol (lib_id "power:GND") (at 105.00 205.72 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (uuid eda20e78-7f28-47ae-9f0d-4b082fa6d67d)
+    (property "Reference" "#PWR009" (at 105.00 206.99 0) (effects (font (size 1.27 1.27)) hide))
+    (property "Value" "GND" (at 105.00 209.53 0) (effects (font (size 1.27 1.27))))
+    (instances (project "stm32_ism330_i2c_auto" (path "/fba60265-fdad-4291-bedb-2e9f20b56d86" (reference "#PWR009") (unit 1))))
+  )
+  (symbol (lib_id "power:GND") (at 105.00 205.72 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (uuid 413081f1-943b-4f15-8f7b-a8955087e244)
+    (property "Reference" "#PWR010" (at 105.00 206.99 0) (effects (font (size 1.27 1.27)) hide))
+    (property "Value" "GND" (at 105.00 209.53 0) (effects (font (size 1.27 1.27))))
+    (instances (project "stm32_ism330_i2c_auto" (path "/b5eec340-d806-4592-aa39-cb32b8e3bc45" (reference "#PWR010") (unit 1))))
+  )
+  (symbol (lib_id "power:GND") (at 105.00 205.72 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (uuid a7b54e20-fdd9-411a-b1a8-3750484bb11b)
+    (property "Reference" "#PWR011" (at 105.00 206.99 0) (effects (font (size 1.27 1.27)) hide))
+    (property "Value" "GND" (at 105.00 209.53 0) (effects (font (size 1.27 1.27))))
+    (instances (project "stm32_ism330_i2c_auto" (path "/0213eb02-817e-4e7e-a545-41709f6eeeae" (reference "#PWR011") (unit 1))))
+  )
+  (symbol (lib_id "power:GND") (at 107.54 205.72 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (uuid e7d228ef-6951-423d-9d02-247b7f1141c6)
+    (property "Reference" "#PWR012" (at 107.54 206.99 0) (effects (font (size 1.27 1.27)) hide))
+    (property "Value" "GND" (at 107.54 209.53 0) (effects (font (size 1.27 1.27))))
+    (instances (project "stm32_ism330_i2c_auto" (path "/74a775be-c365-4d63-b4cf-723708071474" (reference "#PWR012") (unit 1))))
+  )
+  (symbol (lib_id "power:VDD_3V3") (at 87.22 129.52 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (uuid f11d79d0-a179-42c0-91e8-0b45f39d3354)
+    (property "Reference" "#PWR013" (at 87.22 130.79 0) (effects (font (size 1.27 1.27)) hide))
+    (property "Value" "VDD_3V3" (at 87.22 125.71 0) (effects (font (size 1.27 1.27))))
+    (instances (project "stm32_ism330_i2c_auto" (path "/27d3056f-6d40-4885-8a0c-f89b5df17982" (reference "#PWR013") (unit 1))))
+  )
+  (symbol (lib_id "power:VDD_3V3") (at 130.00 84.19 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (uuid d1af73be-0cc7-430f-af3a-68649451d7cb)
+    (property "Reference" "#PWR014" (at 130.00 85.46 0) (effects (font (size 1.27 1.27)) hide))
+    (property "Value" "VDD_3V3" (at 130.00 80.38 0) (effects (font (size 1.27 1.27))))
+    (instances (project "stm32_ism330_i2c_auto" (path "/1ceb6113-fedf-4067-bc00-161aeaa8f40c" (reference "#PWR014") (unit 1))))
+  )
+  (symbol (lib_id "power:GND") (at 130.00 91.81 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (uuid 3eab2630-fafe-418a-b2f6-6bf7c6c4e754)
+    (property "Reference" "#PWR015" (at 130.00 93.08 0) (effects (font (size 1.27 1.27)) hide))
+    (property "Value" "GND" (at 130.00 95.62 0) (effects (font (size 1.27 1.27))))
+    (instances (project "stm32_ism330_i2c_auto" (path "/17ca9a71-bf2d-47e8-864b-2294c1fda27d" (reference "#PWR015") (unit 1))))
+  )
+  (symbol (lib_id "power:VDD_3V3") (at 138.00 84.19 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (uuid 5c77a31a-a0b6-4e6b-a6ff-74afc0e805a4)
+    (property "Reference" "#PWR016" (at 138.00 85.46 0) (effects (font (size 1.27 1.27)) hide))
+    (property "Value" "VDD_3V3" (at 138.00 80.38 0) (effects (font (size 1.27 1.27))))
+    (instances (project "stm32_ism330_i2c_auto" (path "/dc057017-e7ce-4cac-a143-deff5577bcbc" (reference "#PWR016") (unit 1))))
+  )
+  (symbol (lib_id "power:GND") (at 138.00 91.81 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (uuid 15ce345a-7026-48ac-b97b-ec9045333b4e)
+    (property "Reference" "#PWR017" (at 138.00 93.08 0) (effects (font (size 1.27 1.27)) hide))
+    (property "Value" "GND" (at 138.00 95.62 0) (effects (font (size 1.27 1.27))))
+    (instances (project "stm32_ism330_i2c_auto" (path "/c38c812f-814c-4650-b82a-d71a5b38b24c" (reference "#PWR017") (unit 1))))
+  )
+  (symbol (lib_id "power:VDD_3V3") (at 146.00 84.19 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (uuid 7d14902a-3c0f-44f1-91e1-2dab9491b3dd)
+    (property "Reference" "#PWR018" (at 146.00 85.46 0) (effects (font (size 1.27 1.27)) hide))
+    (property "Value" "VDD_3V3" (at 146.00 80.38 0) (effects (font (size 1.27 1.27))))
+    (instances (project "stm32_ism330_i2c_auto" (path "/3e8ce772-86b9-4ab6-8d4b-aebf35cc9de3" (reference "#PWR018") (unit 1))))
+  )
+  (symbol (lib_id "power:GND") (at 146.00 91.81 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (uuid b6fbc76f-f84c-4972-b5b2-436ca4b0f7e5)
+    (property "Reference" "#PWR019" (at 146.00 93.08 0) (effects (font (size 1.27 1.27)) hide))
+    (property "Value" "GND" (at 146.00 95.62 0) (effects (font (size 1.27 1.27))))
+    (instances (project "stm32_ism330_i2c_auto" (path "/8c77db2f-84c8-4e8d-9f9d-d611a2c9d498" (reference "#PWR019") (unit 1))))
+  )
+  (symbol (lib_id "power:VDD_3V3") (at 154.00 84.19 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (uuid 6c68e474-1d0e-4a4f-b84e-e652b1d52254)
+    (property "Reference" "#PWR020" (at 154.00 85.46 0) (effects (font (size 1.27 1.27)) hide))
+    (property "Value" "VDD_3V3" (at 154.00 80.38 0) (effects (font (size 1.27 1.27))))
+    (instances (project "stm32_ism330_i2c_auto" (path "/11b4fbea-8a81-4988-9edc-bbc1d550473b" (reference "#PWR020") (unit 1))))
+  )
+  (symbol (lib_id "power:GND") (at 154.00 91.81 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (uuid df5672d8-d58e-46d2-a15b-ff1a9e8e67de)
+    (property "Reference" "#PWR021" (at 154.00 93.08 0) (effects (font (size 1.27 1.27)) hide))
+    (property "Value" "GND" (at 154.00 95.62 0) (effects (font (size 1.27 1.27))))
+    (instances (project "stm32_ism330_i2c_auto" (path "/811c014e-ffc6-4c46-b638-483289e0c869" (reference "#PWR021") (unit 1))))
+  )
+  (symbol (lib_id "power:GND") (at 73.41 119.36 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (uuid 7176cf50-cc56-4a7b-bc26-d7f6f7cad0e5)
+    (property "Reference" "#PWR022" (at 73.41 120.63 0) (effects (font (size 1.27 1.27)) hide))
+    (property "Value" "GND" (at 73.41 123.17 0) (effects (font (size 1.27 1.27))))
+    (instances (project "stm32_ism330_i2c_auto" (path "/675b9625-3860-4102-8002-ad75b722f9ee" (reference "#PWR022") (unit 1))))
+  )
+  (symbol (lib_id "power:GND") (at 73.41 190.48 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (uuid c451a9d7-3340-423a-99c8-e6c2131a3b6c)
+    (property "Reference" "#PWR023" (at 73.41 191.75 0) (effects (font (size 1.27 1.27)) hide))
+    (property "Value" "GND" (at 73.41 194.29 0) (effects (font (size 1.27 1.27))))
+    (instances (project "stm32_ism330_i2c_auto" (path "/8f8824fc-d8f2-4002-beae-f518a87be54a" (reference "#PWR023") (unit 1))))
+  )
+  (symbol (lib_id "power:GND") (at 73.41 124.44 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (uuid 583c16d2-48e1-4729-96e9-6e9ed0e70f38)
+    (property "Reference" "#PWR024" (at 73.41 125.71 0) (effects (font (size 1.27 1.27)) hide))
+    (property "Value" "GND" (at 73.41 128.25 0) (effects (font (size 1.27 1.27))))
+    (instances (project "stm32_ism330_i2c_auto" (path "/dfffb890-caa4-4f33-b4d5-7afbe502b94d" (reference "#PWR024") (unit 1))))
+  )
+  (symbol (lib_id "power:VDD_3V3") (at 142.78 158.97 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (uuid 00d9f7eb-6092-45f0-9f77-e2b44e57dca3)
+    (property "Reference" "#PWR025" (at 142.78 160.24 0) (effects (font (size 1.27 1.27)) hide))
+    (property "Value" "VDD_3V3" (at 142.78 155.16 0) (effects (font (size 1.27 1.27))))
+    (instances (project "stm32_ism330_i2c_auto" (path "/d9220cb6-d159-41fa-97ee-8970bdd02045" (reference "#PWR025") (unit 1))))
+  )
+  (symbol (lib_id "power:VDD_3V3") (at 152.78 161.51 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (uuid 72ed6236-a3e4-460e-8ff8-6ec2cf383d05)
+    (property "Reference" "#PWR026" (at 152.78 162.78 0) (effects (font (size 1.27 1.27)) hide))
+    (property "Value" "VDD_3V3" (at 152.78 157.70 0) (effects (font (size 1.27 1.27))))
+    (instances (project "stm32_ism330_i2c_auto" (path "/4200a64e-647e-40ea-b4af-eb42027e635f" (reference "#PWR026") (unit 1))))
+  )
+  (symbol (lib_id "power:VDD_3V3") (at 207.46 127.22 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (uuid 857cba84-a436-400b-93b0-e5c03098c48b)
+    (property "Reference" "#PWR027" (at 207.46 128.49 0) (effects (font (size 1.27 1.27)) hide))
+    (property "Value" "VDD_3V3" (at 207.46 123.41 0) (effects (font (size 1.27 1.27))))
+    (instances (project "stm32_ism330_i2c_auto" (path "/0b6dd02a-ecd5-4a99-b2e9-4fe959669af5" (reference "#PWR027") (unit 1))))
+  )
+  (symbol (lib_id "power:VDD_3V3") (at 210.00 127.22 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (uuid d4e9e322-5cc2-4ad0-b551-7fda0c1d1205)
+    (property "Reference" "#PWR028" (at 210.00 128.49 0) (effects (font (size 1.27 1.27)) hide))
+    (property "Value" "VDD_3V3" (at 210.00 123.41 0) (effects (font (size 1.27 1.27))))
+    (instances (project "stm32_ism330_i2c_auto" (path "/7e7573f1-658d-42b1-93a4-64dba2bf9fdf" (reference "#PWR028") (unit 1))))
+  )
+  (symbol (lib_id "power:GND") (at 210.00 162.78 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (uuid e46aad86-5e92-45ca-8bf3-f49d4ca8c283)
+    (property "Reference" "#PWR029" (at 210.00 164.05 0) (effects (font (size 1.27 1.27)) hide))
+    (property "Value" "GND" (at 210.00 166.59 0) (effects (font (size 1.27 1.27))))
+    (instances (project "stm32_ism330_i2c_auto" (path "/267478c0-887d-43f5-8ef4-b3f1d24a882d" (reference "#PWR029") (unit 1))))
+  )
+  (symbol (lib_id "power:VDD_3V3") (at 232.00 155.19 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (uuid 1191bf79-3304-4e5f-9df2-d0d49dba843a)
+    (property "Reference" "#PWR030" (at 232.00 156.46 0) (effects (font (size 1.27 1.27)) hide))
+    (property "Value" "VDD_3V3" (at 232.00 151.38 0) (effects (font (size 1.27 1.27))))
+    (instances (project "stm32_ism330_i2c_auto" (path "/c1b891fc-40f3-4e70-a326-27245c10cfe7" (reference "#PWR030") (unit 1))))
+  )
+  (symbol (lib_id "power:GND") (at 232.00 162.81 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (uuid 1fdbc072-6604-47c4-9e2b-43af35937f7e)
+    (property "Reference" "#PWR031" (at 232.00 164.08 0) (effects (font (size 1.27 1.27)) hide))
+    (property "Value" "GND" (at 232.00 166.62 0) (effects (font (size 1.27 1.27))))
+    (instances (project "stm32_ism330_i2c_auto" (path "/dfc38d16-2620-44ae-87d6-a1d03abf8582" (reference "#PWR031") (unit 1))))
+  )
+  (symbol (lib_id "power:VDD_3V3") (at 240.00 155.19 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (uuid e26428db-031a-4573-a8eb-44ccce8ff43d)
+    (property "Reference" "#PWR032" (at 240.00 156.46 0) (effects (font (size 1.27 1.27)) hide))
+    (property "Value" "VDD_3V3" (at 240.00 151.38 0) (effects (font (size 1.27 1.27))))
+    (instances (project "stm32_ism330_i2c_auto" (path "/3027bea9-b3bd-42a0-8cdc-6e96c88c5e7d" (reference "#PWR032") (unit 1))))
+  )
+  (symbol (lib_id "power:GND") (at 240.00 162.81 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (uuid 1b08200a-f3b3-41a6-be50-dc7f3b521e55)
+    (property "Reference" "#PWR033" (at 240.00 164.08 0) (effects (font (size 1.27 1.27)) hide))
+    (property "Value" "GND" (at 240.00 166.62 0) (effects (font (size 1.27 1.27))))
+    (instances (project "stm32_ism330_i2c_auto" (path "/23745faa-5b55-4a41-8dc0-d7b6f2cf6f25" (reference "#PWR033") (unit 1))))
+  )
+  (symbol (lib_id "power:VDD_3V3") (at 186.03 145.00 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (uuid c248ef02-447b-4224-b833-5c31a61a6691)
+    (property "Reference" "#PWR034" (at 186.03 146.27 0) (effects (font (size 1.27 1.27)) hide))
+    (property "Value" "VDD_3V3" (at 186.03 141.19 0) (effects (font (size 1.27 1.27))))
+    (instances (project "stm32_ism330_i2c_auto" (path "/478f2348-4fdf-48bf-bd5c-3e009fed0980" (reference "#PWR034") (unit 1))))
+  )
+  (symbol (lib_id "power:GND") (at 186.03 139.92 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (uuid e4fda432-6e20-4ee9-a822-892dc3941aea)
+    (property "Reference" "#PWR035" (at 186.03 141.19 0) (effects (font (size 1.27 1.27)) hide))
+    (property "Value" "GND" (at 186.03 143.73 0) (effects (font (size 1.27 1.27))))
+    (instances (project "stm32_ism330_i2c_auto" (path "/d8b678dc-db11-4fbe-bcc3-d71988a2caf6" (reference "#PWR035") (unit 1))))
+  )
+  (symbol (lib_id "power:GND") (at 206.35 139.92 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (uuid b80979c2-138e-4b91-8daf-f8ded31b2709)
+    (property "Reference" "#PWR036" (at 206.35 141.19 0) (effects (font (size 1.27 1.27)) hide))
+    (property "Value" "GND" (at 206.35 143.73 0) (effects (font (size 1.27 1.27))))
+    (instances (project "stm32_ism330_i2c_auto" (path "/de47a2fe-00da-4782-9a98-7af06e24e260" (reference "#PWR036") (unit 1))))
+  )
+  (symbol (lib_id "MCU_ST_STM32F4:STM32F401RETx") (at 105.00 160.00 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (uuid 20e0c27a-6399-4e2a-8b40-30e727be93c2)
+    (property "Reference" "U1" (at 107.00 158.00 0) (effects (font (size 1.27 1.27)) (justify left)))
+    (property "Value" "STM32F401R_D-E_Tx" (at 107.00 160.00 0) (effects (font (size 1.27 1.27)) (justify left)))
+    (property "Footprint" "Package_QFP:LQFP-64_10x10mm_P0.5mm" (at 105.00 160.00 0) (effects (font (size 1.27 1.27)) hide))
+    (property "Datasheet" "https://www.st.com/resource/en/datasheet/stm32f401re.pdf" (at 105.00 160.00 0) (effects (font (size 1.27 1.27)) hide))
+    (instances (project "stm32_ism330_i2c_auto" (path "/b0d663af-62b4-482b-8c03-5b47c818fe05" (reference "U1") (unit 1))))
+  )
+  (symbol (lib_id "Sensor_Motion:ISM330DHCX") (at 210.00 145.00 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (uuid 8f56e7a3-3387-49ac-b258-fda5429c410d)
+    (property "Reference" "U2" (at 212.00 143.00 0) (effects (font (size 1.27 1.27)) (justify left)))
+    (property "Value" "ISM330DHCX" (at 212.00 145.00 0) (effects (font (size 1.27 1.27)) (justify left)))
+    (property "Footprint" "Package_LGA:LGA-14_3x2.5mm_P0.5mm_LayoutBorder3x4y" (at 210.00 145.00 0) (effects (font (size 1.27 1.27)) hide))
+    (property "Datasheet" "https://www.st.com/resource/en/datasheet/ism330dhcx.pdf" (at 210.00 145.00 0) (effects (font (size 1.27 1.27)) hide))
+    (instances (project "stm32_ism330_i2c_auto" (path "/39550996-3a04-4239-ba93-694b32396cc1" (reference "U2") (unit 1))))
+  )
+  (symbol (lib_id "Device:C") (at 130.00 88.00 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (uuid 4c4a634c-664f-4100-8a5b-052b64b04287)
+    (property "Reference" "C1" (at 132.00 86.00 0) (effects (font (size 1.27 1.27)) (justify left)))
+    (property "Value" "100nF" (at 132.00 88.00 0) (effects (font (size 1.27 1.27)) (justify left)))
+    (property "Footprint" "Capacitor_SMD:C_0805_2012Metric" (at 130.00 88.00 0) (effects (font (size 1.27 1.27)) hide))
+    (property "Datasheet" "~" (at 130.00 88.00 0) (effects (font (size 1.27 1.27)) hide))
+    (instances (project "stm32_ism330_i2c_auto" (path "/c700398f-70be-4fef-b28a-a952b6189d51" (reference "C1") (unit 1))))
+  )
+  (symbol (lib_id "Device:C") (at 138.00 88.00 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (uuid d1fbf79d-c043-4d85-9e7f-3d46f410c70e)
+    (property "Reference" "C2" (at 140.00 86.00 0) (effects (font (size 1.27 1.27)) (justify left)))
+    (property "Value" "100nF" (at 140.00 88.00 0) (effects (font (size 1.27 1.27)) (justify left)))
+    (property "Footprint" "Capacitor_SMD:C_0805_2012Metric" (at 138.00 88.00 0) (effects (font (size 1.27 1.27)) hide))
+    (property "Datasheet" "~" (at 138.00 88.00 0) (effects (font (size 1.27 1.27)) hide))
+    (instances (project "stm32_ism330_i2c_auto" (path "/54935000-d955-4042-a312-05865e2540c1" (reference "C2") (unit 1))))
+  )
+  (symbol (lib_id "Device:C") (at 146.00 88.00 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (uuid b3a19c2b-aac1-4e4d-bca8-67ba4c404640)
+    (property "Reference" "C3" (at 148.00 86.00 0) (effects (font (size 1.27 1.27)) (justify left)))
+    (property "Value" "100nF" (at 148.00 88.00 0) (effects (font (size 1.27 1.27)) (justify left)))
+    (property "Footprint" "Capacitor_SMD:C_0805_2012Metric" (at 146.00 88.00 0) (effects (font (size 1.27 1.27)) hide))
+    (property "Datasheet" "~" (at 146.00 88.00 0) (effects (font (size 1.27 1.27)) hide))
+    (instances (project "stm32_ism330_i2c_auto" (path "/60944269-05ce-405c-8f86-995e725919fe" (reference "C3") (unit 1))))
+  )
+  (symbol (lib_id "Device:C") (at 154.00 88.00 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (uuid 4cad3352-c532-4558-94b7-4f17cdd6b87f)
+    (property "Reference" "C4" (at 156.00 86.00 0) (effects (font (size 1.27 1.27)) (justify left)))
+    (property "Value" "100nF" (at 156.00 88.00 0) (effects (font (size 1.27 1.27)) (justify left)))
+    (property "Footprint" "Capacitor_SMD:C_0805_2012Metric" (at 154.00 88.00 0) (effects (font (size 1.27 1.27)) hide))
+    (property "Datasheet" "~" (at 154.00 88.00 0) (effects (font (size 1.27 1.27)) hide))
+    (instances (project "stm32_ism330_i2c_auto" (path "/af1e6f74-40c8-4ef3-8940-ec3626ce40e7" (reference "C4") (unit 1))))
+  )
+  (symbol (lib_id "Device:C") (at 77.22 119.36 90) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (uuid d69410c0-759f-4610-ad96-4ee38b5c3837)
+    (property "Reference" "C5" (at 79.22 117.36 0) (effects (font (size 1.27 1.27)) (justify left)))
+    (property "Value" "100nF" (at 79.22 119.36 0) (effects (font (size 1.27 1.27)) (justify left)))
+    (property "Footprint" "Capacitor_SMD:C_0805_2012Metric" (at 77.22 119.36 0) (effects (font (size 1.27 1.27)) hide))
+    (property "Datasheet" "~" (at 77.22 119.36 0) (effects (font (size 1.27 1.27)) hide))
+    (instances (project "stm32_ism330_i2c_auto" (path "/ec7bdc04-a98e-4325-afb8-5aa5c92b5cb4" (reference "C5") (unit 1))))
+  )
+  (symbol (lib_id "Device:C") (at 77.22 190.48 90) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (uuid 1f1a3cd0-1250-4d6e-8df9-49f46df12767)
+    (property "Reference" "C6" (at 79.22 188.48 0) (effects (font (size 1.27 1.27)) (justify left)))
+    (property "Value" "1uF" (at 79.22 190.48 0) (effects (font (size 1.27 1.27)) (justify left)))
+    (property "Footprint" "Capacitor_SMD:C_0805_2012Metric" (at 77.22 190.48 0) (effects (font (size 1.27 1.27)) hide))
+    (property "Datasheet" "~" (at 77.22 190.48 0) (effects (font (size 1.27 1.27)) hide))
+    (instances (project "stm32_ism330_i2c_auto" (path "/e2716004-1c99-4667-9c2f-e4dbab50bfd8" (reference "C6") (unit 1))))
+  )
+  (symbol (lib_id "Device:R") (at 77.22 124.44 90) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (uuid e5464ca3-91db-4af1-be37-d82c7b2fae1d)
+    (property "Reference" "R1" (at 79.22 122.44 0) (effects (font (size 1.27 1.27)) (justify left)))
+    (property "Value" "10k" (at 79.22 124.44 0) (effects (font (size 1.27 1.27)) (justify left)))
+    (property "Footprint" "Resistor_SMD:R_0805_2012Metric" (at 77.22 124.44 0) (effects (font (size 1.27 1.27)) hide))
+    (property "Datasheet" "~" (at 77.22 124.44 0) (effects (font (size 1.27 1.27)) hide))
+    (instances (project "stm32_ism330_i2c_auto" (path "/9837f00f-7031-4ad0-a7f0-34b52ccd8cb0" (reference "R1") (unit 1))))
+  )
+  (symbol (lib_id "Device:R") (at 142.78 162.78 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (uuid a92dbd70-a727-4f9f-9a48-301ee2150153)
+    (property "Reference" "R2" (at 144.78 160.78 0) (effects (font (size 1.27 1.27)) (justify left)))
+    (property "Value" "4k7" (at 144.78 162.78 0) (effects (font (size 1.27 1.27)) (justify left)))
+    (property "Footprint" "Resistor_SMD:R_0805_2012Metric" (at 142.78 162.78 0) (effects (font (size 1.27 1.27)) hide))
+    (property "Datasheet" "~" (at 142.78 162.78 0) (effects (font (size 1.27 1.27)) hide))
+    (instances (project "stm32_ism330_i2c_auto" (path "/f059248e-fb1f-4c7d-9985-0cfe00bde802" (reference "R2") (unit 1))))
+  )
+  (symbol (lib_id "Device:R") (at 152.78 165.32 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (uuid 73d0cdfc-0211-409f-9201-a5d49f6ce8b9)
+    (property "Reference" "R3" (at 154.78 163.32 0) (effects (font (size 1.27 1.27)) (justify left)))
+    (property "Value" "4k7" (at 154.78 165.32 0) (effects (font (size 1.27 1.27)) (justify left)))
+    (property "Footprint" "Resistor_SMD:R_0805_2012Metric" (at 152.78 165.32 0) (effects (font (size 1.27 1.27)) hide))
+    (property "Datasheet" "~" (at 152.78 165.32 0) (effects (font (size 1.27 1.27)) hide))
+    (instances (project "stm32_ism330_i2c_auto" (path "/50c76179-4354-42c3-a30e-53c4caa0731c" (reference "R3") (unit 1))))
+  )
+  (symbol (lib_id "Device:C") (at 232.00 159.00 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (uuid f1a07a32-09e8-460a-8782-caa5c01ab07d)
+    (property "Reference" "C7" (at 234.00 157.00 0) (effects (font (size 1.27 1.27)) (justify left)))
+    (property "Value" "100nF" (at 234.00 159.00 0) (effects (font (size 1.27 1.27)) (justify left)))
+    (property "Footprint" "Capacitor_SMD:C_0805_2012Metric" (at 232.00 159.00 0) (effects (font (size 1.27 1.27)) hide))
+    (property "Datasheet" "~" (at 232.00 159.00 0) (effects (font (size 1.27 1.27)) hide))
+    (instances (project "stm32_ism330_i2c_auto" (path "/5b95b4ce-0c7a-49d9-bdac-93ee53a1851c" (reference "C7") (unit 1))))
+  )
+  (symbol (lib_id "Device:C") (at 240.00 159.00 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (uuid 970e7db0-8bbf-417d-ab0e-1c74060e249f)
+    (property "Reference" "C8" (at 242.00 157.00 0) (effects (font (size 1.27 1.27)) (justify left)))
+    (property "Value" "100nF" (at 242.00 159.00 0) (effects (font (size 1.27 1.27)) (justify left)))
+    (property "Footprint" "Capacitor_SMD:C_0805_2012Metric" (at 240.00 159.00 0) (effects (font (size 1.27 1.27)) hide))
+    (property "Datasheet" "~" (at 240.00 159.00 0) (effects (font (size 1.27 1.27)) hide))
+    (instances (project "stm32_ism330_i2c_auto" (path "/8622ceda-9d0e-49f6-ba5b-80fad3e9e9d2" (reference "C8") (unit 1))))
+  )
+  (symbol (lib_id "Device:R") (at 189.84 145.00 90) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (uuid be8e9cfd-50d4-4543-848c-7fcbf02d9399)
+    (property "Reference" "R4" (at 191.84 143.00 0) (effects (font (size 1.27 1.27)) (justify left)))
+    (property "Value" "10k" (at 191.84 145.00 0) (effects (font (size 1.27 1.27)) (justify left)))
+    (property "Footprint" "Resistor_SMD:R_0805_2012Metric" (at 189.84 145.00 0) (effects (font (size 1.27 1.27)) hide))
+    (property "Datasheet" "~" (at 189.84 145.00 0) (effects (font (size 1.27 1.27)) hide))
+    (instances (project "stm32_ism330_i2c_auto" (path "/d6114d86-baaa-4d84-a0b6-4b73c71747f0" (reference "R4") (unit 1))))
+  )
+  (symbol (lib_id "Device:R") (at 189.84 139.92 90) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (uuid 994f0c84-61e7-4e20-93b9-d03900fdf2fe)
+    (property "Reference" "R5" (at 191.84 137.92 0) (effects (font (size 1.27 1.27)) (justify left)))
+    (property "Value" "10k" (at 191.84 139.92 0) (effects (font (size 1.27 1.27)) (justify left)))
+    (property "Footprint" "Resistor_SMD:R_0805_2012Metric" (at 189.84 139.92 0) (effects (font (size 1.27 1.27)) hide))
+    (property "Datasheet" "~" (at 189.84 139.92 0) (effects (font (size 1.27 1.27)) hide))
+    (instances (project "stm32_ism330_i2c_auto" (path "/38a6b38d-e65a-4e52-ad23-ed4914627c2b" (reference "R5") (unit 1))))
+  )
+  (symbol (lib_id "Device:C") (at 210.16 139.92 90) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (uuid e558444d-0288-4e1d-abc2-be128b4ea452)
+    (property "Reference" "C9" (at 212.16 137.92 0) (effects (font (size 1.27 1.27)) (justify left)))
+    (property "Value" "100nF" (at 212.16 139.92 0) (effects (font (size 1.27 1.27)) (justify left)))
+    (property "Footprint" "Capacitor_SMD:C_0805_2012Metric" (at 210.16 139.92 0) (effects (font (size 1.27 1.27)) hide))
+    (property "Datasheet" "~" (at 210.16 139.92 0) (effects (font (size 1.27 1.27)) hide))
+    (instances (project "stm32_ism330_i2c_auto" (path "/4fd5cf29-b04f-4bc2-a147-a9ccea736528" (reference "C9") (unit 1))))
+  )
+)

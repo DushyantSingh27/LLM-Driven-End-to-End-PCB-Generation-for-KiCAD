@@ -1,0 +1,61 @@
+{
+  "header": {
+    "app": "KiCad Schematic Editor",
+    "version": 1
+  },
+  "board": {
+    "3dviewports": [],
+    "design_settings": {},
+    "layers": [],
+    "nets": []
+  },
+  "boards": [],
+  "cvpcb": {
+    "equivalence_files": []
+  },
+  "erc": {
+    "erc_exclusions": [],
+    "meta": {
+      "version": 0
+    },
+    "pin_map": [],
+    "rule_violations": []
+  },
+  "libraries": {
+    "pinned_footprint_libs": [],
+    "pinned_symbol_libs": []
+  },
+  "meta": {
+    "filename": "stm32_ism330_i2c.kicad_pro",
+    "version": 1
+  },
+  "net_settings": {
+    "classes": [],
+    "meta": {
+      "version": 3
+    },
+    "net_colors": {}
+  },
+  "pcbnew": {
+    "last_paths": {},
+    "page_layout_descr_file": ""
+  },
+  "schematic": {
+    "annotate_start_num": 0,
+    "drawing": {},
+    "legacy_lib_dir": "",
+    "legacy_lib_list": [],
+    "meta": {
+      "version": 1
+    },
+    "net_format_name": "",
+    "page_layout_descr_file": "",
+    "plot_directory": "",
+    "spice_adjust_passive_values": false,
+    "spice_current_sheet_as_root": false,
+    "subpart_first_choice": 65,
+    "subpart_id_separator": 0
+  },
+  "sheets": [],
+  "text_variables": {}
+}

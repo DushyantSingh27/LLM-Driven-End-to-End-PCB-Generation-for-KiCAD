@@ -1,0 +1,6 @@
+(sym_lib_table
+  (lib (name "MCU_ST_STM32F4") (type "KiCad") (uri "${KICAD9_SYMBOL_DIR}/MCU_ST_STM32F4.kicad_sym") (options "") (descr ""))
+  (lib (name "Sensor_Motion") (type "KiCad") (uri "${KICAD9_SYMBOL_DIR}/Sensor_Motion.kicad_sym") (options "") (descr ""))
+  (lib (name "Device") (type "KiCad") (uri "${KICAD9_SYMBOL_DIR}/Device.kicad_sym") (options "") (descr ""))
+  (lib (name "power") (type "KiCad") (uri "${KICAD9_SYMBOL_DIR}/power.kicad_sym") (options "") (descr ""))
+)
