@@ -57,6 +57,7 @@ class ResolvedSymbol:
     library_path: str
     symbol_text: str
     pin_count: int
+    footprint: Optional[str] = None
     extends: Optional[str] = None
     _symbol_obj: object = field(default=None, repr=False)
 
@@ -113,12 +114,19 @@ class SymbolResolver:
         pin_count = sum(len(unit.pins) for unit in symbol.units)
         lib_nick = os.path.splitext(os.path.basename(lib_path))[0]
 
+        footprint = None
+        for _p in symbol.properties:
+            if _p.key == "Footprint":
+                footprint = _p.value or None
+                break
+
         resolved = ResolvedSymbol(
             component_name=component_name,
             library_nickname=lib_nick,
             library_path=lib_path,
             symbol_text=symbol_text,
             pin_count=pin_count,
+            footprint=footprint,
             extends=symbol.extends,
             _symbol_obj=symbol,
         )

@@ -307,6 +307,10 @@ class SchematicBuilder:
         from kicad_symbol_parser import KicadSymbol
 
         resolved = resolve(component_name)
+        # Resolver's footprint is authoritative (from KiCad symbol); it wins
+        # over any caller/netlist value, which is hallucination-prone.
+        if getattr(resolved, "footprint", None):
+            footprint = resolved.footprint
         sym = KicadSymbol.from_kiutils(
             resolved._symbol_obj, resolved.library_nickname,
             lib_path=resolved.library_path
