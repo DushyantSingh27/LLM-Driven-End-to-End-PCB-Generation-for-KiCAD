@@ -345,3 +345,19 @@ class SchematicBuilder:
             "used_pins": set()
         }
         return ref
+
+
+    def save_to_folder(self, circuit_name, output_root):
+        """Write the schematic into a dedicated per-generation folder.
+
+        Creates output_root/circuit_name/ and writes circuit_name.kicad_sch
+        there. Returns the full path. The KiCad PROJECT file (.kicad_pro) is
+        deliberately NOT emitted here -- it is KiCad-owned; the user runs
+        File > New Project in this folder and KiCad generates it correctly.
+        """
+        import os
+        folder = os.path.join(output_root, circuit_name)
+        os.makedirs(folder, exist_ok=True)
+        sch_path = os.path.join(folder, f"{circuit_name}.kicad_sch")
+        self.save(sch_path)
+        return sch_path
