@@ -242,7 +242,7 @@ class SchematicBuilder:
             self.power_nets_used.add(net_name)
             flag_ref = self.next_pwr_ref()
             fu = gu(); fpu = gu()
-            flag_x, flag_y = x - 6, y
+            flag_x, flag_y = x - 6.35, y   # 5 grid units (1.27mm) -> on-grid, no endpoint_off_grid
             self.power_syms.append(f'''  (symbol (lib_id "power:PWR_FLAG") (at {flag_x:.2f} {flag_y:.2f} 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (uuid {fu})
     (property "Reference" "{flag_ref}" (at {flag_x:.2f} {flag_y+2:.2f} 0) (effects (font (size 1.27 1.27)) hide))
