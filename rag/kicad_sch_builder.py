@@ -109,11 +109,19 @@ class SchematicBuilder:
         self._ref_counters = {}
         self._pwr_counter = 0
 
-        self.lib_symbols["Device:R"] = R_SYM
-        self.lib_symbols["Device:C"] = C_SYM
+        from symbol_resolver import resolve_kicad_symbol_dir
+        import os as _os
+        _symdir = resolve_kicad_symbol_dir()
+        _dev = _os.path.join(_symdir, "Device.kicad_sym")
+        _pwr = _os.path.join(_symdir, "power.kicad_sym")
+        # Authoritative sliced text so embedded copies byte-match KiCad's
+        # library (eliminates lib_symbol_mismatch). VDD_3V3 stays on VDD_SYM
+        # for now: KiCad's power lib has no "VDD_3V3" symbol (handled separately).
+        self.lib_symbols["Device:R"] = self._embed_from_library("Device:R", _dev, "R")
+        self.lib_symbols["Device:C"] = self._embed_from_library("Device:C", _dev, "C")
         self.lib_symbols["power:VDD_3V3"] = VDD_SYM
-        self.lib_symbols["power:GND"] = GND_SYM
-        self.lib_symbols["power:PWR_FLAG"] = PWRFLAG_SYM
+        self.lib_symbols["power:GND"] = self._embed_from_library("power:GND", _pwr, "GND")
+        self.lib_symbols["power:PWR_FLAG"] = self._embed_from_library("power:PWR_FLAG", _pwr, "PWR_FLAG")
 
     def next_ref(self, prefix):
         self._ref_counters[prefix] = self._ref_counters.get(prefix, 0) + 1
@@ -321,11 +329,9 @@ class SchematicBuilder:
             lib_id = f"{resolved.library_nickname}:{original_name}"
         value = value or original_name
 
-        raw = resolved.symbol_text
-        raw = raw.replace(f'(symbol "{original_name}"', f'(symbol "{lib_id}"')
-        component_only = lib_id.split(":")[-1]
-        raw = raw.replace(f'"{original_name}_0_1"', f'"{component_only}_0_1"')
-        raw = raw.replace(f'"{original_name}_1_1"', f'"{component_only}_1_1"')
+        # Embed authoritative sliced text (byte-matches KiCad library ->
+        # no lib_symbol_mismatch), via the shared general-rename helper.
+        raw = self._embed_from_library(lib_id, resolved.library_path, original_name)
         self.lib_symbols[lib_id] = raw
 
         u = gu(); pu = gu()
@@ -361,3 +367,23 @@ class SchematicBuilder:
         sch_path = os.path.join(folder, f"{circuit_name}.kicad_sch")
         self.save(sch_path)
         return sch_path
+
+
+    def _embed_from_library(self, lib_id, library_file, symbol_name):
+        """Return authoritative KiCad symbol text renamed to lib_id.
+        Slices the raw block from KiCad's library so the embedded copy
+        byte-matches the library (no lib_symbol_mismatch). Renames the
+        top-level symbol to lib_id and ALL sub-symbols (_N_M) generally."""
+        import re
+        from kicad_symbol_parser import _slice_symbol_block
+        raw = _slice_symbol_block(library_file, symbol_name)
+        if not raw:
+            raise KeyError(f"{symbol_name} not found in {library_file}")
+        component_only = lib_id.split(":")[-1]
+        raw = raw.replace(f'(symbol "{symbol_name}"', f'(symbol "{lib_id}"', 1)
+        raw = re.sub(
+            r'"' + re.escape(symbol_name) + r'(_\d+_\d+)"',
+            lambda m: f'"{component_only}{m.group(1)}"',
+            raw,
+        )
+        return raw
