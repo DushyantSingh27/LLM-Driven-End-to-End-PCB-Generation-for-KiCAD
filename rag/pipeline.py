@@ -12,8 +12,7 @@ import argparse
 import builtins
 
 RAG_DIR = os.path.expanduser("~/LLM_Driven_Schematic_Gen/rag")
-DEFAULT_OUTPUT_ROOT = os.path.expanduser(
-    "~/LLM_Driven_Schematic_Gen/rag/pcbgen_outputs")
+DEFAULT_OUTPUT_ROOT = "/mnt/c/Users/Dushyant/Desktop/pcbgen_outputs"
 
 
 def _load_circuit_from_netlist(netlist_path):
@@ -44,7 +43,7 @@ def _load_circuit_from_netlist(netlist_path):
 
 
 def run(circuit_name="generated", output_root=DEFAULT_OUTPUT_ROOT,
-        skip_generate=False, title="Auto Schematic",
+        skip_generate=False, title="SPI Auto Schematic",
         company="SRM Chip Design Club"):
     os.chdir(RAG_DIR)
     sys.path.insert(0, RAG_DIR)
