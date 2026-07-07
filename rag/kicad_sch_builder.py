@@ -119,7 +119,6 @@ class SchematicBuilder:
         # for now: KiCad's power lib has no "VDD_3V3" symbol (handled separately).
         self.lib_symbols["Device:R"] = self._embed_from_library("Device:R", _dev, "R")
         self.lib_symbols["Device:C"] = self._embed_from_library("Device:C", _dev, "C")
-        self.lib_symbols["power:VDD_3V3"] = VDD_SYM
         self.lib_symbols["power:GND"] = self._embed_from_library("power:GND", _pwr, "GND")
         self.lib_symbols["power:PWR_FLAG"] = self._embed_from_library("power:PWR_FLAG", _pwr, "PWR_FLAG")
 
@@ -230,8 +229,36 @@ class SchematicBuilder:
     def add_power(self, net_name, x, y):
         ref = self.next_pwr_ref()
         u = gu(); pu = gu()
-        vy = y - 3.81 if net_name == "VDD_3V3" else y + 3.81
-        self.power_syms.append(f'''  (symbol (lib_id "power:{net_name}") (at {x:.2f} {y:.2f} 0) (unit 1)
+        # Hybrid power-symbol sourcing (authoritative where KiCad has it,
+        # synthesize where it doesn't):
+        #  - rail EXISTS in KiCad power lib (GND, VDDA, +3V3-style): embed
+        #    KiCad's authoritative symbol under "power:" -> correct graphic,
+        #    no lib_symbol_issues (KiCad recognizes it).
+        #  - rail ABSENT (ST domains VDD12/VDDIO2/VDDUSB/VBAT/VREF_PLUS/
+        #    VDD_3V3): generate from +3V3 template under our custom nickname
+        #    so KiCad uses our embedded def and doesn't cross-check its lib.
+        # Power-symbol placement, evidence-based:
+        #  - rail EXISTS in KiCad power lib (GND, VDDA, +3V3...): place KiCad's
+        #    authoritative power symbol (registered nickname, correct graphic,
+        #    no warning).
+        #  - rail ABSENT (ST domains VDD12/VDDIO2/... ): do NOT place a power
+        #    symbol. KiCad cross-checks the on-disk "power" lib for any
+        #    "power:"-nicknamed symbol and would warn "not found"; an
+        #    unregistered custom nickname warns "library not configured". So we
+        #    rely on the net-label (placed per-pin by the emitter) + the
+        #    PWR_FLAG below (power_out -> satisfies ERC "driven"). Electrically
+        #    complete, ERC-clean, self-contained, no library warning.
+        import os as _os
+        from symbol_resolver import resolve_kicad_symbol_dir
+        from kicad_symbol_parser import _slice_symbol_block
+        _pwrlib = _os.path.join(resolve_kicad_symbol_dir(), "power.kicad_sym")
+        if _slice_symbol_block(_pwrlib, net_name):
+            pwr_lib_id = f"power:{net_name}"
+            if pwr_lib_id not in self.lib_symbols:
+                self.lib_symbols[pwr_lib_id] = self._embed_from_library(
+                    pwr_lib_id, _pwrlib, net_name)
+            vy = y + 3.81
+            self.power_syms.append(f'''  (symbol (lib_id "{pwr_lib_id}") (at {x:.2f} {y:.2f} 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (uuid {u})
     (property "Reference" "{ref}" (at {x:.2f} {y+1.27:.2f} 0) (effects (font (size 1.27 1.27)) hide))
     (property "Value" "{net_name}" (at {x:.2f} {vy:.2f} 0) (effects (font (size 1.27 1.27))))
@@ -386,4 +413,28 @@ class SchematicBuilder:
             lambda m: f'"{component_only}{m.group(1)}"',
             raw,
         )
+        return raw
+
+
+    # Library nickname for pipeline-generated power symbols. Custom (not
+    # "power") so KiCad does not cross-check against its built-in power lib
+    # for our non-standard ST rail names (VDD12, VDDIO2, VDDUSB, ...).
+    _POWER_LIB = "PCBSchemaGen_power"
+
+    def _make_power_symbol(self, rail_name, lib_id):
+        """Generate a valid new-format KiCad power symbol for ANY rail name by
+        slicing KiCad's authoritative +3V3 power symbol as a structural
+        template and renaming it. Returns embeddable lib_symbols text."""
+        import re, os as _os
+        from symbol_resolver import resolve_kicad_symbol_dir
+        from kicad_symbol_parser import _slice_symbol_block
+        pwr_lib = _os.path.join(resolve_kicad_symbol_dir(), "power.kicad_sym")
+        raw = _slice_symbol_block(pwr_lib, "+3V3")
+        if not raw:
+            raise KeyError("+3V3 template not found in power.kicad_sym")
+        raw = raw.replace('(symbol "+3V3"', f'(symbol "{lib_id}"', 1)
+        raw = re.sub(r'"\+3V3(_\d+_\d+)"',
+                     lambda m: f'"{rail_name}{m.group(1)}"', raw)
+        raw = raw.replace('(property "Value" "+3V3"',
+                          f'(property "Value" "{rail_name}"')
         return raw
