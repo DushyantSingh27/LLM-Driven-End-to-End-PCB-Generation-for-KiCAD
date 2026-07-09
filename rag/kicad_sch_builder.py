@@ -101,6 +101,7 @@ class SchematicBuilder:
         self.ics = {}
         self.parts = []
         self.wires = []
+        self.junctions = []
         self.labels = []
         self.no_connects = []
         self.power_syms = []
@@ -286,6 +287,13 @@ class SchematicBuilder:
     def add_wire(self, x1, y1, x2, y2):
         self.wires.append(self._wire(x1, y1, x2, y2))
 
+    def add_junction(self, x, y):
+        """Explicit KiCad junction dot at a 3-way (or more) wire node, so
+        KiCad registers all meeting wires as electrically connected."""
+        self.junctions.append(
+            f'  (junction (at {x:.2f} {y:.2f}) (diameter 1.016) '
+            f'(color 0 0 0 0) (uuid {gu()}))')
+
     def add_label(self, name, x, y, angle=0):
         self.labels.append(
             f'  (label "{name}" (at {x:.2f} {y:.2f} {angle}) (fields_autoplaced) '
@@ -318,6 +326,7 @@ class SchematicBuilder:
             out.append(f'    {sym_text}')
         out.append('  )')
         out.extend(self.wires)
+        out.extend(self.junctions)
         out.extend(self.no_connects)
         out.extend(self.labels)
         out.extend(self.power_syms)
