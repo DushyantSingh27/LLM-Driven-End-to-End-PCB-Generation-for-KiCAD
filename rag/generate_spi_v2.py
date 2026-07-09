@@ -59,10 +59,10 @@ def format_pin_inventory(name, symbol_name, pins):
 def get_rag_context():
     ef = embedding_functions.SentenceTransformerEmbeddingFunction(model_name="all-MiniLM-L6-v2")
     client = chromadb.PersistentClient(path=CHROMA_DIR)
-    col = client.get_collection("st_datasheets", embedding_function=ef)
+    col = client.get_collection("st_datasheets_v2", embedding_function=ef)
     out = {"STM32L476JG": [], "LSM6DSM": []}
     for comp, q in RAG_QUERIES:
-        res = col.query(query_texts=[q], n_results=1, where={"component": comp})
+        res = col.query(query_texts=[q], n_results=2, where={"component": comp})
         for doc in res["documents"][0]:
             if doc not in out[comp]:
                 out[comp].append(doc)
