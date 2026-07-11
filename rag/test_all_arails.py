@@ -42,9 +42,11 @@ for r in rails:
     capx = snap(r[5] - CAP_OFFSET)
     assert capx not in junction_xs, f"{r[2]} cap_x={capx} lands on a junction! merge risk"
 
-def build_tjunction(pin_x, pin_y, stack_x, rail, cval):
+def build_tjunction(pin_x, pin_y, stack_x, rail, cval, step_idx=0):
     stepped = abs(stack_x - pin_x) > 0.01
-    step_up_y = snap(pin_y - 5.08)
+    # Each STEPPED rail gets its OWN horizontal jog track. Two jogs at the same
+    # y overlap in x and fuse the rails (KiCad sees one wire) -> stagger them.
+    step_up_y = snap(pin_y - 5.08 + step_idx * 2.54)
     jy = snap(pin_y - 19.05)
     pwry = snap(pin_y - 24.13)
     if stepped:
@@ -67,8 +69,13 @@ def build_tjunction(pin_x, pin_y, stack_x, rail, cval):
     b.add_wire(cbot[0], cbot[1], cbot[0], gnd_y)
     b.add_power("GND", cbot[0], gnd_y)
 
+step_idx = 0
 for pin_x, pin_y, rail, pin, cval, stack_x in rails:
-    build_tjunction(pin_x, pin_y, stack_x, rail, cval)
+    is_stepped = abs(stack_x - pin_x) > 0.01
+    build_tjunction(pin_x, pin_y, stack_x, rail, cval,
+                    step_idx=step_idx if is_stepped else 0)
+    if is_stepped:
+        step_idx += 1
     if "U1" in b.ics and "used_pins" in b.ics["U1"]:
         b.ics["U1"]["used_pins"].add(pin)
     print(f"{rail:<10} pin={pin} stack_x={stack_x:.2f} cap_x={snap(stack_x-CAP_OFFSET):.2f} cap={cval}")
