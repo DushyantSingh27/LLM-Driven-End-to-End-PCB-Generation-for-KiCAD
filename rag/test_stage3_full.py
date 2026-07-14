@@ -48,9 +48,24 @@ jx = {r[5] for r in rails}
 for r in rails:
     assert snap(r[5] - CAP_OFF) not in jx, f"{r[2]} cap collides with a junction"
 
-def t_junction(pin_x, pin_y, stack_x, rail, cval, step_idx=0):
+def pin_edge(ref, num):
+    """Which edge of the symbol this pin sits on. The stack MUST route OUTWARD,
+    perpendicular to that edge -- routing 'up' from a LEFT-edge pin runs the
+    wire along the pin column and shorts every pin above it (this is exactly how
+    VREF_PLUS silently shorted NRST and BOOT0)."""
+    pd = comps[ref]["pins"][num]
+    lx, ly = pd["x"], pd["y"]
+    xs = [p["x"] for p in comps[ref]["pins"].values()]
+    ys = [p["y"] for p in comps[ref]["pins"].values()]
+    hw, hh = max(abs(min(xs)), abs(max(xs))), max(abs(min(ys)), abs(max(ys)))
+    if abs(abs(lx) - hw) < 0.01: return "LEFT" if lx < 0 else "RIGHT"
+    if abs(abs(ly) - hh) < 0.01: return "TOP" if ly > 0 else "BOTTOM"
+    return "TOP"
+
+def t_junction_top(pin_x, pin_y, stack_x, rail, cval, step_idx=0):
+    """TOP-edge pin: stack rises upward into free space above the IC."""
     stepped = abs(stack_x - pin_x) > 0.01
-    step_y = snap(pin_y - 5.08 + step_idx * 2.54)   # own jog track per stepped rail
+    step_y = snap(pin_y - 5.08 + step_idx * 2.54)
     jy   = snap(pin_y - 19.05)
     pwry = snap(pin_y - 24.13)
     if stepped:
@@ -61,19 +76,43 @@ def t_junction(pin_x, pin_y, stack_x, rail, cval, step_idx=0):
         b.add_wire(pin_x, pin_y, stack_x, jy)
     b.add_wire(stack_x, jy, stack_x, pwry)
     b.add_junction(stack_x, jy)
-    b.add_label(rail, stack_x, snap(jy - 2.54))       # names the rail net
+    b.add_label(rail, stack_x, snap(jy - 2.54))
     capx = snap(stack_x - CAP_OFF)
     cref, ctop, cbot = b.add_capacitor(cval, capx, snap(jy + 3.81), rot=0)
-    b.add_wire(ctop[0], ctop[1], stack_x, jy)          # cap taps the junction
+    b.add_wire(ctop[0], ctop[1], stack_x, jy)
     b.add_power(rail, stack_x, pwry)
     gy = snap(cbot[1] + 2.54)
     b.add_wire(cbot[0], cbot[1], cbot[0], gy)
     b.add_power("GND", cbot[0], gy)
 
+def t_junction_left(pin_x, pin_y, rail, cval, out=10.16):
+    """LEFT-edge pin: stack routes LEFTWARD (outward), never up the pin column.
+    Junction sits outboard; cap hangs BELOW it; power symbol continues left."""
+    jx   = snap(pin_x - out)
+    pwrx = snap(jx - 5.08)
+    b.add_wire(pin_x, pin_y, jx, pin_y)          # outward, horizontal
+    b.add_wire(jx, pin_y, pwrx, pin_y)           # on to the power symbol
+    b.add_junction(jx, pin_y)
+    b.add_label(rail, snap(jx - 2.54), pin_y)
+    capy = snap(pin_y + 6.35)                    # cap BELOW the junction
+    cref, ctop, cbot = b.add_capacitor(cval, jx, capy, rot=0)
+    b.add_wire(ctop[0], ctop[1], jx, pin_y)      # cap taps junction from below
+    b.add_power(rail, pwrx, pin_y)
+    gy = snap(cbot[1] + 2.54)
+    b.add_wire(cbot[0], cbot[1], cbot[0], gy)
+    b.add_power("GND", cbot[0], gy)
+
+def t_junction(pin_x, pin_y, stack_x, rail, cval, step_idx=0, edge="TOP"):
+    if edge == "LEFT":
+        t_junction_left(pin_x, pin_y, rail, cval)
+    else:
+        t_junction_top(pin_x, pin_y, stack_x, rail, cval, step_idx)
+
 si = 0
 for pin_x, pin_y, rail, pin, cval, stack_x in rails:
     stepped = abs(stack_x - pin_x) > 0.01
-    t_junction(pin_x, pin_y, stack_x, rail, cval, si if stepped else 0)
+    t_junction(pin_x, pin_y, stack_x, rail, cval, si if stepped else 0,
+               edge=pin_edge("U1", pin))
     if stepped: si += 1
     b.ics["U1"]["used_pins"].add(pin)
     print(f"WIRED   {rail:<10} pin={pin} stack_x={stack_x:.2f}")
