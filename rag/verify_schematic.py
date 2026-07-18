@@ -90,6 +90,17 @@ def _component_at(uf, wires, px, py):
 
 
 def verify(sch_path, components, placement):
+    """Compare drawn connectivity against the netlist spec.
+
+    Connection model (matches how KiCad forms nets):
+      * wires connect their two endpoints;
+      * a label or power symbol AT a point names the net at that point --
+        whether the point is on a wire OR on a bare pin;
+      * two pins at the SAME coordinate are the same node (stacked power pins,
+        and any co-located pins).
+    A net is a connected group of anchors; a pin belongs to the group its
+    coordinate falls in.
+    """
     txt = open(sch_path).read()
     wires = _parse_wires(txt)
     rep = Report()
@@ -98,43 +109,74 @@ def verify(sch_path, components, placement):
     for x1, y1, x2, y2 in wires:
         uf.union((x1, y1), (x2, y2))
 
+    # every pin coordinate is an anchor; co-located pins union together
+    pin_at = defaultdict(list)                 # coord -> [(ref, num)]
+    for ref, comp in components.items():
+        if ref not in placement:
+            continue
+        icx, icy = placement[ref]
+        for num, pd in comp["pins"].items():
+            if pd.get("hidden"):
+                continue
+            p = (_r(icx + pd["x"]), _r(icy - pd["y"]))
+            uf.union(p, p)                     # ensure the node exists
+            pin_at[p].append((ref, num))
+    # a pin that lies mid-wire joins that wire's component
+    for p in list(pin_at):
+        c = _component_at(uf, wires, *p)
+        if c is not None:
+            uf.union(p, c)
+
+    # labels + power symbols name the net at their point (wire OR bare pin)
     comp_names = defaultdict(set)
+    def _anchor(x, y):
+        if uf.has((x, y)):
+            return uf.find((x, y))
+        return _component_at(uf, wires, x, y)   # snaps onto a wire if mid-span
     for name, x, y in _parse_labels(txt):
-        if not _on_wire(x, y, wires):
-            rep.dangling_labels.append((name, x, y)); continue
-        c = _component_at(uf, wires, x, y)
-        if c is not None: comp_names[c].add(name)
+        c = _anchor(x, y)
+        if c is None:
+            rep.dangling_labels.append((name, x, y))
+        else:
+            comp_names[c].add(name)
     for name, x, y in _parse_power_syms(txt):
-        c = _component_at(uf, wires, x, y)
+        c = _anchor(x, y)
         if c is None:
             for dy in (1.27, -1.27, 2.54, -2.54, 3.81, -3.81):
-                c = _component_at(uf, wires, x, _r(y+dy))
-                if c is not None: break
-        if c is not None: comp_names[c].add(name)
+                c = _anchor(x, _r(y + dy))
+                if c is not None:
+                    break
+        if c is not None:
+            comp_names[c].add(name)
 
+    # RAIL MERGE: one net carrying two different power-rail names.
+    # (Signal nets legitimately have one name; a power rail + its own name is
+    # fine; two DIFFERENT names on one net is the fault.)
     for c, names in comp_names.items():
         names = sorted(names)
         if len(names) > 1:
             for i in range(len(names)):
-                for j in range(i+1, len(names)):
+                for j in range(i + 1, len(names)):
                     rep.rail_merges.append((names[i], names[j]))
 
+    # every pin: drawn net must equal the netlist's net
     for ref, comp in components.items():
-        if ref not in placement: continue
+        if ref not in placement:
+            continue
         icx, icy = placement[ref]
         for num, pd in comp["pins"].items():
-            if pd.get("hidden"): continue
+            if pd.get("hidden"):
+                continue
             spec = pd.get("net")
-            px, py = _r(icx + pd["x"]), _r(icy - pd["y"])
-            c = _component_at(uf, wires, px, py)
+            p = (_r(icx + pd["x"]), _r(icy - pd["y"]))
+            c = uf.find(p) if uf.has(p) else None
             drawn = comp_names.get(c, set()) if c is not None else set()
             if spec is None:
                 for d in drawn:
                     rep.shorts.append((ref, num, d, "None (should float)"))
-            else:
-                if c is None:
-                    rep.missing.append((ref, num, spec))
-                elif drawn and spec not in drawn:
-                    for d in drawn:
-                        rep.shorts.append((ref, num, d, spec))
+            elif not drawn:
+                rep.missing.append((ref, num, spec))
+            elif spec not in drawn:
+                for d in drawn:
+                    rep.shorts.append((ref, num, d, spec))
     return rep

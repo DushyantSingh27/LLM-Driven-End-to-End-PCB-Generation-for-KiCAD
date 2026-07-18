@@ -71,16 +71,55 @@ def run(circuit_name="generated", output_root=DEFAULT_OUTPUT_ROOT,
     print(">>> [4/6] Building component model...")
     comps = component_model.build_components(model)
     print(">>> [5/6] Placing components...")
-    pl = placement.place_components(comps)
+    # Decoupling caps belong to the POWER WIRING, not the passive grid: each is
+    # drawn inside a T-junction beside the pin it serves, or in the supply
+    # region for label-connected rails. Exclude them from the grid.
+    import power_wiring as pw
+    pcaps = placement.power_cap_refs(comps)          # {cap_ref: rail}
+    pl = placement.place_components(comps, skip=pcaps.keys())
+
+    # Split each rail's caps: ONE per wired pin goes in that pin's T-junction;
+    # every surplus cap (and every cap of a LABELED rail) goes to the supply
+    # region, connected by net-label.
+    rail_caps = {}
+    for cref, rail in pcaps.items():
+        rail_caps.setdefault(rail, []).append(
+            (cref, comps[cref].get("value") or "100nF"))
+    for rail in rail_caps:
+        rail_caps[rail].sort()
+
+    wired_pin_count = {}
+    for ref, comp in comps.items():
+        if comp["kind"] != "ic":
+            continue
+        rails = pw.supply_rails(comp)
+        wired, _labeled = pw.decide(comp, pl[ref], rails)
+        for rail, stacks in wired.items():
+            wired_pin_count[rail] = wired_pin_count.get(rail, 0) + len(stacks)
+
+    cap_values, region_cap_list = {}, []
+    for rail, caps in rail_caps.items():
+        n_wired = wired_pin_count.get(rail, 0)
+        if n_wired:
+            cap_values[rail] = caps[0][1]            # the T-junction cap
+        # one cap per wired pin is consumed by the T-junctions; the rest go below
+        for _cref, val in caps[n_wired:]:
+            region_cap_list.append((rail, val))
+
     print(">>> [6/6] Emitting schematic + saving to folder...")
     builder = SchematicBuilder(title, company, project_name=circuit_name)
-    result = schematic_emitter.emit_schematic(comps, pl, model, builder)
+    result = schematic_emitter.emit_schematic(
+        comps, pl, model, builder,
+        cap_values=cap_values, region_cap_list=region_cap_list)
     builder.build()
     sch_path = builder.save_to_folder(circuit_name, output_root)
 
     print("\n=== DONE ===")
     print(f"components: {len(comps)}  labels: {result['labels_placed']}  "
           f"NCs: {result['nc_placed']}  power nets: {len(result['power_nets'])}")
+    print(f"power wiring: {result['wired_pins']} pins wired/labeled, "
+          f"labeled rails: {result['labeled_rails']}, "
+          f"region caps: {len(region_cap_list)}")
     print(f"schematic:  {sch_path}")
     return sch_path
 
