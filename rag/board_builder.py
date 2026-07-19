@@ -92,3 +92,49 @@ def place_all_grid(netlist_path, out_win_path, origin_mm=(50.0, 50.0),
     if not rc:
         raise RuntimeError("SaveBoard returned falsy rc")
     return board, comps
+
+
+def parse_netlist_nets(net_path):
+    """Parse [(netname, [(ref, pin), ...]), ...] from a kicadsexpr netlist.
+    Keys only on quoted fields; net headers and nodes are one per line
+    (verified structure). Fails loudly on a node outside any net."""
+    import re
+    nets = []
+    current = None
+    for ln in open(net_path, "r", encoding="utf-8").read().splitlines():
+        nm = re.search(r'\(net \(code "[^"]+"\) \(name "([^"]+)"\)', ln)
+        if nm:
+            current = (nm.group(1), [])
+            nets.append(current)
+            continue
+        nd = re.search(r'\(node \(ref "([^"]+)"\) \(pin "([^"]+)"\)', ln)
+        if nd:
+            if current is None:
+                raise RuntimeError("node line outside any net: %r" % ln)
+            current[1].append((nd.group(1), nd.group(2)))
+    return nets
+
+
+def bind_nets(board, nets):
+    """Create every net on the board and bind each (ref, pin) node to its pad.
+    Binds ALL pads sharing the pin name (multi-pad nets are legal in KiCad).
+    Returns (nets_created, pads_bound). Fails loudly on unknown ref/pin."""
+    import pcbnew
+    by_ref = {}
+    for fp in board.GetFootprints():
+        by_ref[fp.GetReference()] = fp
+    pads_bound = 0
+    for netname, members in nets:
+        net = pcbnew.NETINFO_ITEM(board, netname)
+        board.Add(net)
+        for ref, pin in members:
+            fp = by_ref.get(ref)
+            if fp is None:
+                raise RuntimeError("net %s: unknown ref %s" % (netname, ref))
+            hits = [p for p in fp.Pads() if p.GetName() == pin]
+            if not hits:
+                raise RuntimeError("net %s: %s has no pad named %r" % (netname, ref, pin))
+            for p in hits:
+                p.SetNet(net)
+                pads_bound += 1
+    return len(nets), pads_bound
