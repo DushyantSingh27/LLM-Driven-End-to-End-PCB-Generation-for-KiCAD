@@ -45,3 +45,50 @@ if __name__ == "__main__":
     fps = b2.GetFootprints()
     print("reload: n=", len(fps), "ref=", fps[0].GetReference(), "pads=", fps[0].GetPadCount())
     print("SELFCHECK", "PASS" if (len(fps)==1 and fps[0].GetPadCount()==72) else "FAIL")
+
+
+def parse_netlist_components(net_path):
+    """Parse (ref, lib, footprint_name) triples from a kicadsexpr netlist.
+    Relies on verified structure: '(footprint "Lib:Name")' is the line
+    immediately after '(comp (ref "X")'. Fails loudly on any deviation."""
+    import re
+    comps = []
+    lines = open(net_path, "r", encoding="utf-8").read().splitlines()
+    i = 0
+    while i < len(lines):
+        m = re.search(r'\(comp \(ref "([^"]+)"\)', lines[i])
+        if m:
+            ref = m.group(1)
+            # scan forward inside this comp block until footprint or next comp
+            full = None
+            j = i + 1
+            while j < len(lines) and '(comp (ref' not in lines[j]:
+                fm = re.search(r'\(footprint "([^"]+)"\)', lines[j])
+                if fm:
+                    full = fm.group(1)
+                    break
+                j += 1
+            if full is None:
+                raise RuntimeError("comp %s: no footprint before next comp" % ref)
+            if ":" not in full:
+                raise RuntimeError("comp %s: footprint %r has no Lib: prefix" % (ref, full))
+            lib, name = full.split(":", 1)
+            comps.append((ref, lib + ".pretty", name))
+        i += 1
+    return comps
+
+
+def place_all_grid(netlist_path, out_win_path, origin_mm=(50.0, 50.0),
+                   pitch_mm=10.0, cols=6):
+    """Stage-2 placement: put every netlist component on a dumb fixed-pitch
+    grid (distinct positions only - NOT real placement). Returns (board, comps)."""
+    comps = parse_netlist_components(netlist_path)
+    board = new_board()
+    for idx, (ref, lib, name) in enumerate(comps):
+        x = origin_mm[0] + (idx % cols) * pitch_mm
+        y = origin_mm[1] + (idx // cols) * pitch_mm
+        place_footprint(board, lib, name, ref, x, y)
+    rc = save_board(board, out_win_path)
+    if not rc:
+        raise RuntimeError("SaveBoard returned falsy rc")
+    return board, comps
