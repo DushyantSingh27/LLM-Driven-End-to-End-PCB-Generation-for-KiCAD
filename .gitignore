@@ -20,3 +20,12 @@ ENV/
 *.egg-info/
 dist/
 build/
+
+# --- session artifacts (schematic phase) ---
+*.bak
+*.erc
+*.log
+*:Zone.Identifier
+backups/
+# nested stale repo snapshot (kept on disk as archive, not tracked)
+/LLM_Driven_Schematic_Gen/
