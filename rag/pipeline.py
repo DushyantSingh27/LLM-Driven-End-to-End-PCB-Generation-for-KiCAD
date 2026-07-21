@@ -113,6 +113,26 @@ def run(circuit_name="generated", output_root=DEFAULT_OUTPUT_ROOT,
         cap_values=cap_values, region_cap_list=region_cap_list)
     builder.build()
     sch_path = builder.save_to_folder(circuit_name, output_root)
+    # --- Phase 2: layout (schematic -> netlist -> placed PCB) ---
+    pcb_path = None
+    try:
+        import subprocess
+        kcli = "/mnt/c/Program Files/KiCad/9.0/bin/kicad-cli.exe"
+        kpy = "/mnt/c/Program Files/KiCad/9.0/bin/python.exe"
+        def w(p):
+            return subprocess.run(["wslpath", "-w", p], capture_output=True,
+                                  text=True, check=True).stdout.strip()
+        net_path = sch_path.rsplit(".", 1)[0] + ".net"
+        pcb_path = sch_path.rsplit(".", 1)[0] + ".kicad_pcb"
+        print(">>> [7/8] Exporting netlist from verified schematic...")
+        subprocess.run([kcli, "sch", "export", "netlist",
+                        "--output", w(net_path), w(sch_path)], check=True)
+        print(">>> [8/8] Layout: place + legalize -> .kicad_pcb ...")
+        subprocess.run([kpy, w(os.path.join(RAG_DIR, "layout_pipeline.py")),
+                        w(net_path), w(pcb_path)], check=True)
+    except Exception as e:
+        print("!!! LAYOUT FAILED (schematic still delivered):", repr(e))
+        pcb_path = None
 
     print("\n=== DONE ===")
     print(f"components: {len(comps)}  labels: {result['labels_placed']}  "
@@ -121,6 +141,8 @@ def run(circuit_name="generated", output_root=DEFAULT_OUTPUT_ROOT,
           f"labeled rails: {result['labeled_rails']}, "
           f"region caps: {len(region_cap_list)}")
     print(f"schematic:  {sch_path}")
+    if pcb_path:
+        print(f"pcb:        {pcb_path}")
     return sch_path
 
 

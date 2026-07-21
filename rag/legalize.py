@@ -19,6 +19,11 @@ def courtyard_rect(fp):
 
 def legalize(board, fixed=("U1", "U2"), clear_mm=CLEAR_MM):
     fps = {f.GetReference(): f for f in board.GetFootprints()}
+    # Courtyard caches are NOT built on footprint-add; an in-memory board
+    # yields degenerate 0x0 courtyards (verified: all-pairs false collisions).
+    # Rebuild before trusting geometry. Verified fix: BuildCourtyardCaches().
+    for f in fps.values():
+        f.BuildCourtyardCaches()
     moved_total = {}
     history = []
     collisions = []
