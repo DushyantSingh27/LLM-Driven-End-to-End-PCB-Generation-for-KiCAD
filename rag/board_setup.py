@@ -24,6 +24,11 @@ def setup_board(board, outline_wh_mm, origin_mm=(20.0, 20.0),
     ds = board.GetDesignSettings()
     ds.SetCopperLayerCount(stackup["layers"])
     ds.SetBoardThickness(pcbnew.FromMM(stackup["thickness_mm"]))
+    # Default netclass clearance must match the fab floor: KiCad's stock
+    # 0.2mm default DRC-fails fine-pitch packages (WLCSP 0.4mm pitch has
+    # 0.175mm pad gaps). Verified route: m_NetSettings.GetDefaultNetclass().
+    ncdef = ds.m_NetSettings.GetDefaultNetclass()
+    ncdef.SetClearance(pcbnew.FromMM(fab["min_clearance_mm"]))
     ds.m_TrackMinWidth   = pcbnew.FromMM(fab["min_track_mm"])
     ds.m_MinClearance    = pcbnew.FromMM(fab["min_clearance_mm"])
     ds.m_ViasMinSize     = pcbnew.FromMM(fab["min_via_mm"])
