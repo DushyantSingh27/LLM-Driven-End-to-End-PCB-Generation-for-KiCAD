@@ -30,6 +30,8 @@ def place_footprint(board, lib, name, ref, x_mm, y_mm):
 
 def save_board(board, out_win_path):
     """Save board to a Windows-form path. Returns SaveBoard's rc."""
+    if isinstance(board, str) or not isinstance(out_win_path, str):
+        raise TypeError("save_board(board, path) - arguments look swapped")
     return pcbnew.SaveBoard(out_win_path, board)
 
 

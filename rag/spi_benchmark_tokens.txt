@@ -1,3 +1,4 @@
 2026-07-01T06:56:36	model=claude-sonnet-4-6	input=6396	output=3567	cost=$0.072693
 2026-07-03T11:38:26	v2	model=claude-sonnet-4-6	input=4151	output=3433	cost=$0.063948
 2026-07-03T11:53:48	v2	model=claude-sonnet-4-6	input=4164	output=2861	cost=$0.055407
+2026-07-21T21:48:56	v2	model=z-ai/glm-5.2	input=5755	output=1794	cost=$0.000000
