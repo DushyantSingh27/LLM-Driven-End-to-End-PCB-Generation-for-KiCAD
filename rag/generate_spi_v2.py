@@ -15,6 +15,12 @@ from kicad_symbol_parser import KicadSymbol
 
 CHROMA_DIR = os.path.expanduser("~/LLM_Driven_Schematic_Gen/rag/chroma_db")
 MODEL = "claude-sonnet-4-6"
+# Provider switch: "anthropic" (paid API) or "nvidia" (free NIM endpoint).
+# CONFIDENTIALITY RULE: only public-datasheet RAG content may enter prompts.
+# No ST-shared private material in CHROMA_DIR collections, ever.
+PROVIDER = "anthropic"
+NVIDIA_MODEL = "z-ai/glm-5.2"
+NVIDIA_BASE = "https://integrate.api.nvidia.com/v1"
 OUTPUT_PY = os.path.expanduser("~/LLM_Driven_Schematic_Gen/rag/lsm6dsm_stm32l476_spi_v2.py")
 TOKEN_LOG = os.path.expanduser("~/LLM_Driven_Schematic_Gen/rag/spi_benchmark_tokens.txt")
 
@@ -127,21 +133,50 @@ STRICT SKiDL RULES:
 
 def generate():
     prompt = build_prompt()
-    print(f"Model: {MODEL}")
+    print(f"Provider: {PROVIDER}  Model: {NVIDIA_MODEL if PROVIDER == 'nvidia' else MODEL}")
     print(f"Prompt length: {len(prompt)} chars")
     print("Generating (Approach 2: authoritative pins + RAG)...\n")
 
-    client = anthropic.Anthropic()
-    response = client.messages.create(
-        model=MODEL,
-        max_tokens=4000,
-        system=("You are a SKiDL Python code generator. Output ONLY valid Python. "
-                "Start with 'from skidl import *' and end with 'ERC()'. Use ONLY the "
-                "provided ball-designator pin strings - never invent pins, never use "
-                "integer indices, never index by pin name. No markdown, no prose."),
-        messages=[{"role": "user", "content": prompt}],
-    )
-    code = response.content[0].text
+    SYSTEM = ("You are a SKiDL Python code generator. Output ONLY valid Python. "
+              "Start with 'from skidl import *' and end with 'ERC()'. Use ONLY the "
+              "provided ball-designator pin strings - never invent pins, never use "
+              "integer indices, never index by pin name. No markdown, no prose.")
+    if PROVIDER == "anthropic":
+        client = anthropic.Anthropic()
+        response = client.messages.create(
+            model=MODEL, max_tokens=4000, system=SYSTEM,
+            messages=[{"role": "user", "content": prompt}],
+        )
+        code = response.content[0].text
+        it, ot = response.usage.input_tokens, response.usage.output_tokens
+        model_used = MODEL
+    elif PROVIDER == "nvidia":
+        import os
+        from openai import OpenAI
+        if not os.environ.get("NVIDIA_API_KEY"):
+            raise RuntimeError("NVIDIA_API_KEY not set")
+        client = OpenAI(base_url=NVIDIA_BASE, api_key=os.environ["NVIDIA_API_KEY"])
+        stream = client.chat.completions.create(
+            model=NVIDIA_MODEL, max_tokens=4000, temperature=0.2, seed=42,
+            stream=True, stream_options={"include_usage": True},
+            messages=[{"role": "system", "content": SYSTEM},
+                      {"role": "user", "content": prompt}],
+        )
+        parts, usage = [], None
+        for chunk in stream:
+            if getattr(chunk, "usage", None):
+                usage = chunk.usage
+            if chunk.choices and chunk.choices[0].delta and \
+                    chunk.choices[0].delta.content:
+                parts.append(chunk.choices[0].delta.content)
+        code = "".join(parts)
+        if usage:
+            it, ot = usage.prompt_tokens, usage.completion_tokens
+        else:  # estimate: ~4 chars/token, flagged by negative sign convention
+            it, ot = len(prompt) // 4, len(code) // 4
+        model_used = NVIDIA_MODEL
+    else:
+        raise ValueError("unknown PROVIDER: %r" % PROVIDER)
     if "```python" in code:
         code = code.split("```python")[1].split("```")[0].strip()
     elif "```" in code:
@@ -153,12 +188,12 @@ def generate():
         f.write(code)
     print(f"\nSaved to {OUTPUT_PY}")
 
-    it, ot = response.usage.input_tokens, response.usage.output_tokens
-    cost = it * 3.0 / 1_000_000 + ot * 15.0 / 1_000_000
+    cost = (it * 3.0 / 1_000_000 + ot * 15.0 / 1_000_000) \
+        if PROVIDER == "anthropic" else 0.0
     print(f"\n=== Tokens (SPI v2) ===\nInput: {it}  Output: {ot}  Cost: ${cost:.6f}")
     with open(TOKEN_LOG, "a") as f:
         ts = datetime.datetime.now().isoformat(timespec="seconds")
-        f.write(f"{ts}\tv2\tmodel={MODEL}\tinput={it}\toutput={ot}\tcost=${cost:.6f}\n")
+        f.write(f"{ts}\tv2\tmodel={model_used}\tinput={it}\toutput={ot}\tcost=${cost:.6f}\n")
 
 
 if __name__ == "__main__":
