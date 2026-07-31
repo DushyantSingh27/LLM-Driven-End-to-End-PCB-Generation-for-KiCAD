@@ -46,7 +46,11 @@ def add_plane(board, layer_id, netname, outline_mm, policy=PLANE_POLICY, priorit
     return z
 
 
-def pour_planes(board, outline_mm, planes=PLANES):
+def pour_planes(board, outline_mm, planes=None):
+    """planes: [(layer_id, netname)]. Defaults to PLANES only as a fallback;
+    callers should pass nets DERIVED via design_rules.plane_candidates()."""
+    if planes is None:
+        planes = PLANES
     """Add all planes, then run the filler. Returns [(netname, layer_id, area_mm2)]."""
     made = []
     for i, (layer_id, netname) in enumerate(planes):

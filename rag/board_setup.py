@@ -16,6 +16,13 @@ FAB_PROFILE_PCBPOWER = {
 # Stackup policy: fine-pitch area-array (<=0.5mm pitch) forces 4 layers
 STACKUP_POLICY = {"layers": 4, "thickness_mm": 1.6}
 
+# Inner copper layers declared as POWER planes, not signal. Verified: this
+# propagates into the Specctra DSN as "(type power)", which stops Freerouting
+# routing signal traces through the planes (observed: a 16mm /IMU_INT1 trace
+# cut through the GND plane on In1.Cu, violating plane integrity - ST item 12).
+# Layer ids verified by probe: In1=4, In2=6. LT_POWER = 1.
+PLANE_LAYERS = (pcbnew.In1_Cu, pcbnew.In2_Cu)
+
 
 def setup_board(board, outline_wh_mm, origin_mm=(20.0, 20.0),
                 fab=FAB_PROFILE_PCBPOWER, stackup=STACKUP_POLICY):
@@ -23,6 +30,8 @@ def setup_board(board, outline_wh_mm, origin_mm=(20.0, 20.0),
     outline_wh_mm: (width, height). Returns the PCB_SHAPE outline object."""
     ds = board.GetDesignSettings()
     ds.SetCopperLayerCount(stackup["layers"])
+    for _lid in PLANE_LAYERS:
+        board.SetLayerType(_lid, pcbnew.LT_POWER)
     ds.SetBoardThickness(pcbnew.FromMM(stackup["thickness_mm"]))
     # Default netclass clearance must match the fab floor: KiCad's stock
     # 0.2mm default DRC-fails fine-pitch packages (WLCSP 0.4mm pitch has

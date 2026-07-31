@@ -66,3 +66,26 @@ def resolve_path(win_path):
     if len(p) > 1 and p[1] == ":":
         p = "/mnt/" + p[0].lower() + p[2:]
     return p
+
+
+def parse_netlist_nets_meta(net_path):
+    """{netname: [(ref, pin, pinfunction, pintype), ...]} - carries the pin
+    semantics the design-rules resolver classifies on. Regex verified against
+    the real netlist. parse_netlist_nets() is left alone for its callers."""
+    import re
+    cur, nets = None, {}
+    for ln in open(net_path, "r", encoding="utf-8").read().splitlines():
+        m = re.search(r'\(net \(code "[^"]+"\) \(name "([^"]+)"\)', ln)
+        if m:
+            cur = m.group(1)
+            nets[cur] = []
+            continue
+        n = re.search(r'\(node \(ref "([^"]+)"\) \(pin "([^"]+)"\)(.*)', ln)
+        if n and cur is not None:
+            rest = n.group(3)
+            pf = re.search(r'\(pinfunction "([^"]+)"\)', rest)
+            pt = re.search(r'\(pintype "([^"]+)"\)', rest)
+            nets[cur].append((n.group(1), n.group(2),
+                              pf.group(1) if pf else None,
+                              pt.group(1) if pt else None))
+    return nets
