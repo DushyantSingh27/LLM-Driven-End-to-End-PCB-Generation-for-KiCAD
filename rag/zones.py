@@ -52,6 +52,16 @@ def pour_planes(board, outline_mm, planes=None):
     if planes is None:
         planes = PLANES
     """Add all planes, then run the filler. Returns [(netname, layer_id, area_mm2)]."""
+    # Idempotency: pouring onto a board that already has zones (e.g. re-pour
+    # after via stitching) must REPLACE, not duplicate. Verified failure:
+    # a second pour produced 4 zones on 2 layers.
+    existing = [z for z in board.Zones()
+                if z.GetLayer() in [l for l, _ in planes]]
+    for z in existing:
+        board.Remove(z)
+    if existing:
+        print("    (replaced %d existing zone(s))" % len(existing))
+
     made = []
     for i, (layer_id, netname) in enumerate(planes):
         z = add_plane(board, layer_id, netname, outline_mm, priority=i)
