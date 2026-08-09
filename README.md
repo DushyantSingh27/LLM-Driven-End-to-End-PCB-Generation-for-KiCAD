@@ -1,134 +1,113 @@
-# PCBSchemaGen
+# LLM Driven End-to-End PCB Generation for KiCad
 
-LLM-based PCB schematic generation with automated topology verification.
+A pipeline that turns a natural-language circuit description into an ERC-verified KiCad 9 schematic and then into a placed, poured and routed `.kicad_pcb` — with no manual steps in between.
 
-# Installation
+Design intent is guided by STMicroelectronics hardware design guidelines, with mentorship from ST engineers on layout practice. Manufacturability limits come from a fabricator's DFM specification. KiCad is treated as the single source of truth for every file format, and KiCad's own ERC and DRC verify the output independently of the code that produced it.
 
-PCBSchemaGen requires:
-- Python >= 3.10
-- KiCad 9 (with pcbnew Python bindings)
-- OpenAI-compatible API access
+![Routed board](docs/images/routed.png)
 
-## Step 1: Install KiCad 9
+---
 
-Follow the official KiCad installation guide for your platform:
+## Current status
 
-**https://www.kicad.org/download/**
+The benchmark circuit is an **STM32L476JGYxP** microcontroller with an **LSM6DSM** inertial sensor over SPI — 22 components, 68 nets, 126 pads, on a 4-layer board.
 
-After installation, verify KiCad and pcbnew:
-```bash
-kicad-cli --version
-python3 -c "import pcbnew; print(pcbnew.GetBuildVersion())"
-```
+| Measure | Result |
+|---|---|
+| Schematic ERC | 0 errors, 0 warnings |
+| Pads bound to correct nets | 126 / 126, verified after reload |
+| Courtyard overlaps | 0 |
+| Copper clearance violations | 0 |
+| Footprint errors | 0 |
+| Unconnected items | 10 (from 58 before routing) |
+| Routed copper | 105 traces, 44 vias |
+| Plane connections stitched | 38 / 41 |
 
-## Step 2: Install Python Dependencies
+Remaining DRC output is 10 silkscreen warnings (reference-designator positioning), deferred to a later pass.
 
-```bash
-pip install openai pandas skidl networkx cairosvg Pillow
-```
+---
 
-## Step 3: Environment Check
+## Pipeline
 
-```bash
-cd "sample design"
-XDG_DATA_HOME=$(pwd)/../.xdg python3 run_samples_test.py
-```
+![Pipeline](docs/images/pipeline.png)
 
-All 17 tasks should print `[PASS]`. If not, check your KiCad installation.
+The architecture rests on one separation, held throughout: **the language model decides what the circuit is; deterministic code decides what the files are.** The LLM never emits a coordinate, a trace width or a clearance. Conversely, no rule engine guesses which pin is a power pin — that comes from the netlist's own pin semantics.
 
-# Quick Start
+### Phase 1 — schematic
 
-```bash
-cd task
-XDG_DATA_HOME=$(pwd)/.. python3 run.py \
-  --task_id 1 \
-  --model gpt-4o \
-  --api_key "YOUR_API_KEY" \
-  --base_url https://openrouter.ai/api/v1
-```
+1. **Generation** — an LLM, grounded by retrieval over ST datasheets, writes the circuit as SKiDL code.
+2. **Parse and model** — components, pins and nets are built into a model, with authoritative pin data read from KiCad symbol libraries.
+3. **Emit** — a native `.kicad_sch` is written, with power rails auto-wired in ST's drawing style (T-junctions where they fit, net labels where crowded).
+4. **Verify twice** — an independent netlist-versus-drawing verifier (union-find over wire endpoints, labels and pin coordinates) runs alongside KiCad ERC.
 
-This generates a circuit for Task 1 (voltage divider).
+![Generated schematic](docs/images/schematic.png)
 
-# API Keys
+### Phase 2 — layout
 
-Any OpenAI-compatible API works. We recommend [OpenRouter](https://openrouter.ai):
-1. Create account at https://openrouter.ai
-2. Get API key from dashboard
-3. Use with `--base_url https://openrouter.ai/api/v1`
+5. **Netlist export** — taken from the *verified schematic*, so the board provably inherits checked connectivity.
+6. **Footprints and nets** — every footprint is loaded from KiCad's libraries and every pad bound to its net.
+7. **Board setup** — 4-layer stackup, board outline, and manufacturability floors. Inner layers are declared as power planes, which propagates into the Specctra DSN and stops the autorouter fragmenting them with signal traces.
+8. **Constructive placement** — the MCU is anchored, then each decoupling capacitor is placed on the same die edge as the power ball it serves, using ball coordinates measured from the real footprint. The sensor and its analog rails are zoned separately.
+9. **Legalization** — a force-directed pass resolves courtyard overlaps against KiCad's own geometry.
+10. **Design-rule resolver** — net classes are derived and rules resolved (below).
+11. **Via stitching** — plane-net pads are connected to their planes with a via and a connecting track.
+12. **Copper pours** — ground and power planes with thermal relief.
+13. **Autorouting** — Freerouting, driven headless: DSN out, SES back in.
+14. **Verify** — KiCad DRC.
 
-# Benchmark
+![Placed board](docs/images/placed.png)
 
-- **Task definitions**: `benchmark.tsv` (23 tasks across 3 difficulty levels)
-- **Reference designs**: `sample design/p*.py`
-- **Component library**: `component.json`, `kg_component.json`
-- **KiCad symbols/footprints**: `library/`
+---
 
-## Task Difficulty Levels
+## Design-rule resolution
 
-| Level | Tasks | Description |
-|-------|-------|-------------|
-| Easy | P1-P6 | Voltage dividers, LDOs, sensing circuits |
-| Medium | P7-P16 | Half-bridge stages, gate drivers, isolated DC-DC |
-| Hard | P17-P23 | Multi-switch converters (sync buck, DAB, LLC, 3-phase) |
+Rules are resolved in three tiers, and every resolved value records where it came from:
 
-# Example Output
+| Tier | Source | Status |
+|---|---|---|
+| Manufacturability floor | Fabricator DFM specification | Sourced |
+| Electrical requirement | IPC-2221 current-driven width | Formula verified; per-net current data not yet available |
+| Convention and policy | ST guidelines, house policy | Partly unsourced — flagged in code |
 
-The `example_output/` directory contains a successful run of Task 17 (Synchronous Buck Converter):
+Resolution is `max(fab floor, electrical requirement, practical minimum)`, and the provenance string on each value says which tier won. On the current benchmark every class resolves to the practical minimum, because the benchmark's currents are too small for the electrical tier to bind — the resolver reports this rather than implying the widths were engineered.
 
-| File | Description |
-|------|-------------|
-| `attempt_1_skidl.py` | LLM-generated SKiDL code |
-| `attempt_1.svg` | Circuit schematic visualization |
-| `task_17_stats.json` | Run statistics (tokens, time, status) |
-| `task_17_output.txt` | Full LLM output with chain-of-thought |
-| `extracted_task_17.*` | Final artifacts (netlist, KiCad project) |
+**Net classification is derived, not name-matched.** Classes come from `pinfunction` and `pintype` in the netlist, so a circuit whose nets are called `VSS`/`VDD` classifies identically to one using `GND`/`VDD_3V3`. This was verified against output from two different language models with incompatible naming conventions.
 
-# Project Structure
+---
 
-```
-PCBSchemaGen/
-├── task/
-│   ├── run.py                  # Single task runner
-│   ├── run_feedback_trials.py  # Batch experiments
-│   ├── topo/                   # Verification pipeline
-│   └── prompt_template*.md     # LLM prompts
-├── sample design/              # Ground truth implementations
-├── library/                    # KiCad symbols & footprints
-├── example_output/             # Example Task 17 output
-├── benchmark.tsv               # Task definitions
-├── component.json              # Component pin definitions
-└── kg_component.json           # Component constraints
-```
+## Requirements
 
-# Batch Experiments
+- WSL Ubuntu 22.04 (or Linux), Python 3.10
+- KiCad 9 — symbol and footprint libraries, plus its bundled Python for `pcbnew`
+- Freerouting 2.2.4 and a Java 25 runtime, for the routing stage
+- An API key for the generation stage
 
-To run multiple tasks with multiple trials:
+## Usage
 
 ```bash
-cd task
-XDG_DATA_HOME=$(pwd)/.. python3 run_feedback_trials.py \
-  --task-range 1-16 \
-  --trials 15 \
-  --model gpt-4o \
-  --api_key "YOUR_API_KEY" \
-  --base_url https://openrouter.ai/api/v1 \
-  --feedbacks full \
-  --parallel-threads 8
+source venv/bin/activate
+cd rag
+python3 pipeline.py --name my_board
 ```
 
-Results are saved to `task/feedback_runs/`.
+One command runs generation, schematic emission, verification, netlist export and layout. Outputs land in a folder containing the `.kicad_sch`, the `.net`, and the `.kicad_pcb` as a complete KiCad project.
 
-# Citation
+To reuse an existing netlist and skip the LLM call, add `--skip-generate`.
 
-If you find this work helpful, please cite our paper:
+---
 
-```bibtex
-@misc{zou2026pcbschemagen,
-      title={PCBSchemaGen: Constraint-Guided Schematic Design via LLM for Printed Circuit Boards (PCB)}, 
-      author={Huanghaohe Zou and Peng Han and Emad Nazerian and Alex Q. Huang},
-      year={2026},
-      eprint={2602.00510},
-      archivePrefix={arXiv},
-      primaryClass={cs.AI},
-      url={[https://arxiv.org/abs/2602.00510](https://arxiv.org/abs/2602.00510)}, 
-}
+## Limitations
+
+These are known and deliberate, not hidden:
+
+- **Three pads cannot be stitched to their planes.** On a 0.4 mm-pitch WLCSP, a through-via plus its connecting track physically cannot escape from an inner ball. The tool reports which pads failed rather than skipping them silently. Reaching them needs via-in-pad or microvias, neither of which is implemented.
+- **Ten connections remain unrouted**, all terminating on inner balls of the same package — the same escape-routing limit.
+- **Layer count is a constant, not a computed rule.** The 4-layer choice is correct for this package but is not yet derived from package pitch.
+- **Several placement roles are hardcoded** to this board's reference designators. A circuit with a different component roster would need the role-derivation work that the resolver already demonstrates for nets.
+- **The generation contract is implicit.** Downstream stages assume conventions that one model happened to satisfy; a second model's valid-but-different output broke them. A normalization stage is the fix.
+- **Some rule values are policy, not sourced** — notably a power-net clearance that costs two connections. These are marked in code rather than presented as engineering.
+- **Silkscreen positioning** is unaddressed; reference designators can overlap pads.
+
+## Roadmap
+
+Generalization of placement roles, a second benchmark on different parts, current-driven trace widths once per-net current data is available, and a datasheet-grounded functional check — the one class of error that neither ERC nor DRC can catch.
