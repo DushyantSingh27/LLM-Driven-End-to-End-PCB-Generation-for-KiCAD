@@ -43,12 +43,33 @@ CLASS_DEFAULT_CURRENT_A = {
 PRACTICAL_MIN_TRACK_MM = 0.15
 
 # Extra clearance by class (Tier 3 style policy, applied as a floor)
+# Clearance per class. All values are the fabricator floor: at 3.3V there is
+# no electrical clearance requirement anywhere near these numbers (creepage and
+# clearance bind at far higher potentials), so manufacturability IS the binding
+# constraint. An earlier POWER/ANALOG value of 0.15mm was invented margin and
+# was measured to cost four real connections (U2-2, U2-5, U2-6, U2-8) with no
+# source behind it. Raise these only from a sourced rule - a datasheet, a fab
+# spec, or a voltage calculation.
 CLASS_MIN_CLEARANCE_MM = {
     "GND":     0.09,
-    "POWER":   0.15,   # wider spacing on rails than on signals
-    "ANALOG":  0.15,
+    "POWER":   0.09,
+    "ANALOG":  0.09,
     "SIGNAL":  0.09,
 }
+
+
+def router_clearance_mm(clearance_mm, hole_clearance_mm, via_drill_mm,
+                        via_dia_mm):
+    """Clearance to hand an autorouter that only understands copper-to-copper.
+
+    KiCad enforces a separate hole-to-copper rule which the Specctra DSN does
+    not carry, so a router optimising to copper clearance alone produces hole
+    violations (measured: 7 after a routing import). Inflating the copper
+    clearance we export so that satisfying it also satisfies the hole rule:
+        hole_r + obs_r + hole_clearance  <=  via_r + obs_r + exported_clearance
+    which reduces to the expression below, independent of obstacle size."""
+    hole_r, via_r = via_drill_mm / 2.0, via_dia_mm / 2.0
+    return max(clearance_mm, hole_clearance_mm + hole_r - via_r)
 
 
 def ipc2221_width_mm(current_a, delta_t_c=DELTA_T_C,

@@ -11,6 +11,10 @@ PLANE_POLICY = {
     "thermal_gap_mm": 0.25,      # PCB Power spec
     "thermal_spoke_mm": 0.20,    # PCB Power spec
     "min_thickness_mm": 0.20,    # PCB Power copper-sliver floor
+    "clearance_mm": 0.09,        # fab floor. KiCad's default zone clearance is
+                                 # 0.5mm - 5.5x the floor, unsourced, and it
+                                 # generated false DRC violations against
+                                 # routed copper.
     "edge_pullback_mm": 0.30,    # PLACEHOLDER - unsourced, confirm with fab
 }
 
@@ -36,6 +40,7 @@ def add_plane(board, layer_id, netname, outline_mm, policy=PLANE_POLICY, priorit
     z.SetThermalReliefGap(pcbnew.FromMM(policy["thermal_gap_mm"]))
     z.SetThermalReliefSpokeWidth(pcbnew.FromMM(policy["thermal_spoke_mm"]))
     z.SetMinThickness(pcbnew.FromMM(policy["min_thickness_mm"]))
+    z.SetLocalClearance(pcbnew.FromMM(policy["clearance_mm"]))
     z.SetAssignedPriority(priority)
 
     o = z.Outline()

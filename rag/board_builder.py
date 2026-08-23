@@ -32,6 +32,16 @@ def save_board(board, out_win_path):
     """Save board to a Windows-form path. Returns SaveBoard's rc."""
     if isinstance(board, str) or not isinstance(out_win_path, str):
         raise TypeError("save_board(board, path) - arguments look swapped")
+    # KiCad 9 keeps NETCLASS DEFINITIONS in the .kicad_pro project file, not in
+    # the .kicad_pcb - and SaveBoard does NOT overwrite an existing project
+    # file. A stale .kicad_pro therefore silently overrides freshly computed
+    # design rules (measured: a board rebuilt with 0.09 clearance loaded back
+    # as 0.15 because its project file was three weeks old). Remove it so the
+    # save regenerates it from the board's current settings.
+    import os
+    pro = out_win_path.rsplit(".", 1)[0] + ".kicad_pro"
+    if os.path.exists(pro):
+        os.remove(pro)
     return pcbnew.SaveBoard(out_win_path, board)
 
 
