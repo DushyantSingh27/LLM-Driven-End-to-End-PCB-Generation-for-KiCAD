@@ -1,113 +1,417 @@
-# LLM Driven End-to-End PCB Generation for KiCad
+# LLM-Driven End-to-End PCB Generation for KiCad
 
-A pipeline that turns a natural-language circuit description into an ERC-verified KiCad 9 schematic and then into a placed, poured and routed `.kicad_pcb` — with no manual steps in between.
+Turn a natural-language circuit description into an **ERC-clean KiCad 9 schematic** and a **DRC-checked, routed PCB** — headless, no GUI step anywhere in the flow.
 
 Design intent is guided by STMicroelectronics hardware design guidelines, with mentorship from ST engineers on layout practice. Manufacturability limits come from a fabricator's DFM specification. KiCad is treated as the single source of truth for every file format, and KiCad's own ERC and DRC verify the output independently of the code that produced it.
 
 ![Routed board](docs/images/routed.png)
 
----
+```
+"STM32L476 talking to an LSM6DSM over SPI"
+        │
+        ├─ RAG (datasheets) + KiCad symbol resolver   →  authoritative pin table
+        ├─ LLM                                        →  SKiDL (Python)
+        ├─ SKiDL + ERC                                →  verified netlist
+        ├─ placement + ST-style power wiring          →  native .kicad_sch
+        ├─ footprints, rules, stitching, pours        →  .kicad_pcb
+        ├─ Freerouting (DSN → SES)                    →  routed board
+        └─ DRC + independent verifier                 →  report.json, exit 0 or 1
+```
 
-## Current status
-
-The benchmark circuit is an **STM32L476JGYxP** microcontroller with an **LSM6DSM** inertial sensor over SPI — 22 components, 68 nets, 126 pads, on a 4-layer board.
-
-| Measure | Result |
-|---|---|
-| Schematic ERC | 0 errors, 0 warnings |
-| Pads bound to correct nets | 126 / 126, verified after reload |
-| Courtyard overlaps | 0 |
-| Copper clearance violations | 0 |
-| Footprint errors | 0 |
-| Unconnected items | 10 (from 58 before routing) |
-| Routed copper | 105 traces, 44 vias |
-| Plane connections stitched | 38 / 41 |
-
-Remaining DRC output is 10 silkscreen warnings (reference-designator positioning), deferred to a later pass.
+**Repo:** `https://github.com/DushyantSingh27/LLM-Driven-End-to-End-PCB-Generation-for-KiCAD`
 
 ---
 
-## Pipeline
+## Table of contents
+
+1. [What you get](#1-what-you-get)
+2. [Requirements](#2-requirements)
+3. [Install](#3-install)
+4. [Configure](#4-configure--paths-you-must-change)
+5. [Run the benchmark](#5-run-the-benchmark)
+6. [Reading the output](#6-reading-the-output)
+7. [Generating **your own** circuit](#7-generating-your-own-circuit)
+8. [Troubleshooting](#8-troubleshooting)
+9. [Known limits](#9-known-limits)
+10. [Verified environment](#10-verified-environment)
+
+---
+
+## 1. What you get
 
 ![Pipeline](docs/images/pipeline.png)
 
 The architecture rests on one separation, held throughout: **the language model decides what the circuit is; deterministic code decides what the files are.** The LLM never emits a coordinate, a trace width or a clearance. Conversely, no rule engine guesses which pin is a power pin — that comes from the netlist's own pin semantics.
 
-### Phase 1 — schematic
+Running the benchmark end-to-end reproduces this, on an STM32L476JGYxP (WLCSP-72) + LSM6DSM (LGA-14) SPI board:
 
-1. **Generation** — an LLM, grounded by retrieval over ST datasheets, writes the circuit as SKiDL code.
-2. **Parse and model** — components, pins and nets are built into a model, with authoritative pin data read from KiCad symbol libraries.
-3. **Emit** — a native `.kicad_sch` is written, with power rails auto-wired in ST's drawing style (T-junctions where they fit, net labels where crowded).
-4. **Verify twice** — an independent netlist-versus-drawing verifier (union-find over wire endpoints, labels and pin coordinates) runs alongside KiCad ERC.
+| Result | Value |
+|---|---|
+| Components / nets / pads | 22 / 68 / 126 |
+| ERC errors | **0** |
+| Independent verifier | clean |
+| Pads bound to nets | 126 / 126 |
+| Courtyard violations | 0 |
+| Copper clearance violations | **0** |
+| Traces / vias after routing | 94 / 44 |
+| Unconnected items | 10 *(see [§9](#9-known-limits) — this is a deliberate trade)* |
+| Exit code | `1` (`INCOMPLETE`) |
+
+### Phase 1 output — the generated schematic
+
+Native `.kicad_sch`, opened directly in Eeschema. Power rails auto-wired in ST's drawing style: T-junctions where the stacks fit, net labels where the pin column is crowded.
 
 ![Generated schematic](docs/images/schematic.png)
 
-### Phase 2 — layout
+### Phase 2 output — placement and routing
 
-5. **Netlist export** — taken from the *verified schematic*, so the board provably inherits checked connectivity.
-6. **Footprints and nets** — every footprint is loaded from KiCad's libraries and every pad bound to its net.
-7. **Board setup** — 4-layer stackup, board outline, and manufacturability floors. Inner layers are declared as power planes, which propagates into the Specctra DSN and stops the autorouter fragmenting them with signal traces.
-8. **Constructive placement** — the MCU is anchored, then each decoupling capacitor is placed on the same die edge as the power ball it serves, using ball coordinates measured from the real footprint. The sensor and its analog rails are zoned separately.
-9. **Legalization** — a force-directed pass resolves courtyard overlaps against KiCad's own geometry.
-10. **Design-rule resolver** — net classes are derived and rules resolved (below).
-11. **Via stitching** — plane-net pads are connected to their planes with a via and a connecting track.
-12. **Copper pours** — ground and power planes with thermal relief.
-13. **Autorouting** — Freerouting, driven headless: DSN out, SES back in.
-14. **Verify** — KiCad DRC.
+Constructive placement from real ball coordinates, then a force-directed legaliser; routed by Freerouting through the DSN/SES bridge.
 
 ![Placed board](docs/images/placed.png)
 
----
-
-## Design-rule resolution
-
-Rules are resolved in three tiers, and every resolved value records where it came from:
-
-| Tier | Source | Status |
-|---|---|---|
-| Manufacturability floor | Fabricator DFM specification | Sourced |
-| Electrical requirement | IPC-2221 current-driven width | Formula verified; per-net current data not yet available |
-| Convention and policy | ST guidelines, house policy | Partly unsourced — flagged in code |
-
-Resolution is `max(fab floor, electrical requirement, practical minimum)`, and the provenance string on each value says which tier won. On the current benchmark every class resolves to the practical minimum, because the benchmark's currents are too small for the electrical tier to bind — the resolver reports this rather than implying the widths were engineered.
-
-**Net classification is derived, not name-matched.** Classes come from `pinfunction` and `pintype` in the netlist, so a circuit whose nets are called `VSS`/`VDD` classifies identically to one using `GND`/`VDD_3V3`. This was verified against output from two different language models with incompatible naming conventions.
+The pipeline **reports failure honestly**. Exit code `0` means DRC-clean; `1` means something is unresolved and the report says exactly what. Do not treat a non-zero exit as "the tool is broken" — read `report.json`.
 
 ---
 
-## Requirements
+## 2. Requirements
 
-- WSL Ubuntu 22.04 (or Linux), Python 3.10
-- KiCad 9 — symbol and footprint libraries, plus its bundled Python for `pcbnew`
-- Freerouting 2.2.4 and a Java 25 runtime, for the routing stage
-- An API key for the generation stage
+| | |
+|---|---|
+| **OS** | Windows 10/11 with **WSL2** (Ubuntu 22.04). The split is required — see below. |
+| **Python** | 3.10 (in WSL) — *and* KiCad's own bundled `python.exe` (on Windows) |
+| **KiCad** | **9.0.8** on the Windows side |
+| **Java** | A JRE on the Windows side, for Freerouting |
+| **Freerouting** | `freerouting.jar` |
+| **API key** | Anthropic, and/or NVIDIA NIM (has a free tier) |
+| **Disk** | ~2 GB (Chroma index + sentence-transformers model) |
 
-## Usage
+### Why two operating systems?
+
+`pcbnew` is a SWIG binding into KiCad's C++ core. It **must** run under the same interpreter KiCad ships with. `pip install`-ing it into a Linux venv gives ABI mismatches that fail in confusing ways — segfaults, or worse, silently wrong numbers.
+
+**The rule:**
+
+- Anything that is **pure logic** (SKiDL, RAG, resolver, netlist parsing, schematic emit) → **WSL Python**
+- Anything that **touches a board object** (placement, rules, zones, DSN/SES, DRC) → **KiCad's Windows `python.exe`**
+
+Paths cross with `wslpath -w` going out, and `/mnt/c/...` coming back.
+
+---
+
+## 3. Install
+
+### 3.1 WSL and Python
 
 ```bash
-source venv/bin/activate
-cd rag
-python3 pipeline.py --name my_board
+# From Windows PowerShell (once):
+wsl --install -d Ubuntu-22.04
 ```
 
-One command runs generation, schematic emission, verification, netlist export and layout. Outputs land in a folder containing the `.kicad_sch`, the `.net`, and the `.kicad_pcb` as a complete KiCad project.
+```bash
+# Then, inside WSL:
+sudo apt update
+sudo apt install -y python3.10 python3.10-venv python3-pip git
 
-To reuse an existing netlist and skip the LLM call, add `--skip-generate`.
+cd ~
+git clone https://github.com/DushyantSingh27/LLM-Driven-End-to-End-PCB-Generation-for-KiCAD.git LLM_Driven_Schematic_Gen
+cd LLM_Driven_Schematic_Gen
+
+python3 -m venv venv
+source venv/bin/activate
+python -V          # must print Python 3.10.x
+```
+
+> **The clone directory name matters.** Several scripts hardcode `~/LLM_Driven_Schematic_Gen`. Clone into exactly that name, or edit the paths in [§4](#4-configure--paths-you-must-change).
+
+### 3.2 Python dependencies
+
+```bash
+pip install skidl==2.2.3
+pip install anthropic==0.115.1
+pip install openai==2.46.0
+pip install pymupdf4llm==1.28.0 pymupdf-layout==1.28.0
+pip install chromadb==1.5.9
+pip install sentence-transformers==5.6.0
+```
+
+> **Do not substitute plain PyMuPDF for `pymupdf4llm`.** Plain extraction turns the STM32 ball-assignment tables into mojibake — which is precisely the data the model most needs. The failure does not appear until three stages later, as an invalid pin name.
+
+### 3.3 KiCad 9
+
+Install **KiCad 9.0.8** from [kicad.org](https://www.kicad.org) (Windows installer). Then verify it from WSL:
+
+```bash
+ls "/mnt/c/Program Files/KiCad/9.0/share/kicad/symbols/" | head
+"/mnt/c/Program Files/KiCad/9.0/bin/python.exe" -c "import pcbnew; print(pcbnew.GetBuildVersion())"
+# expect: 9.0.8
+```
+
+> ⚠️ **The install path contains a space.** Quote it *everywhere*. Unquoted, it fails silently in about half of all shell contexts.
+
+If your KiCad lives elsewhere, override the symbol directory:
+
+```bash
+export KICAD_SYMBOL_DIR="/mnt/c/Path/To/KiCad/9.0/share/kicad/symbols"
+```
+
+### 3.4 Freerouting and Java
+
+Install a JRE on the **Windows** side and place the jar somewhere stable, e.g. `C:\tools\freerouting\freerouting.jar`.
+
+```bash
+java -version    # confirm the JRE is reachable
+```
+
+`rag/routing.py` performs java/jar discovery and drives it headless:
+
+```
+java -jar freerouting.jar -de board.dsn -do board.ses
+```
+
+> Check which JRE version your Freerouting build requires. Recent releases track new JREs and fail on older ones with an error that does not mention Java.
+
+### 3.5 API keys
+
+```bash
+export ANTHROPIC_API_KEY=sk-ant-...      # console.anthropic.com
+export NVIDIA_API_KEY=nvapi-...          # build.nvidia.com  (only if PROVIDER="nvidia")
+```
+
+Add them to `~/.bashrc` so they survive a new shell.
+
+> **A Claude Pro subscription is not API access.** The API bills separately.
 
 ---
 
-## Limitations
+## 4. Configure — paths you must change
 
-These are known and deliberate, not hidden:
+These are hardcoded. Change them, or match them.
 
-- **Three pads cannot be stitched to their planes.** On a 0.4 mm-pitch WLCSP, a through-via plus its connecting track physically cannot escape from an inner ball. The tool reports which pads failed rather than skipping them silently. Reaching them needs via-in-pad or microvias, neither of which is implemented.
-- **Ten connections remain unrouted**, all terminating on inner balls of the same package — the same escape-routing limit.
-- **Layer count is a constant, not a computed rule.** The 4-layer choice is correct for this package but is not yet derived from package pitch.
-- **Several placement roles are hardcoded** to this board's reference designators. A circuit with a different component roster would need the role-derivation work that the resolver already demonstrates for nets.
-- **The generation contract is implicit.** Downstream stages assume conventions that one model happened to satisfy; a second model's valid-but-different output broke them. A normalization stage is the fix.
-- **Some rule values are policy, not sourced** — notably a power-net clearance that costs two connections. These are marked in code rather than presented as engineering.
-- **Silkscreen positioning** is unaddressed; reference designators can overlap pads.
+| File | Constant | Default | Action |
+|---|---|---|---|
+| `rag/pipeline.py` | `DEFAULT_OUTPUT_ROOT` | `/mnt/c/Users/Dushyant/Desktop/pcbgen_outputs` | **Must change** — or always pass `--output-root` |
+| `rag/build_rag_v2.py` | `DATASHEET_DIR` | `~/LLM_Driven_Schematic_Gen/datasheets` | OK if you cloned to that name |
+| `rag/build_rag_v2.py` | `CHROMA_DIR` | `~/LLM_Driven_Schematic_Gen/rag/chroma_db` | OK if you cloned to that name |
+| `rag/build_rag_v2.py` | `COLLECTION` | `st_datasheets_v2` | Leave alone unless you keep multiple corpora |
+| `rag/generate_spi_v2.py` | `PROVIDER` | `"anthropic"` | Set to the provider whose key you have |
+| `rag/generate_spi_v2.py` | `MODEL` | `claude-sonnet-4-6` | Change to switch Anthropic model |
+| `rag/generate_spi_v2.py` | `NVIDIA_MODEL` | `z-ai/glm-5.2` | Used when `PROVIDER` is NVIDIA |
+| `rag/generate_spi_v2.py` | `OUTPUT_PY` | `rag/lsm6dsm_stm32l476_spi_v2.py` | Where the generated SKiDL is written |
+| *(env)* | `KICAD_SYMBOL_DIR` | KiCad 9 default path | Set only if KiCad is installed elsewhere |
 
-## Roadmap
+The output root must be a **Windows-visible** path (under `/mnt/c/...`), because Phase 2 runs under Windows Python and has to read what Phase 1 wrote.
 
-Generalization of placement roles, a second benchmark on different parts, current-driven trace widths once per-net current data is available, and a datasheet-grounded functional check — the one class of error that neither ERC nor DRC can catch.
+---
+
+## 5. Run the benchmark
+
+### Step 1 — Build the RAG index *(once per datasheet set)*
+
+Put component datasheet PDFs in `datasheets/`. The filename becomes the component key:
+
+```
+datasheets/STM32L476.pdf   →  component "STM32L476"
+datasheets/LSM6DSM.pdf     →  component "LSM6DSM"
+```
+
+```bash
+source ~/LLM_Driven_Schematic_Gen/venv/bin/activate
+cd ~/LLM_Driven_Schematic_Gen/rag
+python build_rag_v2.py
+```
+
+Extracts with `pymupdf4llm` (layout-aware markdown), splits on `#`/`##`/`###`, chunks at 1200 chars with 120 overlap, embeds, and writes a persistent Chroma collection to `rag/chroma_db`.
+
+### Step 2 — Phase 1: prompt → verified schematic
+
+```bash
+python pipeline.py --name spi_auto --output-root /mnt/c/Users/<YOU>/Desktop/pcbgen_outputs
+```
+
+One command. It runs generation (LLM → SKiDL → ERC), then the serialiser (netlist → placement → ST-style power wiring → `.kicad_sch`), then verification.
+
+```bash
+# Re-run the serialiser on the last generated netlist, without paying for tokens:
+python pipeline.py --name spi_auto --skip-generate
+```
+
+`--skip-generate` is the flag you will use most. Use it whenever you are debugging the serialiser rather than the model.
+
+### Step 3 — Phase 2: netlist → routed board
+
+Launch this with **KiCad's Windows Python**, not the venv:
+
+```bash
+RUN=/mnt/c/Users/<YOU>/Desktop/pcbgen_outputs/spi_auto
+
+"/mnt/c/Program Files/KiCad/9.0/bin/python.exe" \
+  "$(wslpath -w ~/LLM_Driven_Schematic_Gen/rag/layout_pipeline.py)" \
+  "$(wslpath -w $RUN/spi_auto.net)" \
+  "$(wslpath -w $RUN)"
+
+echo "exit code: $?"     # 0 = DRC clean, 1 = incomplete
+```
+
+`layout_pipeline.py` takes exactly **two positional arguments**: the netlist path and the output directory. Both must be **Windows-style** paths.
+
+---
+
+## 6. Reading the output
+
+`run_context.py` gives every run its own directory with structural uniqueness:
+
+| Artifact | What it is |
+|---|---|
+| `board.kicad_pcb` | The board — open it in pcbnew |
+| `board.dsn` | What was handed to the router |
+| `board.ses` | What the router handed back |
+| `drc.rpt` | KiCad's own DRC report |
+| `router.log` | Freerouting's output, parsed for the unrouted count |
+| `report.json` | **Start here.** Stage-by-stage results, not just a verdict. |
+
+The console log is stage-numbered (`[L1/12] … [L12/12]`) and names anything it could not do rather than dropping it silently — e.g. `UNREACHABLE U1 pad H8 (/VDD_3V3)`.
+
+---
+
+## 7. Generating your own circuit
+
+The benchmark is not special. To generate a different board:
+
+### 7.1 Add the datasheets
+
+```bash
+cp MY_MCU.pdf MY_SENSOR.pdf ~/LLM_Driven_Schematic_Gen/datasheets/
+cd ~/LLM_Driven_Schematic_Gen/rag
+python build_rag_v2.py        # rebuild the index
+```
+
+### 7.2 Edit the spec in `rag/generate_spi_v2.py`
+
+Three constants define the circuit:
+
+```python
+USER_TASK  = "..."     # the natural-language spec, e.g. "connect X to Y over I2C
+                       #  with pull-ups, decouple every supply rail"
+COMPONENTS = {...}     # part number → KiCad symbol/library mapping
+RAG_QUERIES = [...]    # what to retrieve from the datasheets before prompting
+```
+
+`RAG_QUERIES` is the one people under-invest in. The model is only as grounded as what you retrieve. For a new part, query for the **ball/pin assignment table**, the **supply rail list**, and the **decoupling recommendations** at minimum.
+
+There are worked examples in the repo for other topologies: `generate_i2c_circuit.py`, `generate_st_circuit.py`.
+
+### 7.3 Run it
+
+```bash
+python pipeline.py --name my_board --output-root /mnt/c/Users/<YOU>/Desktop/pcbgen_outputs
+```
+
+then Phase 2 as in [§5 step 3](#step-3--phase-2-netlist--routed-board).
+
+### 7.4 Expect to hit the generalisation gaps
+
+Be aware before you start (details in [§9](#9-known-limits)):
+
+- The placer contains **circuit-specific reference designators**. A different topology can trip them.
+- Net names must match the pipeline's **contract** (`GND`, `VDD_3V3`, `VREF_PLUS`, …). A model that emits `VSS` or `VREF+` will break the power-wiring stage.
+- Only **single-sided** placement is supported.
+
+---
+
+## 8. Troubleshooting
+
+**`ImportError: No module named pcbnew`**
+You ran Phase 2 with the venv Python. Use KiCad's `python.exe`.
+
+**Design rules look wrong / clearance numbers don't match what you set**
+KiCad 9 stores netclass **definitions** in the `.kicad_pro` project file, not the `.kicad_pcb`, and `SaveBoard` will not overwrite an existing project file. A stale `.kicad_pro` silently overrides your computed rules and invalidates every measurement taken afterwards. `save_board` clears them — but if you are writing your own stage, delete the project file before saving.
+
+**Python exits with no traceback during the pour stage**
+`ZONE_FILLER` hard-crashes at the C++ level on an in-memory board. `BuildConnectivity()` does not help. There is a deliberate **save/reload seam** before pouring; do not remove it.
+
+**Netclasses vanish after a save/reload**
+Expected — the definitions live in the project file. This is why DSN clearance inflation is done **in memory** and reverted immediately, rather than via a round-trip.
+
+**A shell command "does nothing"**
+You did not quote `"/mnt/c/Program Files/KiCad/9.0/..."`.
+
+**The router succeeds but KiCad's DRC rejects the board**
+DSN carries copper-to-copper clearance; it does **not** carry KiCad's hole-to-copper rule. The exported clearance is inflated so one implies the other:
+
+```
+c_router = max(c_copper, c_hole + r_hole − r_via) = 0.1250 mm
+```
+
+**Invalid pin names in the generated SKiDL**
+Your RAG index is probably built from mangled extraction. Confirm `pymupdf4llm` is installed (not plain PyMuPDF) and rebuild.
+
+---
+
+## 9. Known limits
+
+Stated plainly, because a pipeline that oversells itself moves error discovery to the fab.
+
+**10 unconnected items — a measured trade, not a bug.**
+All ten are WLCSP-72 inner-ball escape routes. At 0.4 mm ball pitch the keep-out ring leaves no legal channel for a through-via to reach U1's inner balls. The clearance choice was measured, not guessed:
+
+| Router clearance | Unrouted | Hole violations |
+|---|---|---|
+| 0.09 mm | 6 | **14** |
+| **0.1250 mm** | **10** | **0** |
+
+The 0.09 mm board connects four more nets and is **not manufacturable**. The pipeline takes the manufacturable board. Closing the remaining ten is a *stackup* decision — microvias or more layers — not a router tuning problem.
+
+**No intentional trace widths.** `m_TrackMinWidth` is a DRC minimum, not the width the router uses. Netclasses with real per-class widths are not implemented yet, so trace widths are the DSN default.
+
+**Single-sided placement only.** The placer has no concept of a bottom side.
+
+**Circuit-specific hardcodes in placement.** Some reference designators are baked in.
+
+**No generation-contract normalisation.** `VSS`/`GND`, `VDD`/`VDD_3V3`, `VREF+`/`VREF_PLUS`, `100n`/`100nF` are not yet unified.
+
+**Silkscreen placement not implemented.** 10 silkscreen warnings are deferred; they are cosmetic.
+
+**LLM stage is not reproducible on Anthropic.** No seed is exposed. NVIDIA NIM does expose one.
+
+**Freerouting is heuristic.** Runs may route differently; the DRC verdict has been stable in practice.
+
+---
+
+## 10. Verified environment
+
+This exact combination is what the results above were produced on.
+
+| Component | Version |
+|---|---|
+| KiCad / `pcbnew` | **9.0.8** |
+| OS | Ubuntu 22.04 (WSL2) |
+| Python | 3.10 |
+| `skidl` | 2.2.3 |
+| `anthropic` | 0.115.1 |
+| `openai` | 2.46.0 |
+| `pymupdf` | 1.28.0 |
+| `pymupdf-layout` | 1.28.0 |
+| `pymupdf4llm` | 1.28.0 |
+| `chromadb` | 1.5.9 |
+| `sentence-transformers` | 5.6.0 |
+
+**Not yet pinned** — record these yourself, they silently change results:
+Freerouting jar version · JRE version · fab DFM spec revision.
+
+`pcbnew` is a binding to a *specific* KiCad build. A minor version bump can change enum names, default clearances, or whether a call exists — and the failure shows up as a wrong **number**, not an exception. Pin it.
+
+---
+
+## Design principle
+
+> **The language model decides what the circuit is. Deterministic code decides what the files are.**
+
+The LLM never emits a coordinate, a trace width or a clearance. No model output reaches a file without passing a machine check, and there are always **two independent judges** — the authoritative tool (ERC, DRC) *and* an independent verifier that reads geometry rather than intent. Neither is trusted alone.
+
+A disappearing ERC error is worse news than a new one: it means two nets silently merged, and the check that would have complained is now satisfied by the short itself.
+
+---
+
+## Acknowledgements
+
+Built by **Dushyant Singh**, mentored by **Saurabh Rawat**, STMicroelectronics.
